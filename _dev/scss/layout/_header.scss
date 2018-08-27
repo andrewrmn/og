@@ -1,0 +1,36 @@
+// ---------------------------------------------------------------------
+//  Global Header Styles
+// ---------------------------------------------------------------------
+
+.site-header {
+	position: relative;
+	z-index: 10;
+	width: 100%;
+	padding: 16px 24px;
+	background: $black;
+}
+
+// ----------------------------------------
+// Logo Styles
+// ----------------------------------------
+
+$logo-width: 220px;
+$logo-height: 72px;
+
+.logo {
+	flex-grow: 1;
+}
+
+.logo a {
+	display: block;
+	font-family: $sans-serif;
+	font-size: 24px;
+	line-height: 1;
+
+	cursor: default;
+	color: $white;
+
+	img {
+		width: 54px;
+	}
+}

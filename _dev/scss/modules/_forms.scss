@@ -1,0 +1,307 @@
+// ---------------------------------------------------------------------
+//  Form Styles (Gravity Forms)
+// ---------------------------------------------------------------------
+
+.user-content .gravity-form ul {
+    list-style-type: none;
+    margin: 0;
+    @include clearfix;
+}
+
+.user-content .gravity-form li {
+    margin: 0;
+}
+
+.gravity-form {
+    width: 101%;
+    display: block;
+}
+
+// ----------------------------------------
+// Labels
+// ----------------------------------------
+.gfield_label,
+.gfield_radio label,
+.gfield_checkbox label,
+.loginForm label {
+    display: block;
+    margin-bottom: 2px;
+
+    @include start-at($small) {
+        margin-bottom: 5px;
+    }
+}
+
+.gfield_required {
+    display: none;
+}
+
+.validation_message {
+    color: $error;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    font-size: 1.4rem;
+}
+
+.validation_error {
+    display: none;
+}
+
+// ----------------------------------------
+// Layouts
+// ----------------------------------------
+
+.user-content .gravity-form,
+.gravity-form {
+
+    .full,
+    .half,
+    .third {
+        display: inline-block;
+        padding-bottom: 15px;
+        position: relative;
+    }
+
+    .full {
+        width: 99%;
+    }
+
+    .half {
+        width: 49%;
+        margin-right: 1%;
+        float: left;
+    }
+
+    .third {
+        width: 32.3333333%;
+        margin-right: 1%;
+        float: left;
+    }
+
+    @include stop-at($small) {
+        .full,
+        .half,
+        .third {
+            width: 99%;
+            float: none;
+            clear: both;
+        }
+    }
+}
+
+
+// ----------------------------------------
+// Containers
+// ----------------------------------------/
+$INPUT-HEIGHT: 44px;
+
+.ginput_container {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    min-height: $INPUT-HEIGHT;
+}
+
+// ----------------------------------------
+// Input Styles
+// ----------------------------------------
+.ginput_container {
+
+    input:not([type="submit"]),
+    textarea,
+    select {
+        -webkit-appearance: none;
+        width: 100%;
+        height: $INPUT-HEIGHT;
+        margin: 0;
+        padding: 0 8px;
+        box-shadow: none;
+        border-radius: 0;
+        border: 1px solid $brand;
+        background: transparent;
+        font-size: 1.4rem;
+        color: $brand;
+        transition: all $transition;
+
+        &:focus {
+            //outline: none;
+            border-color: $gray;
+        }
+    }
+
+    textarea {
+        min-height: 192px;
+        max-height: 240px;
+        padding: 10px 15px;
+        overflow: auto;
+        resize: vertical;
+    }
+}
+
+.gform_button {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    min-width: 168px;
+    padding: 8px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border-radius: 0;
+    border: 1px solid $brand;
+    transition: all $transition;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $brand;
+        color: $white;
+        outline: none;
+        cursor: pointer;
+    }
+}
+
+
+// ----------------------------------------
+// Custom Select Dropdown
+// ----------------------------------------
+
+.ginput_container select {
+    display: block;
+    -webkit-appearance: none;
+    border-radius: 0;
+    position: relative;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    cursor: pointer;
+}
+
+.isIE .select select::-ms-expand {
+    display: none;
+}
+
+.select {
+
+    .ginput_container {
+
+        select {
+            display: block;
+            -webkit-appearance: none;
+            border-radius: 0;
+            position: relative;
+            -moz-appearance: none;
+            text-indent: 0.01px;
+            text-overflow: '';
+            cursor: pointer;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 44px;
+            height: calc(100% - 2px);
+            top: 1px;
+            right: 1px;
+            background: transparent url(../images/svgs/arrow-down.svg) no-repeat;
+            background-size: 14px 8px;
+            background-position: center;
+            pointer-events: none;
+        }
+    }
+
+}
+
+.isIE .select .ginput_container{
+     select {
+        padding-right: 0;
+    }
+
+    &:after {
+        //display: none;
+    }
+}
+
+// ----------------------------------------
+// Custom Checkbox
+// ----------------------------------------
+
+.gfield_radio,
+.gfield_checkbox {
+    display: table;
+    width: 100%;
+
+    input {
+        @include visually-hidden;
+    }
+
+    label:before {
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-right: 8px;
+        border: 1px solid $black;
+        background-color: $white;
+        transition: background-color $transition;
+        cursor: pointer;
+    }
+
+    input:checked + label {
+
+        &:before {
+            background-color: $black;
+        }
+    }
+}
+
+
+// ----------------------------------------
+// File Uploader
+// ----------------------------------------
+.fileUpload {
+
+    input {
+        height: auto;
+        display: block;
+        border: 1px dashed $gray-light;
+        text-align: center;
+        padding: 38px 24px;
+        margin-bottom: 12px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all $transition;
+
+        &:hover {
+            border-color: $brand;
+            color: $brand;
+        }
+    }
+
+    .ginput_container {
+        height: auto;
+    }
+
+    .gform_drop_instructions {
+        //display: none;
+    }
+}
+
+
+// ----------------------------------------
+// touch styles
+// ----------------------------------------
+.isTouch {
+
+    .ginput_container {
+
+        input,
+        textarea,
+        select {
+            font-size: 1.6rem;
+        }
+    }
+}

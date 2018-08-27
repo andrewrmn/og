@@ -1,0 +1,75 @@
+// ---------------------------------------------------------------------
+//  Typography Styles
+// ---------------------------------------------------------------------
+
+// ----------------------------------------
+// Heading Mixins
+// ----------------------------------------
+
+// ----------------------------------------
+// Headings
+// ----------------------------------------
+
+
+.hxl {
+    font-size: 48px;
+    line-height: 1;
+    transition: font-size $transition;
+
+    @include start-at($small){
+        font-size: 72px;
+    }
+
+    @include start-at($medium){
+        font-size: 96px;
+    }
+
+    @include start-at($large){
+        font-size: 120px;
+    }
+}
+
+
+
+// ----------------------------------------
+// Paragraph Style Mixins
+// ----------------------------------------
+
+@mixin para {
+    display: block;
+    font-family: $sans-serif;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+}
+
+@mixin p-lg {
+    font-size: 1.8rem;
+    line-height: 1.7;
+}
+
+@mixin p-sm {
+    font-size: 1.4rem;
+    line-height: 1.7124;
+}
+
+
+// ----------------------------------------
+// Paragraph Styles
+// ----------------------------------------
+
+.p,
+p {
+    @include para;
+
+    // + * {
+    //     margin-top: 20px;
+    // }
+}
+
+.p-lg {
+    @include p-lg;
+}
+
+.p-sm {
+  @include p-sm;
+}

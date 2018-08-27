@@ -1,0 +1,99 @@
+// ---------------------------------------------------------------------
+//  Media Styles
+// ---------------------------------------------------------------------
+
+.img-full {
+    width: 100%;
+}
+
+.img-cover {
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
+
+.bg-image {
+    @include bg-image;
+}
+
+
+// ----------------------------------------
+// SVGs
+// ----------------------------------------
+
+svg {
+	display: block;
+	fill: currentColor;
+}
+
+.shape-inline {
+    display: inline-block;
+
+    > * {
+		display: inline-block;
+		vertical-align: middle;
+        line-height: 1;
+    }
+
+    > * + * {
+        margin-left: 10px;
+		transition: transform $transition;
+    }
+}
+
+.shape-inline + .shape-inline {
+    margin-left: 24px;
+}
+
+a.shape-inline:hover {
+
+	 > * + * {
+		transform: translateX(4px);
+	}
+}
+
+
+// ----------------------------------------
+// Media Object
+// ----------------------------------------
+
+.media-object {
+    width: 100%;
+    overflow: hidden;
+
+    @include start-at($medium) {
+        display: flex;
+        align-items: center;
+
+        &.media-object--equalWidth > * {
+            width: 48%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        &.media-object--flip .media-object__media {
+            order: 2;
+            margin: 0 0 0 24px;
+        }
+    }
+}
+
+.media-object__media {
+    margin: 0 0 24px 0;
+
+    img {
+       display: block;
+   }
+
+   @include start-at($medium) {
+       margin: 0 24px 0 0;
+       flex-grow: 1;
+       min-width: 200px;
+   }
+}
+
+.media-object__bd {
+    overflow: hidden;
+}

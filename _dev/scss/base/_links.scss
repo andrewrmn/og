@@ -1,0 +1,72 @@
+// ---------------------------------------------------------------------
+//  Link & Button Styles
+// ---------------------------------------------------------------------
+
+@mixin btn {
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    background: $brand;
+    border: 1px solid $brand;
+    color: $white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 9px 0;
+    transition: background $transition, color $transition;
+
+    &:active,
+    &:focus,
+    &:hover {
+        cursor: pointer;
+        background: transparent;
+        color: $brand;
+    }
+}
+
+.btn {
+    @include btn;
+}
+
+.btn--alt {
+    background: transparent;
+    color: $brand;
+
+    &:hover {
+        background: $brand;
+        color: $white;
+    }
+}
+
+.btn--light {
+    background: transparent;
+    color: $white;
+    border-color: $white;
+
+    &:hover {
+        cursor: pointer;
+        background: $white;
+        color: $brand;
+    }
+}
+
+// ----------------------------------------
+// Links
+// ----------------------------------------
+
+.link,
+.a,
+p a,
+.p a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+// ----------------------------------------
+//
+// ----------------------------------------
+
+.noTouch .tel,
+.noTouch .tel:hover {
+    cursor: text;
+}

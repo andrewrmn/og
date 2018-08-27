@@ -1,0 +1,80 @@
+// ---------------------------------------------------------------------
+//  SCSS Settings
+// ---------------------------------------------------------------------
+
+
+// ----------------------------------------
+// Fonts
+// ----------------------------------------
+
+// Font weights: 400 | 700
+$sans-serif: 'Helvetica', mono, sans-serif;
+
+
+// ----------------------------------------
+// Font Size/ Line Height
+// ----------------------------------------
+$main-font: $sans-serif;
+$base-font-size: 1.5rem;
+$base-line-height: 1.6;
+
+
+// ----------------------------------------
+// Colors
+// ----------------------------------------
+
+
+$brand: #2776dd; // Blue
+
+$white: #ffffff;
+$off-white: #F9FAFA;
+
+$gray-light: #F2F4F4;
+$gray-md: #E3E6E6;
+
+$gray: #62676D;
+$gray-dark: #55585D;
+
+$black: #282828;
+
+$gray: #666;
+
+$error: #FF3333;
+
+
+// ----------------------------------------
+// Breakpoints
+// ----------------------------------------
+
+$xlarge: 1440px;
+$large: 1025px;
+$medium: 800px;
+$small: 600px;
+
+@mixin start-at($device-width) {
+  @media (min-width: $device-width) {
+    @content;
+  }
+}
+
+@mixin stop-at($device-width) {
+  @media (max-width: $device-width - 1) {
+    @content;
+  }
+}
+
+
+// ----------------------------------------
+// Global Variables
+// ----------------------------------------
+
+$header-breakpoint: $small;
+
+$transition-speed: 0.4s;
+$transition: $transition-speed ease;
+// cuz I no type good
+$trans: $transition-speed ease;
+
+$wrapper-percentage: 94%;
+$wrapper-width: 1128px;
+$wrapper-padding: (100% - $wrapper-percentage) / 2;

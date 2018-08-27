@@ -1,0 +1,50 @@
+// ---------------------------------------------------------------------
+//  Octocat (Actual SVG)
+// ---------------------------------------------------------------------
+
+
+#octocat {
+    position: relative;
+
+    #ears {
+
+        &.is-hidden {
+            display: none;
+        }
+    }
+
+    #head {
+        position: absolute;
+        z-index: 12;
+        top: 0;
+        left: 0;
+    }
+
+    #body {
+        position: absolute;
+        z-index: 11;
+        top: 0;
+        left: 0;
+    }
+
+    g.headgear {
+        transform: scale(1);
+        transform-origin: center;
+    }
+
+
+    &.enlarge-headgear g.headgear {
+        transform: scale(1.22);
+        transform-origin: center;
+    }
+
+    g.is-hidden {
+        display: none;
+    }
+
+}
+
+
+// ----------------------------------------
+//
+// ----------------------------------------
