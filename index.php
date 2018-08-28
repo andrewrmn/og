@@ -3,37 +3,75 @@
 
     <div id="octocat-generator">
 
+        <div id="ui-wrapper">
+            <div class="wrapper-wide d-flex flex-items-center flex-justify-center">
+                <div id="start-over">
+                    <img class="mr-3" src="/build/images/svgs/undo.svg" alt="Restart Icon" />
+                    <p class="d-none d-sm-block">Start Over</p>
+                </div>
+
+                <div id="octocat-name">
+                    <input type="text" placeholder="Name Your Octocat" value="" />
+                </div>
+
+                <div id="save">
+                    <p class="d-none d-sm-block">Finish & Share</p>
+                    <img class="ml-2" src="/build/images/svgs/arrow-right.svg" alt="Restart Icon" />
+                </div>
+            </div>
+        </div>
+
+
+
         <div id="artboard">
-            <!-- <img class="hat" src="/build/images/hat/blue.svg" alt="" />
-            <img class="body" src="/build/images/body/red.svg" alt="" /> -->
+            <div class="artboard__inner">
+                <svg id="octocat" viewBox="0 0 2000 2000" xml:space="preserve">
+
+                    <g id="hair-back-holder"></g>
 
 
+                    <?php include('includes/body/body.php'); ?>
 
-            <svg id="octocat" viewBox="0 0 2000 2000" xml:space="preserve">
+                    <g id="pants-holder"></g>
 
-                <g id="hair-back-holder"></g>
+                    <g id="shoes-holder"></g>
 
+                    <g id="shirts-holder"></g>
 
-                <?php include('includes/body/body.php'); ?>
+                    <g id="accessories-holder"></g>
 
-                <g id="pants-holder"></g>
+                    <g id="hair-holder"></g>
 
-                <g id="shoes-holder"></g>
+                    <g id="headgear-holder"></g>
+                </svg>
+            </div>
 
-                <g id="shirts-holder"></g>
-
-                <g id="accessories-holder"></g>
-
-                <g id="hair-holder"></g>
-
-                <g id="headgear-holder"></g>
-            </svg>
 
 
 
         </div>
 
         <nav id="control-panel">
+
+
+            <?php include('categories/body.php'); ?>
+
+            <?php include('categories/eyes.php'); ?>
+
+            <?php include('categories/hair.php'); ?>
+
+            <?php include('categories/headgear.php'); ?>
+
+            <?php include('categories/shirts.php'); ?>
+
+            <?php include('categories/pants.php'); ?>
+
+            <?php include('categories/shoes.php'); ?>
+
+            <?php include('categories/accessories.php'); ?>
+
+
+
 
             <div id="object-list">
                 <div>
@@ -63,23 +101,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <?php include('categories/body.php'); ?>
-
-            <?php include('categories/eyes.php'); ?>
-
-            <?php include('categories/hair.php'); ?>
-
-            <?php include('categories/headgear.php'); ?>
-
-            <?php include('categories/shirts.php'); ?>
-
-            <?php include('categories/pants.php'); ?>
-
-            <?php include('categories/shoes.php'); ?>
-
-            <?php include('categories/accessories.php'); ?>
 
         </nav>
     </div>

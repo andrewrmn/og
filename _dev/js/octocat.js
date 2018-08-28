@@ -3,37 +3,27 @@
 // Authors: Andrew Ross & a little help from my friends
 // ---------------------------------------------------------------------
 
-
 var andrewrossco = andrewrossco || {};
 
 (function(APP) {
 
-    //function octocat() {
     if( document.getElementById('octocat-generator') ) {
 
         var artboard = document.getElementById('octocat'),
             cp = document.getElementById('control-panel'),
             ears = artboard.getElementById('ears'),
             category = cp.querySelectorAll('.category-tile'),
-            categoryPanel = cp.querySelectorAll('.category-panel'),
-            colorTrigger = cp.querySelectorAll('.color-panel-trigger'),
-            colorPanel = cp.querySelectorAll('.color-panel');
-
+            categoryPanel = document.querySelectorAll('.category-panel');
 
         function clearActive() {
             for(var i = 0; i < category.length; i++) {
                 category[i].classList.remove('is-active');
             }
-            for(var i = 0; i < categoryPanel.length; i++) {
-                categoryPanel[i].classList.remove('is-active');
-            }
-            for(var i = 0; i < colorTrigger.length; i++) {
-                colorTrigger[i].classList.remove('is-active');
-            }
-            for(var i = 0; i < colorPanel.length; i++) {
-                colorPanel[i].classList.remove('is-active');
+            for(var p = 0; p < categoryPanel.length; p++) {
+                categoryPanel[p].classList.remove('is-active');
             }
         }
+
 
         for(var i = 0; i < category.length; i++) {
             var el = category[i];
@@ -48,29 +38,12 @@ var andrewrossco = andrewrossco || {};
                     target = this.getAttribute('data-target');
                     target = document.getElementById(target);
                     target.classList.add('is-active');
+                    console.log('category active');
+
+                    checkPanelWidth();
                 }
             }
         }
-
-
-        for(var i = 0; i < colorTrigger.length; i++) {
-            var el = colorTrigger[i];
-
-            el.onclick = function() {
-
-                if( this.classList.contains('is-active') ) {
-                    //clearActive();
-                    return
-                } else {
-                    //clearActive();
-                    this.classList.add('is-active');
-                    target = this.getAttribute('data-target');
-                    target = document.getElementById(target);
-                    target.classList.add('is-active');
-                }
-            }
-        }
-
 
 
 
@@ -82,6 +55,7 @@ var andrewrossco = andrewrossco || {};
             var el = bodyColorSwatches[i];
             bgColor = el.getAttribute('data-color');
             el.style.background = bgColor;
+            el.style.color = bgColor;
 
             el.onclick = function() {
                 bgColor = this.getAttribute('data-color');
@@ -96,7 +70,7 @@ var andrewrossco = andrewrossco || {};
 
 
 
-        ///////////////////////// Body Color /////////////////////////
+        ///////////////////////// Eye Color /////////////////////////
         var eyeColor = document.getElementById('eye-color'),
             eyeColorSwatches = eyeColor.querySelectorAll('.color-swatch');
 
@@ -105,6 +79,7 @@ var andrewrossco = andrewrossco || {};
             bgColor = el.getAttribute('data-color');
 
             el.style.background = bgColor;
+            el.style.color = bgColor;
 
             el.onclick = function() {
                 bgColor = this.getAttribute('data-color');
@@ -118,115 +93,6 @@ var andrewrossco = andrewrossco || {};
         }
 
 
-
-        // ---------------------------------------------------------------------
-        //  Hair
-        // ---------------------------------------------------------------------
-
-        // ///////////////////////// ADD /////////////////////////
-        // var hair = cp.querySelectorAll('div.hair');
-        // for(var i = 0; i < hair.length; i++) {
-        //     var el = hair[i];
-        //
-        //     el.onclick = function() {
-        //         console.log('hair added');
-        //
-        //         for(var t = 0; t < hair.length; t++) {
-        //            hair[t].classList.remove('is-active');
-        //         }
-        //
-        //         this.classList.add('is-active');
-        //
-        //         var objects = this.getElementsByTagName('g');
-        //
-        //         // Remove Wrap
-        //         var currentObjects = artboard.querySelectorAll('g.hair');
-        //
-        //         // remove all elements with this class
-        //         for(var i = 0; i < currentObjects.length; i++) {
-        //             var co = currentObjects[i];
-        //             co.remove();
-        //
-        //             if ( co.classList.contains('hide-ears') ) {
-        //
-        //                 var allObjects = artboard.querySelectorAll('g.hide-ears');
-        //
-        //                 if( allObjects.length == 0 ) {
-        //                     ears.classList.remove('is-hidden');
-        //                     console.log('show ears');
-        //                 } else {
-        //                     console.log('something else hidding ears');
-        //                 }
-        //             }
-        //
-        //         }
-        //
-        //
-        //         // Check for headgear that need to be enlarged with hair
-        //         var headgear = artboard.querySelectorAll('.hair-check');
-        //         for(var i = 0; i < headgear.length; i++) {
-        //             var el = headgear[i];
-        //             el.classList.add('enlarge');
-        //         }
-        //
-        //
-        //         // Add to artboard
-        //         for(var i = 0; i < objects.length; i++) {
-        //
-        //             var g = objects[i],
-        //                 gClone = g.cloneNode(true);
-        //
-        //             if ( g.classList.contains('back') ) {
-        //                 artboard.getElementById('hair-back-holder').append(gClone);
-        //             } else {
-        //                 artboard.getElementById('hair-front-holder').append(gClone);
-        //             }
-        //
-        //             if ( g.classList.contains('hide-ears') ) {
-        //                 ears.classList.add('is-hidden');
-        //                 console.log('hide-ears');
-        //             }
-        //         }
-        //     }
-        // }
-
-
-        // ///////////////////////// Remove Hair /////////////////////////
-        // var removeHair = document.getElementById('remove-hair');
-        //
-        // removeHair.onclick = function() {
-        //     // Remove hair from artboard
-        //     var currentHair = artboard.querySelectorAll('g.hair');
-        //     for(var i = 0; i < currentHair.length; i++) {
-        //         var el = currentHair[i];
-        //         el.parentNode.removeChild(el);
-        //
-        //         if ( el.classList.contains('hide-ears') ) {
-        //             ears.classList.add('is-hidden');
-        //             var earCheck = artboard.querySelectorAll('g.hide-ears');
-        //
-        //             if (earCheck.length == 0) {
-        //                 ears.classList.remove('is-hidden');
-        //             }
-        //         }
-        //     }
-        //
-        //     // Remove active class from hair in control panel
-        //     var active = cp.querySelectorAll('.hair.is-active');
-        //     for(var i = 0; i < active.length; i++) {
-        //         var el = active[i];
-        //         el.classList.remove('is-active');
-        //     }
-        //
-        //     // Remove scaling on hat's checking for hair
-        //     var headgear = artboard.querySelectorAll('.hair-check');
-        //     for(var i = 0; i < headgear.length; i++) {
-        //         var el = headgear[i];
-        //         el.classList.remove('enlarge');
-        //     }
-        // }
-
-
         ///////////////////////// Hair Color /////////////////////////
         var hairColor = document.getElementById('hair-color'),
             hairColorSwatches = hairColor.querySelectorAll('.color-swatch');
@@ -236,6 +102,7 @@ var andrewrossco = andrewrossco || {};
             bgColor = el.getAttribute('data-color');
 
             el.style.background = bgColor;
+            el.style.color = bgColor;
 
             el.onclick = function() {
                 bgColor = this.getAttribute('data-color');
@@ -246,131 +113,6 @@ var andrewrossco = andrewrossco || {};
                 }
             }
         }
-
-
-
-
-
-        // // ---------------------------------------------------------------------
-        // //  Headgear
-        // // ---------------------------------------------------------------------
-        //
-        // var headgear = cp.querySelectorAll('div.headgear');
-        //
-        // for(var i = 0; i < headgear.length; i++) {
-        //     var el = headgear[i];
-        //
-        //     el.onclick = function() {
-        //         console.log('clicked');
-        //
-        //         for(var t = 0; t < headgear.length; t++) {
-        //            headgear[t].classList.remove('is-active');
-        //         }
-        //
-        //         this.classList.add('is-active');
-        //
-        //         var objects = this.getElementsByTagName('g');
-        //
-        //         // Remove Wrap
-        //         var currentObjects = artboard.querySelectorAll('g.headgear');
-        //
-        //         // remove all elements with this class
-        //         for(var i = 0; i < currentObjects.length; i++) {
-        //             var co = currentObjects[i];
-        //             co.remove();
-        //
-        //             if ( co.classList.contains('hide-ears') ) {
-        //
-        //                 var allObjects = artboard.querySelectorAll('g.hide-ears');
-        //
-        //                 if( allObjects.length == 0 ) {
-        //                     ears.classList.remove('is-hidden');
-        //                     console.log('show ears');
-        //                 } else {
-        //                     console.log('something else hidding ears');
-        //                 }
-        //             }
-        //
-        //         }
-        //
-        //
-        //         // Add the element to artboard
-        //         for(var i = 0; i < objects.length; i++) {
-        //
-        //             var g = objects[i];
-        //
-        //             if ( g.classList.contains('hair-check') ) {
-        //                 var hasHair = artboard.querySelectorAll('g.hair-with-headgear');
-        //
-        //                 if( hasHair.length >= 1 ) {
-        //                     g.classList.add('enlarge');
-        //                     console.log('Make headgear bigger to fit hair');
-        //                 } else {
-        //                     g.classList.remove('enlarge');
-        //                     console.log('no hair detected');
-        //                 }
-        //             }
-        //
-        //             var gClone = g.cloneNode(true);
-        //
-        //             if ( g.classList.contains('back') ) {
-        //                 artboard.prepend(gClone);
-        //             } else {
-        //                 artboard.append(gClone);
-        //             }
-        //
-        //             if ( g.classList.contains('hide-ears') ) {
-        //                 ears.classList.add('is-hidden');
-        //                 console.log('hide-ears');
-        //             }
-        //
-        //             if ( g.classList.contains('hide-hair') ) {
-        //                 var hideHair = artboard.querySelectorAll('g.hair-no-headgear');
-        //
-        //                 for(var i = 0; i < hideHair.length; i++) {
-        //                     hideHair[i].classList.add('is-hidden');
-        //                     console.log('hide hair piece');
-        //                 }
-        //             }
-        //
-        //
-        //         }
-        //
-        //         //console.log(objects.length);
-        //     }
-        // }
-        //
-        //
-        //
-        // ///////////////////////// Remove headgear /////////////////////////
-        // var removeHeadgear = document.getElementById('remove-headgear');
-        //
-        // removeHeadgear.onclick = function() {
-        //     // Remove object from artboard
-        //     var currentHeadgear = artboard.querySelectorAll('g.headgear');
-        //     for(var i = 0; i < currentHeadgear.length; i++) {
-        //         var el = currentHeadgear[i];
-        //         el.parentNode.removeChild(el);
-        //
-        //         if ( el.classList.contains('hide-ears') ) {
-        //             ears.classList.add('is-hidden');
-        //             var earCheck = artboard.querySelectorAll('g.hide-ears');
-        //
-        //             if (earCheck.length == 0) {
-        //                 ears.classList.remove('is-hidden');
-        //             }
-        //         }
-        //     }
-        //
-        //     // Remove active class from object in control panel
-        //     var active = cp.querySelectorAll('.headgear.is-active');
-        //     for(var i = 0; i < active.length; i++) {
-        //         var el = active[i];
-        //         el.classList.remove('is-active');
-        //     }
-        // }
-        //
-        //
 
 
 
@@ -588,6 +330,152 @@ var andrewrossco = andrewrossco || {};
         function hairCheck() {
             // Check if any active objects contain the hide hair
             activeObjs = artboard.querySelectorAll('g.hide-hair');
+        }
+
+
+
+
+
+        // ---------------------------------------------------------------------
+        //  Panel Movement Controller
+        // ---------------------------------------------------------------------
+
+        var catPanel = document.querySelectorAll('.category-objects-panel__inner, .color-panel__inner'),
+            scrollDist = 350;
+
+        function checkPanelWidth() {
+
+            for(var i = 0; i < catPanel.length; i++) {
+                var panel = catPanel[i],
+                    scrollRight = panel.parentNode.getElementsByClassName('scroll-right')[0],
+                    scrollLeft = panel.parentNode.getElementsByClassName('scroll-left')[0];
+
+                if( panel.scrollWidth > panel.offsetWidth ) {
+                    scrollRight.classList.remove('disabled');
+                }
+            }
+        }
+
+        for(var i = 0; i < catPanel.length; i++) {
+            var panel = catPanel[i],
+                scrollRight = panel.parentNode.getElementsByClassName('scroll-right')[0],
+                scrollLeft = panel.parentNode.getElementsByClassName('scroll-left')[0],
+                currentScroll = panel.scrollLeft;
+
+            function checkPos(el) {
+                //console.log(el);
+                ml = window.getComputedStyle(el);
+                addMargins = parseInt(ml.marginLeft, 10) * 2;
+                scrollRight = el.parentNode.getElementsByClassName('scroll-right')[0],
+                scrollLeft = el.parentNode.getElementsByClassName('scroll-left')[0];
+                curScroll = el.scrollLeft + el.offsetWidth;
+
+                if( curScroll >= el.scrollWidth ) {
+                    scrollRight.classList.add('disabled');
+                } else {
+                    scrollRight.classList.remove('disabled');
+                }
+
+                if ( el.scrollLeft <= 40) {
+                    scrollLeft.classList.add('disabled');
+                } else {
+                    scrollLeft.classList.remove('disabled');
+                }
+            }
+
+
+            scrollRight.onclick = function() {
+
+                var par = this.parentNode.children[0];
+
+                if (window.innerWidth < 800) {
+                    scrollDist = 150;
+                    scrollDist = par.offsetWidth - 44;
+                } else {
+                    scrollDist = 350;
+                }
+
+                currentScroll = par.scrollLeft;
+                currentScroll = currentScroll + scrollDist;
+                //console.log(currentScroll);
+                TweenMax.to(par, 0.7, {scrollLeft: currentScroll, ease: Circ.ease });
+                checkPos(par);
+
+                console.log(par);
+            }
+
+            scrollLeft.onclick = function() {
+                var par = this.parentNode.children[0];
+                console.log(par);
+                currentScroll = par.scrollLeft;
+                currentScroll = currentScroll - scrollDist;
+                //console.log(currentScroll);
+                TweenMax.to(par, 0.7, {scrollLeft: currentScroll, ease: Circ.ease });
+                checkPos(par);
+            }
+
+            panel.onmouseleave = function() {
+                currentScroll = this.scrollLeft;
+                checkPos(this);
+            }
+
+
+            panel.onmousedown = function(event) {
+                //console.log('Mouse down on element');
+                var par = this;
+
+                mouseStart = event.clientX;
+                currentScrollPos =  par.scrollLeft;
+
+                document.onmouseover = function(event) {
+                    par.classList.add('moving');
+                    amountMoved = -(event.clientX - mouseStart);
+                    scrollAmount = currentScrollPos + amountMoved;
+                    //console.log('Amount to scroll this drag = ' + scrollAmount);
+                    //console.log(scrollAmount * 0.5);
+                    TweenMax.to(par, 1, {scrollLeft: scrollAmount, ease: Circ.ease });
+                }
+            }
+
+            panel.onmouseup = function(event) {
+                document.onmouseover = '';
+                console.log('done');
+                this.classList.remove('moving');
+            }
+        }
+
+
+
+
+
+
+
+
+        // ---------------------------------------------------------------------
+        //  Start Over
+        // ---------------------------------------------------------------------
+
+        function reset() {
+            window.location.reload();
+        }
+
+
+        //Cookie Code
+
+        // $(document).ready(function(){
+        //     var loaded = parseInt(localStorage.getItem('loaded'), 10),
+        //         loaded_numb = loaded?loaded+1:1;
+        //     localStorage.setItem('loaded', loaded_numb);
+        //
+        //     if( loaded_numb == 1 ) {
+        //         setTimeout(function(){
+        //             document.getElementById('newsletter-signup').classList.add('is-active');
+        //         }, 6000);
+        //     }
+        // });
+
+        document.getElementById('start-over').onclick = function() {
+            reset();
         }
 
     }

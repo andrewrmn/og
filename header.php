@@ -31,7 +31,7 @@
     $currentpage = $_SERVER['REQUEST_URI'];
 ?>
 
-<header class="site-header">
+<!-- <header class="site-header">
     <div class="wrapper-wide">
         <h1 class="logo" itemscope itemtype="http://schema.org/Organization">
             <a href="/" itemprop="url">
@@ -39,6 +39,6 @@
             </a>
         </h1>
     </div>
-</header>
+</header> -->
 
 <main id="content" class="main">

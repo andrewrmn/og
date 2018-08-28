@@ -48,3 +48,61 @@
 // ----------------------------------------
 //
 // ----------------------------------------
+
+#ui-wrapper {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 24px 0;
+    z-index: 2;
+
+    p {
+        font-family: $display;
+        font-size: 14px;
+        letter-spacing: 0;
+        margin-bottom: 0;
+    }
+}
+
+#start-over {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: opacity $trans;
+
+    p {
+        color: #959DA5;
+    }
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
+}
+
+
+#save {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transition: opacity $trans;
+
+
+    p {
+        color: $brand;
+    }
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
+}
+
+
+#octocat-name {
+    flex-grow: 1;
+    max-width: 60%;
+}

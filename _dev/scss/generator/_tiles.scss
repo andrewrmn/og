@@ -1,0 +1,223 @@
+// ---------------------------------------------------------------------
+//  Tiles Category, Object & Color Swatch
+// ---------------------------------------------------------------------
+
+
+// ----------------------------------------
+// Category Tile
+// ----------------------------------------
+
+$category-tile-size-xs: 58px;
+$category-tile-size: 64px;
+
+.category-tile {
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $gray-light;
+
+    transition: border-color $trans, background $trans;
+    pointer-events: inherit;
+
+
+    width: $category-tile-size-xs;
+    min-width: $category-tile-size-xs;
+    height: $category-tile-size-xs;
+    margin: 0 2px;
+    border: 1px solid $gray-light;
+
+    img {
+        max-height: 36px;
+    }
+
+    @include start-at($small) {
+        margin: 0 4px;
+    }
+
+
+    @include start-at($large) {
+        width: $category-tile-size;
+        min-width: $category-tile-size;
+        height: $category-tile-size;
+        border: 1px solid $gray-light;
+
+        img {
+            max-height: 40px;
+        }
+    }
+
+    &.disabled {
+        filter: grayscale(100%);
+        opacity: 0.4;
+        pointer-events: none;
+
+        &:hover {
+            cursor: default;
+
+        }
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        background: $white;
+        transform: translate3d(-50%, 0, 0) rotate(45deg);
+        opacity: 0;
+        transition: opacity $trans;
+    }
+
+    &.is-active {
+        border-color: $green;
+        background: $white;
+
+        &:before {
+            opacity: 1;
+        }
+    }
+
+    &.category-tile--only-color:before {
+        display: none;
+    }
+
+
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+
+// ----------------------------------------
+// Object Preview Tile
+// ----------------------------------------
+
+$object-preview-size-xs: 76px;
+$object-preview-size: 82px;
+
+.object-preview,
+.remove-category {
+    position: relative;
+    width: $object-preview-size-xs;
+    min-width: $object-preview-size-xs;
+    height: $object-preview-size-xs;
+    background: $white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background $trans;
+
+    @include start-at($small) {
+        margin: 0 2px;
+    }
+
+    @include start-at($medium) {
+        margin: 0 6px;
+    }
+
+    @include start-at($large) {
+        width: $object-preview-size;
+        min-width: $object-preview-size;
+        height: $object-preview-size;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .no-touch & {
+        &:hover {
+            background: $off-white;
+        }
+    }
+
+    &.is-active {
+        background: $off-white;
+    }
+
+    svg {
+        display: none;
+    }
+
+    img {
+        max-height: 60px;
+        pointer-events: none;
+    }
+}
+
+
+
+// ----------------------------------------
+// Color Swatches
+// ----------------------------------------
+
+
+$swatch-size: 44px;
+.color-swatch {
+    display: block;
+    width: $swatch-size;
+    min-width: $swatch-size;
+    height: 42px;
+    border-radius: 4px;
+    background: $white;
+    position: relative;
+    margin: 0 5px;
+
+    @include start-at($large) {
+        margin: 0 6px;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        @include cover-parent;
+        display: block;
+        border-radius: 4px;
+        z-index: -4;
+        transform: translate3d(0, 4px, 0);
+        transition: transform $trans;
+    }
+
+    &:before {
+        background: currentColor url('../images/svgs/swatch-shadow.svg') bottom center / 100% auto no-repeat;
+    }
+
+    &:after {
+        background: black;
+        opacity: 0.2;
+    }
+
+
+    &:hover {
+        cursor: pointer;
+
+        &:before,
+        &:after {
+            transform: translate3d(0, 3px, 0);
+        }
+    }
+}
+
+
+// ----------------------------------------
+// Remove Category
+// ----------------------------------------
+
+.remove-category {
+    opacity: 0.6;
+    transition: opacity $trans;
+
+    background: $white url('../images/svgs/remove.svg') center / 40px 40px no-repeat;
+
+    &:hover {
+        background: $white url('../images/svgs/remove.svg') center / 40px 40px no-repeat;
+        opacity: 1;
+    }
+}

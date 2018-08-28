@@ -1,0 +1,95 @@
+// ---------------------------------------------------------------------
+//  Arrows
+// ---------------------------------------------------------------------
+
+.arrow {
+    position: absolute;
+    top: calc(50% - 26px);
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    transition: opacity $trans;
+
+    @include start-at($medium) {
+
+    }
+
+    @include start-at($large) {
+        display: flex;
+        width: 48px;
+        min-width: 48px;
+        height: 52px;
+    }
+
+    img {
+        transition: transform $trans;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    &:before {
+        top: 0;
+        right: 0;
+        background: $gray-dark;
+        z-index: -1;
+        transition: transform $trans;
+    }
+
+    &:after {
+        top: 2px;
+        right: 2px;
+        background: $black;
+        border-radius: 50%;
+        z-index: -2;
+    }
+
+    &.disabled {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.scroll-right {
+    right: 12px;
+
+    &:hover {
+        cursor: pointer;
+        img,
+        &:before {
+            transform: translate3d(-2px, 2px, 0);
+        }
+    }
+
+    @include start-at($medium) {
+        right: 40px;
+    }
+}
+
+.scroll-left {
+    left: 12px;
+
+    &:hover {
+        cursor: pointer;
+        img,
+        &:before {
+            transform: translate3d(-2px, 2px, 0);
+        }
+    }
+
+    @include start-at($medium) {
+        left: 40px;
+    }
+}

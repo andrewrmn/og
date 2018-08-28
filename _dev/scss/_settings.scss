@@ -8,8 +8,10 @@
 // ----------------------------------------
 
 // Font weights: 400 | 700
-$sans-serif: 'Helvetica', mono, sans-serif;
+$sans-serif: 'SFUI-text', mono, sans-serif;
+$sans-serif-headline: 'SFUI-text', mono, sans-serif;
 
+$display: 'Bungee', 'Impact', sans-serif;
 
 // ----------------------------------------
 // Font Size/ Line Height
@@ -24,18 +26,19 @@ $base-line-height: 1.6;
 // ----------------------------------------
 
 
-$brand: #2776dd; // Blue
+$brand: #28A745; // Green
+$green: #28A745;
 
 $white: #ffffff;
-$off-white: #F9FAFA;
+$off-white: #F6F8FA;
 
-$gray-light: #F2F4F4;
+$gray-light: #ECEFF1;
 $gray-md: #E3E6E6;
 
 $gray: #62676D;
-$gray-dark: #55585D;
+$gray-dark: #444A50;
 
-$black: #282828;
+$black: #24292E;
 
 $gray: #666;
 
