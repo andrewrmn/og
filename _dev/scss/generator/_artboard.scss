@@ -7,25 +7,31 @@
     background: $off-white;
     position: relative;
     width: 100%;
-    //min-height: calc(100vh - 56px);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 100vh;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+
+    //background: blue;
+
 
     #artboard {
-        flex-grow: 1;
+        //flex-grow: 1;
         position: relative;
-        display: flex;
-        flex-direction: column;
+        // display: flex;
+        // flex-direction: column;
 
         z-index: 100000;
-        align-items: stretch;
+        //align-items: stretch;
 
-        height: 100%;
+        //height: 100%;
+        //max-height: calc(100% - 190px);
         width: 100%;
 
-        svg {
+        //background: red;
+
+        svg,
+        img {
             display: block;
             width: auto;
             margin: 0 auto;
@@ -49,6 +55,21 @@
     #control-panel {
 
     }
+}
+
+.artboard__inner  {
+
+    //max-height: calc(100% - 190px);
+
+    // > *,
+    // > * > * {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     pointer-events: none;
+    // }
 }
 
 // ----------------------------------------

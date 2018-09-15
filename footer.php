@@ -26,8 +26,16 @@
         <span class="menu-mask" data-click-target="mainNav" data-click-bodyClass="mobile-menu-is-open"></span>
 
         <!-- Scripts -->
+        <script src="/build/js/main.js" async></script>
+
+
         <script src="/build/js/octocat.js" async></script>
         <script src="/build/js/Tweenmax.js" async></script>
+
+        <script src="/build/js/save.js" async></script>
+
+
+
         <!-- <script>
             document.addEventListener("DOMContentLoaded", function () {
                 //new IOlazy();

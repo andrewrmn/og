@@ -34,7 +34,7 @@
 
 
     &.enlarge-headgear g.headgear {
-        transform: scale(1.22);
+        transform: scale(1.12);
         transform-origin: center;
     }
 
@@ -42,6 +42,18 @@
         display: none;
     }
 
+}
+
+
+ .object.headgear {
+    transform: scale(1);
+    transform-origin: center;
+}
+
+
+.enlarge-headgear .object.headgear {
+    transform: scale(1.12);
+    transform-origin: center;
 }
 
 
@@ -54,8 +66,12 @@
     width: 100%;
     top: 0;
     left: 0;
-    padding: 24px 0;
+    padding: 12px 0;
     z-index: 2;
+
+    @media(min-height: 600px) {
+        padding: 24px 0;
+    }
 
     p {
         font-family: $display;

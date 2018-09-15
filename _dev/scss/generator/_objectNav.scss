@@ -4,7 +4,10 @@
 
 
 #control-panel {
-
+    min-height: 190px;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
 }
 
 #object-list {
@@ -146,8 +149,9 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    z-index: 99999999;
     display: flex;
+
 
     ::-webkit-scrollbar {
         display: none;

@@ -52,7 +52,7 @@ gulp.task('styles', function() {
 });
 
 // Scripts Gulp task, run by calling 'gulp scripts' in CLI
-gulp.task('scriptOcto', function() {
+gulp.task('octoScript', function() {
 	var scriptsToConcat = [
 		devPath + '/js/octocat.js'
 	];
@@ -66,29 +66,47 @@ gulp.task('scriptOcto', function() {
 		.pipe(gulp.dest(buildPath + '/js/'))
 });
 
-gulp.task('scripts', function() {
-
-	//console.log( webpack );
-	return gulp.src([devPath + '/js/main.js'])
-	.pipe(webpack({
-		watch: true,
-		output: {
-			filename: 'main.js'
-		}
-	}))
-	.pipe($.babel({
-	  "presets": [
-	    ["env", {
-	      "targets": {
-	        "browsers": ["last 2 versions"]
-	      }
-	    }]
-	  ]
-	}))
-	//.pipe(uglify())
-	.pipe(gulp.dest(buildPath + '/js/'))
-	.pipe(reload({stream: true}));
+gulp.task('saveScript', function() {
+	var scriptsToConcat = [
+		devPath + '/js/save.js'
+	];
+	gulp.src(scriptsToConcat)
+		.pipe(concat('save.js'))
+		//.pipe(gulp.dest(buildPath + '/js/'))
+		//.pipe(uglify())
+		// .pipe(rename({
+		// 	suffix: ".min"
+		// }))
+		.pipe(gulp.dest(buildPath + '/js/'))
 });
+
+gulp.task('scripts', function() {
+	var scriptsToConcat = [
+		devPath + '/js/main.js'
+	];
+	gulp.src(scriptsToConcat)
+		//.pipe(concat('octocat.js'))
+		//.pipe(gulp.dest(buildPath + '/js/'))
+		//.pipe(uglify())
+		// .pipe(rename({
+		// 	suffix: ".min"
+		// }))
+		.pipe(gulp.dest(buildPath + '/js/'))
+});
+
+// gulp.task('scripts', function() {
+// 	var scriptsToConcat = [
+// 		devPath + '/js/scripts.js'
+// 	];
+// 	gulp.src(scriptsToConcat)
+// 		.pipe(concat('main.js'))
+// 		//.pipe(gulp.dest(buildPath + '/js/'))
+// 		//.pipe(uglify())
+// 		// .pipe(rename({
+// 		// 	suffix: ".min"
+// 		// }))
+// 		.pipe(gulp.dest(buildPath + '/js/'))
+// });
 
 // Images Gulp task, run by calling 'gulp images' in CLI
 gulp.task('images', function() {
@@ -102,6 +120,8 @@ gulp.task('images', function() {
 });
 
 
+
+
 // Move fonts
 gulp.task('fonts', function () {
   return gulp.src([devPath + '/fonts/**/*'])
@@ -112,7 +132,9 @@ gulp.task('fonts', function () {
 gulp.task('watch', function() {
 	gulp.watch(devPath + '/scss/**/*.scss', ['styles']);
 	gulp.watch(devPath + '/images/**/*.{png,jpg,gif,ico,svg}', ['images']);
-	gulp.watch(devPath + '/js/octocat.js', ['scriptOcto']);
+	gulp.watch(devPath + '/js/octocat.js', ['octoScript']);
+	gulp.watch(devPath + '/js/save.js', ['saveScript']);
+	gulp.watch(devPath + '/js/main.js', ['scripts']);
 });
 
 // Server Gulp task, run by calling 'gulp server' in CLI
@@ -127,4 +149,4 @@ gulp.task('server', function() {
 });
 
 // Default Gulp task, run by calling 'gulp' in CLI
-gulp.task('default', ['styles', 'scriptOcto', 'scripts', 'images', 'fonts', 'watch', 'server'])
+gulp.task('default', ['styles', 'scripts', 'octoScript', 'saveScript', 'images', 'fonts', 'watch', 'server'])

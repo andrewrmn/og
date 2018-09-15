@@ -24,32 +24,38 @@
 
 
         <div id="artboard">
-            <div class="artboard__inner">
+            <div id="asset-holders" class="artboard__inner">
+
+
+
                 <svg id="octocat" viewBox="0 0 2000 2000" xml:space="preserve">
 
-                    <g id="hair-back-holder"></g>
-
+                    <g id="hair-back-holder" data-cat="hair"></g>
 
                     <?php include('includes/body/body.php'); ?>
 
-                    <g id="pants-holder"></g>
+                    <g id="pants-holder" data-cat="pants"></g>
 
-                    <g id="shoes-holder"></g>
+                    <g id="shoes-holder" data-cat="shoes"></g>
 
-                    <g id="shirts-holder"></g>
+                    <g id="shirts-holder" data-cat="shirts"></g>
 
-                    <g id="accessories-holder"></g>
+                    <g id="accessories-holder" data-cat="accessories"></g>
 
-                    <g id="hair-holder"></g>
+                    <g id="hair-holder" data-cat="hair"></g>
 
-                    <g id="headgear-holder"></g>
+                    <g id="headgear-holder" data-cat="headgear"></g>
                 </svg>
+
+
+
+
+
+
             </div>
 
-
-
-
         </div>
+
 
         <nav id="control-panel">
 
@@ -59,6 +65,7 @@
             <?php include('categories/eyes.php'); ?>
 
             <?php include('categories/hair.php'); ?>
+            <?php include('categories/hair-color.php'); ?>
 
             <?php include('categories/headgear.php'); ?>
 
@@ -76,33 +83,55 @@
             <div id="object-list">
                 <div>
                     <div class="category-tile category-tile--only-color" data-target="cp-body">
-                        <img class="preview" src="/build/images/body/octocat-preview.png" alt="" />
+                        <span>
+                            <img class="preview" src="/assets/body/octocat-preview.png" alt="" />
+                        </span>
                     </div>
                     <div class="category-tile category-tile--only-color" data-target="cp-eyes">
-                        <img class="preview" src="/build/images/body/eye-preview.svg" alt="" />
+                        <span>
+                            <img class="preview" src="/assets/body/eye-preview.svg" alt="" />
+                        </span>
                     </div>
                     <div class="category-tile" data-target="cp-hair">
-                        <img class="preview" src="/build/images/hair/hair-long-preview.svg" alt="" />
+                        <span>
+                            <img class="preview" src="/assets/hair/hair-long-preview.svg" alt="" />
+                        </span>
+                    </div>
+                    <div class="category-tile category-tile--only-color" data-target="cp-hair-color">
+                        <span>
+                            <img class="preview" src="/assets/hair/hair-long-preview.svg" alt="" />
+                        </span>
                     </div>
                     <div class="category-tile" data-target="cp-headgear" id="headgear-preview">
-                        <img class="preview" src="/build/images/headgear/viking-hat-preview.svg" alt="" />
+                        <span>
+                            <img class="preview" src="/assets/headgear/viking-hat-preview.svg" alt="" />
+                        </span>
                     </div>
                     <div class="category-tile" data-target="cp-shirts">
-                        <img class="preview" src="/build/images/shirts/github-tee-preview.svg" alt="" />
+                        <span>
+                            <img class="preview" src="/assets/shirts/github-tee-preview.svg" alt="" />
+                        </span>
                     </div>
                     <div class="category-tile" data-target="cp-pants">
-                        <img class="preview" src="/build/images/pants/jeans-preview.svg" alt="" />
+                        <span>
+                            <img class="preview" src="/assets/pants/jeans-preview.svg" alt="" />
+                        </span>
                     </div>
                     <div class="category-tile" data-target="cp-shoes">
-                        <img class="preview" src="/build/images/shoes/sneaker-preview.svg" alt="" />
+                        <span>
+                            <img class="preview" src="/assets/shoes/sneaker-preview.svg" alt="" />
+                        </span>
                     </div>
                     <div class="category-tile" data-target="cp-accessories">
-                        <img class="preview" src="/build/images/accessories/bag-preview.svg" alt="" />
+                        <span>
+                            <img class="preview" src="/assets/accessories/bag-preview.svg" alt="" />
+                        </span>
                     </div>
                 </div>
             </div>
 
         </nav>
     </div>
+
 
 <?php include('footer.php'); ?>

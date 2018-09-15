@@ -21,12 +21,12 @@ $category-tile-size: 64px;
     transition: border-color $trans, background $trans;
     pointer-events: inherit;
 
-
     width: $category-tile-size-xs;
     min-width: $category-tile-size-xs;
-    height: $category-tile-size-xs;
+    height: 54px;
     margin: 0 2px;
-    border: 1px solid $gray-light;
+
+    z-index: 1;
 
     img {
         max-height: 36px;
@@ -40,8 +40,8 @@ $category-tile-size: 64px;
     @include start-at($large) {
         width: $category-tile-size;
         min-width: $category-tile-size;
-        height: $category-tile-size;
-        border: 1px solid $gray-light;
+        height: 60px;
+        //border: 2px solid $gray-light;
 
         img {
             max-height: 40px;
@@ -73,8 +73,12 @@ $category-tile-size: 64px;
     }
 
     &.is-active {
-        border-color: $green;
-        background: $white;
+
+
+        span {
+            border-color: $green;
+            background: $white;
+        }
 
         &:before {
             opacity: 1;
@@ -85,10 +89,41 @@ $category-tile-size: 64px;
         display: none;
     }
 
+    span {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        background: $gray-light;
+        border: 1px solid $gray-light;
+        transition: border-color $trans, background $trans;
 
+        // @include start-at($large) {
+        //     border: 2px solid $gray-light;
+        // }
+    }
+
+    &:after {
+        content: '';
+        @include cover-parent;
+        display: block;
+        border-radius: 4px;
+        z-index: -3;
+        transform: translate3d(0, 4px, 0);
+        transition: transform $trans;
+        background: #D3D9DD;
+    }
 
     &:hover {
         cursor: pointer;
+
+        &:after {
+            transform: translate3d(0, 3px, 0);
+        }
     }
 }
 
@@ -142,7 +177,7 @@ $object-preview-size: 82px;
         background: $off-white;
     }
 
-    svg {
+    .object {
         display: none;
     }
 
@@ -186,14 +221,13 @@ $swatch-size: 44px;
     }
 
     &:before {
-        background: currentColor url('../images/svgs/swatch-shadow.svg') bottom center / 100% auto no-repeat;
+        background: currentColor;
     }
 
     &:after {
         background: black;
         opacity: 0.2;
     }
-
 
     &:hover {
         cursor: pointer;

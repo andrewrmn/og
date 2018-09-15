@@ -21,10 +21,6 @@ textarea {
     font-smoothing: antialiased;
 }
 
-main#content {
-    min-height: 500px;
-}
-
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -46,8 +42,6 @@ a {
         }
     }
 }
-
-a
 
 [data-scroll-to],
 [data-click-target] {
