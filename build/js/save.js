@@ -5,8 +5,6 @@
         convert('#artboard');
     }
 
-
-
     function convert(selectors){
         [].forEach.call(document.querySelectorAll(selectors),function(div){
             try{
@@ -33,7 +31,6 @@
                     filename = document.getElementById('octocat-name').value;
                 }
 
-
                 sourceImage.onload = function(){
                     ctx.fillStyle = "#fff";
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -47,7 +44,6 @@
                     a.href = img.src;
                     document.body.appendChild(a);
                     a.click();
-
                 };
                 sourceImage.src = svg ? svgDataURL(svg) : div.getAttribute('data-svgSource');
 

@@ -134,9 +134,12 @@
         </nav>
     </div>
 
-    <img id="img" src=""  width="500" height="500" alt="Octocat" />
+    <div id="export">
+        <img id="img" src="" width="500" height="500" alt="Octocat" />
 
-    <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
+        <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
+    </div>
+
 
 
 <?php include('footer.php'); ?>
