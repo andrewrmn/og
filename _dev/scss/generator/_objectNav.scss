@@ -4,10 +4,20 @@
 
 
 #control-panel {
-    min-height: 190px;
+    min-height: 166px;
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-direction: column;
+
+    @include start-at($medium) {
+        min-height: 190px;
+    }
+
+    @media(max-height: 600px) {
+        min-height: 166px;
+    }
 }
 
 #object-list {
@@ -94,11 +104,15 @@
     align-items: center;
     overflow: auto;
     width: auto;
-    padding: 12px 36px;
+    padding: 6px 36px;
 
     @include start-at($large) {
         margin: 0 120px;
         padding: 12px 0;
+    }
+
+    @media(max-height: 600px) {
+        padding: 6px 36px;
     }
 }
 

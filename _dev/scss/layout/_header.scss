@@ -6,8 +6,15 @@
 	position: relative;
 	z-index: 10;
 	width: 100%;
-	padding: 16px 24px;
 	background: $black;
+
+
+	.wrapper-wide {
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+		height: 64px;
+	}
 }
 
 // ----------------------------------------
@@ -19,6 +26,9 @@ $logo-height: 72px;
 
 .logo {
 	flex-grow: 1;
+	height: 100%;
+	display: flex;
+	align-items: center;
 }
 
 .logo a {
@@ -31,6 +41,42 @@ $logo-height: 72px;
 	color: $white;
 
 	img {
-		width: 54px;
+		width: 211px;
 	}
+}
+
+#site-navigation {
+
+	ul {
+		flex-grow: 1;
+		height: 100%;
+		display: flex;
+		align-items: stretch;
+	}
+
+	a {
+		display: block;
+		color: $white;
+		font-size: 14px;
+		font-weight: 500;
+		padding: 16px;
+
+		flex-grow: 1;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		background: transparent;
+		transition: background $trans;
+
+		&:hover {
+			background: #2C3238;
+		}
+	}
+
+	li.is-active {
+		a {
+			background: #2C3238;
+		}
+	}
+
 }

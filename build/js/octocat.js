@@ -12,7 +12,7 @@ var andrewrossco = andrewrossco || {};
             generator = document.getElementById('octocat-generator');
 
         function setHeights() {
-            ah = window.innerHeight - document.getElementById('ui-wrapper').offsetHeight - document.getElementById('site-header').offsetHeight - 190;
+            ah = window.innerHeight - document.getElementById('ui-wrapper').offsetHeight - document.getElementById('site-header').offsetHeight - document.getElementById('control-panel').offsetHeight;
             gh = window.innerHeight - document.getElementById('site-header').offsetHeight;
 
             artboard.style.height = ah + 'px';
@@ -26,7 +26,7 @@ var andrewrossco = andrewrossco || {};
         });
 
 
-        console.log(gh);
+        //console.log(gh);
 
         var cp = document.getElementById('control-panel'),
             ears = document.getElementById('ears'),
@@ -56,7 +56,7 @@ var andrewrossco = andrewrossco || {};
                     target = this.getAttribute('data-target');
                     target = document.getElementById(target);
                     target.classList.add('is-active');
-                    console.log('category active');
+                    //console.log('category active');
 
                     checkPanelWidth();
                 }
@@ -161,7 +161,7 @@ var andrewrossco = andrewrossco || {};
                     currActive = currCatCP.querySelectorAll('.object-preview');
 
                 //console.log(currCatCP);
-                console.log(cat + 'clicked');
+                //console.log(cat + 'clicked');
 
                 // Assign Active Class in Control Panel
                 for(var t = 0; t < currActive.length; t++) {
@@ -207,7 +207,7 @@ var andrewrossco = andrewrossco || {};
 
                     // get associated holder within the octocat svg
                     var holder = obj.getAttribute('data-holder');
-                    console.log(holder);
+                    //console.log(holder);
                     holder = document.getElementById(holder);
 
 
@@ -229,7 +229,7 @@ var andrewrossco = andrewrossco || {};
 
                     for(var s = 0; s < svg.length; s++) {
                         var s = svg[s];
-                            console.log(s);
+                            //console.log(s);
                         // Clone Objects
                         var gClone = s.cloneNode(true);
                         holder.append(gClone);
@@ -285,7 +285,7 @@ var andrewrossco = andrewrossco || {};
                     currActive = currCatCP.querySelectorAll('.object-preview'),
                     currObj = artboard.querySelectorAll('g.' + cat);
 
-                    console.log("active objs count " + currObj.length);
+                    //console.log("active objs count " + currObj.length);
 
                 // remove all active class from Control Panel
                 for(var i = 0; i < currActive.length; i++) {
@@ -318,10 +318,10 @@ var andrewrossco = andrewrossco || {};
             //console.log('Hide ear count ' + activeObjs.length);
             if(activeObjs.length == 0) {
                 ears.classList.remove('is-hidden');
-                console.log('Show ears');
+                //console.log('Show ears');
             } else {
                 ears.classList.add('is-hidden');
-                console.log('hide ears');
+                //console.log('hide ears');
             }
         }
 
@@ -342,7 +342,7 @@ var andrewrossco = andrewrossco || {};
                     headgearCP[i].classList.remove('is-active');
                 }
 
-                console.log('Hide headgear');
+                //console.log('Hide headgear');
             } else {
                 document.getElementById('headgear-preview').classList.remove('disabled');
             }
@@ -353,10 +353,10 @@ var andrewrossco = andrewrossco || {};
 
             if(activeObjs.length == 0) {
                 artboard.classList.remove('enlarge-headgear');
-                console.log('Regualr Headgear');
+                //console.log('Regualr Headgear');
             } else {
                 artboard.classList.add('enlarge-headgear');
-                console.log('Enlarged Headgear');
+                //console.log('Enlarged Headgear');
             }
         }
 
@@ -434,12 +434,12 @@ var andrewrossco = andrewrossco || {};
                 TweenMax.to(par, 0.7, {scrollLeft: currentScroll, ease: Circ.ease });
                 checkPos(par);
 
-                console.log(par);
+                //console.log(par);
             }
 
             scrollLeft.onclick = function() {
                 var par = this.parentNode.children[0];
-                console.log(par);
+                //console.log(par);
                 currentScroll = par.scrollLeft;
                 currentScroll = currentScroll - scrollDist;
                 //console.log(currentScroll);
@@ -472,7 +472,7 @@ var andrewrossco = andrewrossco || {};
 
             panel.onmouseup = function(event) {
                 document.onmouseover = '';
-                console.log('done');
+                //console.log('done');
                 this.classList.remove('moving');
             }
         }

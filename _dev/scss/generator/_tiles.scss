@@ -149,6 +149,8 @@ $object-preview-size: 82px;
     justify-content: center;
     transition: background $trans;
 
+
+
     @include start-at($small) {
         margin: 0 2px;
     }
@@ -161,6 +163,12 @@ $object-preview-size: 82px;
         width: $object-preview-size;
         min-width: $object-preview-size;
         height: $object-preview-size;
+    }
+
+    @media(max-height: 600px) {
+        width: $object-preview-size-xs;
+        min-width: $object-preview-size-xs;
+        height: $object-preview-size-xs;
     }
 
     &:hover {

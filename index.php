@@ -10,8 +10,8 @@
                     <p class="d-none d-sm-block">Start Over</p>
                 </div>
 
-                <div id="octocat-name">
-                    <input type="text" placeholder="Name Your Octocat" value="" />
+                <div class="octocat-name">
+                    <input id="octocat-name" type="text" placeholder="Name Your Octocat" value="" />
                 </div>
 
                 <div id="save">
@@ -28,7 +28,8 @@
 
 
 
-                <svg id="octocat" viewBox="0 0 2000 2000" xml:space="preserve">
+                <svg version="1.1" id="octocat" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    	 viewBox="0 0 2000 2000" enable-background="new 0 0 2000 2000" xml:space="preserve" width="500" height="500" style="width: 500px; height: 500px;">
 
                     <g id="hair-back-holder" data-cat="hair"></g>
 
@@ -132,6 +133,10 @@
 
         </nav>
     </div>
+
+    <img id="img" src=""  width="500" height="500" />
+
+    <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
 
 
 <?php include('footer.php'); ?>

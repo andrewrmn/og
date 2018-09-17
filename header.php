@@ -35,9 +35,22 @@
     <div class="wrapper-wide">
         <h1 class="logo" itemscope itemtype="http://schema.org/Organization">
             <a href="/" itemprop="url">
-                <span itemprop="name">Octocat Generator</span>
+                <span class="sr-only" itemprop="name">GitHub</span>
+                <span class="sr-only" itemprop="description">Octocat Generator</span>
+                <img itemprop="logo" src="./build/images/Octocat-logo.svg" alt="Octocat generator logo" />
             </a>
         </h1>
+
+        <nav id="site-navigation">
+            <ul>
+                <li class="is-active">
+                    <a href="">Create Your Octocat</a>
+                </li>
+                <li>
+                    <a href="">View Gallery</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </header>
 
