@@ -1,6 +1,4 @@
 (function() {
-    var imgs = document.getElementById('img');
-
     var save = document.getElementById('save');
 
     save.onclick = function() {
@@ -14,31 +12,45 @@
             try{
                 var sourceImage;
 
-                var imgs = document.getElementById('img'),
-                svg  = document.getElementById('octocat'),
-                can  = document.getElementById('canvas'),
-                ctx  = can.getContext('2d');
+                var img = document.getElementById('img'),
+                    svg  = document.getElementById('octocat'),
+                    can  = document.getElementById('canvas'),
+                    ctx  = can.getContext('2d');
 
-                ctx.fillStyle = "#fff";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+                can.style["display"] = "none";
                 can.setAttribute("width", 2000);
                 can.setAttribute("height", 2000);
 
+                img.src = svgDataURL(svg);
+                sourceImage = new Image;
+                sourceImage.width  = 2000;
+                sourceImage.height = 2000;
 
-                if (svg){
-                    imgs.src = svgDataURL(svg);
-                    sourceImage = new Image;
-                    sourceImage.width  = 2000;
-                    sourceImage.height = 2000;
-                }else{
-                    sourceImage = imgs;
+
+                var filename = "octocat";
+
+                if( document.getElementById('octocat-name').value ) {
+                    filename = document.getElementById('octocat-name').value;
                 }
+
+
                 sourceImage.onload = function(){
+                    ctx.fillStyle = "#fff";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
                     ctx.drawImage(sourceImage,0,0,2000,2000);
-                    imgs.src = can.toDataURL();
+
+                    img.src = can.toDataURL();
+
+                    var a = document.createElement("a");
+                    a.download = filename+".png";
+                    a.href = img.src;
+                    document.body.appendChild(a);
+                    a.click();
+
                 };
                 sourceImage.src = svg ? svgDataURL(svg) : div.getAttribute('data-svgSource');
+
             }catch(e){ console.log(e) }
         });
     }

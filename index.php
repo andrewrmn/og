@@ -134,7 +134,7 @@
         </nav>
     </div>
 
-    <img id="img" src=""  width="500" height="500" />
+    <img id="img" src=""  width="500" height="500" alt="Octocat" />
 
     <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
 
