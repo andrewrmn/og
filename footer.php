@@ -10,28 +10,48 @@
                     </div>
                 </div>
                 <div class="modal__inner">
-                    <div class="text-group">
-                        <p class="p p-sm">Pellentesque molestie erat vitae egestas placerat. Duis sodales tristique elit, a gravida sem. Etiam ut mattis augue. Integer malesuada volutpat quam non semper. Morbi vel placerat dui. Vivamus in ultrices nulla.</p>
 
-                        <p class="p p-sm">Ut efficitur odio nunc, sed cursus odio imperdiet non. Quisque vitae nibh nulla. Nam quis lectus id quam egestas fermentum vitae sit amet est. Etiam tincidunt tristique tortor ultrices blandit. Suspendisse malesuada, lacus eget porta mattis, orci lectus blandit arcu, et aliquam ex lectus a metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas eros augue, aliquam ac ante ac, vulputate faucibus ipsum.</p>
-
-                        <p class="p p-sm">In tellus quam, sollicitudin quis purus nec, finibus vehicula nulla. Cras eu diam efficitur, pretium lorem eget, gravida risus. In hac habitasse platea dictumst. Sed quis risus imperdiet, maximus ante eu, tincidunt ex. Suspendisse tortor libero, finibus sed maximus quis, dictum vitae urna. Donec eu dignissim nulla, rhoncus eleifend odio. Maecenas pretium bibendum est, sit amet faucibus justo convallis vel.</p>
-                    </div>
                 </div>
             </div>
         </aside>
 
 
+        <div class="site-footer">
+            <div class="wrapper">
+                <a href="https://github.com/" target="_blank" title="Visit GitHub.com">
+                    <img src="./build/images/GitHub-logo.svg" alt="GitHub icon" />
+                </a>
+
+                <ul>
+                    <li>
+                        <a href="">Create Your Octocat</a>
+                    </li>
+                    <li>
+                        <a href="">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="">#Octogenerator</a>
+                    </li>
+                    <li>
+                        <a href="">Terms</a>
+                    </li>
+                    <li>
+                        <a href="">Privacy</a>
+                    </li>
+                </ul>
+
+                <small>© <script>document.write(new Date().getFullYear())</script> GitHub, Inc. Octocat Generator™ is a registered trademark of GitHub, Inc. All Rights Reserved.</small>
+            </div>
+        </div>
 
         <span class="menu-mask" data-click-target="mainNav" data-click-bodyClass="mobile-menu-is-open"></span>
 
         <!-- Scripts -->
-        <script src="/build/js/main.js" async></script>
+        <script src="/build/js/Tweenmax.js"></script>
+        <script src="/build/js/main.js"></script>
 
 
         <script src="/build/js/octocat.js" async></script>
-        <script src="/build/js/Tweenmax.js" async></script>
-
         <script src="/build/js/save.js" async></script>
 
 

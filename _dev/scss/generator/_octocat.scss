@@ -2,9 +2,6 @@
 //  Octocat (Actual SVG)
 // ---------------------------------------------------------------------
 
-// #export {
-//     display: none;
-// }
 
 #octocat {
     position: relative;
@@ -37,8 +34,8 @@
 
 
     &.enlarge-headgear g.headgear {
-        transform: scale(1.12);
-        transform-origin: center;
+        transform: scale(1.07);
+        transform-origin: 45% 25.7%;
     }
 
     g.is-hidden {

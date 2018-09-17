@@ -10,7 +10,7 @@
     <meta name="theme-color" content= "#000000">
     <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
 
-    <title>Ocotcat Generator</title>
+    <title>GitHub Ocotcat Generator | Build Your Own Octocat</title>
 
     <!-- CSS -->
     <link rel="stylesheet" media="screen" href="build/css/main.css" />
@@ -21,7 +21,7 @@
     <link rel="icon" href="/build/images/favicons/android-favicon.png"> -->
 </head>
 
-<body id="top">
+<body>
 
 <?php
     // Detect Homepage
@@ -44,13 +44,21 @@
         <nav id="site-navigation">
             <ul>
                 <li class="is-active">
-                    <a href="">Create Your Octocat</a>
+                    <a href="/generator.php">Create Your Octocat</a>
                 </li>
                 <li>
                     <a href="">View Gallery</a>
                 </li>
             </ul>
         </nav>
+
+        <div id="menu-toggle">
+            <div>
+                <span class="burger-top"></span>
+                <span class="burger-middle"></span>
+                <span class="burger-bottom"></span>
+            </div>
+        </div>
     </div>
 </header>
 

@@ -149,8 +149,6 @@ $object-preview-size: 82px;
     justify-content: center;
     transition: background $trans;
 
-
-
     @include start-at($small) {
         margin: 0 2px;
     }
@@ -252,14 +250,15 @@ $swatch-size: 44px;
 // Remove Category
 // ----------------------------------------
 
-.remove-category {
+.remove-category,
+.no-touch .remove-category {
     opacity: 0.6;
     transition: opacity $trans;
 
     background: $white url('../images/svgs/remove.svg') center / 40px 40px no-repeat;
 
     &:hover {
-        background: $white url('../images/svgs/remove.svg') center / 40px 40px no-repeat;
+        background: $white url('../images/svgs/remove.svg') center / 40px 40px no-repeat !important;
         opacity: 1;
     }
 }

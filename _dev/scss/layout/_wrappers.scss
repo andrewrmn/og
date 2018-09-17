@@ -28,3 +28,118 @@
 .wrapper--thin {
     max-width: 720px;
 }
+
+
+// ----------------------------------------
+// intro
+// ----------------------------------------
+
+.octocat-intro {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    position: relative;
+    z-index: 1;
+    padding: 36px 0;
+
+
+    @include start-at($small) {
+        min-height: calc(100vh - 72px);
+        padding: 40px 0 12px;
+    }
+
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        background: $off-white;
+        z-index: -2;
+    }
+    &:before {
+        width: 100%;
+        height: 50%;
+        top: 0;
+        left: 0;
+    }
+
+    &:after {
+        content: '';
+        background: $off-white;
+        width: 200%;
+        height: 0;
+        padding-bottom: 200%;
+        bottom: 0;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+        border-radius: 50%;
+
+        @include start-at($medium) {
+            padding-bottom: 100%;
+        }
+    }
+
+    p {
+        max-width: 540px;
+    }
+
+
+
+}
+
+.octocat-intro__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+
+    @include stop-at($small) {
+
+
+        .octocat-intro__octocat {
+            order: -1;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: -48px;
+            //display: none;
+
+            img {
+                max-height: 140px;
+                margin: 0 0 24px !important;
+                margin-bottom: 24px;
+                //
+                // position: absolute;
+                // top: 24px;
+                // right: -24px;
+                // z-index: -1;
+                // max-height: 220px;
+            }
+        }
+    }
+}
+
+@include start-at($small) {
+    .octocat-intro__octocat {
+        position: relative;
+
+        img {
+            max-height: 100%;
+            width: auto;
+            position: absolute;
+            left: 50%;
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+}
+
+#draw-svg {
+    display: inline-block;
+    overflow: visible;
+    max-width: 560px;
+}

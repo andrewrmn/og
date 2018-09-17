@@ -17,7 +17,7 @@ $display: 'Bungee', 'Impact', sans-serif;
 // Font Size/ Line Height
 // ----------------------------------------
 $main-font: $sans-serif;
-$base-font-size: 1.5rem;
+$base-font-size: 16px;
 $base-line-height: 1.6;
 
 
@@ -27,6 +27,8 @@ $base-line-height: 1.6;
 
 
 $brand: #28A745; // Green
+$brand-dark: #176F2C;
+
 $green: #28A745;
 
 $white: #ffffff;
@@ -49,7 +51,7 @@ $error: #FF3333;
 // Breakpoints
 // ----------------------------------------
 
-$xlarge: 1440px;
+$xlarge: 1460px;
 $large: 1025px;
 $medium: 800px;
 $small: 600px;
@@ -79,5 +81,5 @@ $transition: $transition-speed ease;
 $trans: $transition-speed ease;
 
 $wrapper-percentage: 94%;
-$wrapper-width: 1128px;
+$wrapper-width: 1264px;
 $wrapper-padding: (100% - $wrapper-percentage) / 2;

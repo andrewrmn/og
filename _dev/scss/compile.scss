@@ -7,9 +7,7 @@
 // Primer
 // ----------------------------------------
 
-//@import "node_modules/primer-core/index.scss";
-@import "node_modules/primer-core/index";
-//@import "primer-core/index.scss";
+@import "primer-core/index";
 
 
 // ----------------------------------------
@@ -22,7 +20,6 @@
 @import "base/_links";
 @import "base/_mixins";
 @import "base/_baseHtml";
-@import "base/_primer";
 
 
 @import "generator/_artboard";

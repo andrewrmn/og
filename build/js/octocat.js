@@ -9,7 +9,8 @@ var andrewrossco = andrewrossco || {};
 
     if( document.getElementById('artboard') ){
         var artboard = document.getElementById('artboard'),
-            generator = document.getElementById('octocat-generator');
+            generator = document.getElementById('octocat-generator'),
+            octocat = document.getElementById('octocat');
 
         function setHeights() {
             ah = window.innerHeight - document.getElementById('ui-wrapper').offsetHeight - document.getElementById('site-header').offsetHeight - document.getElementById('control-panel').offsetHeight;
@@ -26,7 +27,7 @@ var andrewrossco = andrewrossco || {};
         });
 
 
-        //console.log(gh);
+        ///////////////////////// Control Panel /////////////////////////
 
         var cp = document.getElementById('control-panel'),
             ears = document.getElementById('ears'),
@@ -41,7 +42,6 @@ var andrewrossco = andrewrossco || {};
                 categoryPanel[p].classList.remove('is-active');
             }
         }
-
 
         for(var i = 0; i < category.length; i++) {
             var el = category[i];
@@ -143,8 +143,9 @@ var andrewrossco = andrewrossco || {};
         }
 
 
-
-
+        var expandHeadgear = 0;
+        var hideEars = 0;
+        var hideHeadgear = 0;
 
         // ---------------------------------------------------------------------
         //  Add Object Controller
@@ -160,9 +161,6 @@ var andrewrossco = andrewrossco || {};
                     currCatCP = document.getElementById('cp-' + cat ),
                     currActive = currCatCP.querySelectorAll('.object-preview');
 
-                //console.log(currCatCP);
-                //console.log(cat + 'clicked');
-
                 // Assign Active Class in Control Panel
                 for(var t = 0; t < currActive.length; t++) {
                    currActive[t].classList.remove('is-active');
@@ -175,30 +173,26 @@ var andrewrossco = andrewrossco || {};
                 var ohKids = objectHolder.children;
 
                 for(var i = 0; i < objectHolder.length; i++) {
+                    var h = objectHolder[i];
 
-                    var ohKids = objectHolder[i].children;
-
-                    for(var k = 0; k < ohKids.length; k++) {
-                        var co = ohKids[k];
-
-                        // Check for ear hiding
-                        if ( co.classList.contains('hide-ears') ) {
-                            earCheck();
-                        }
-
-                        // Check for hair with headgear hiding
-                        if ( co.classList.contains('hair-with-headgear') ) {
-                            artboard.classList.remove('enlarge-headgear');
-                        }
+                    if ( h.classList.contains('hair-with-headgear') ) {
+                        h.classList.remove('hair-with-headgear');
+                        expandHeadgear--;
                     }
-
-                    objectHolder[i].innerHTML = '';
+                    if ( h.classList.contains('hide-ears') ) {
+                        h.classList.remove('hide-ears');
+                        hideEars--;
+                    }
+                    if ( h.classList.contains('hide-headgear') ) {
+                        h.classList.remove('hide-headgear');
+                        hideHeadgear--;
+                    }
+                    h.innerHTML = '';
                 }
 
 
 
                 ////////// Add the element to artboard
-
                 //Get asset objects
                 var svgObjs = this.querySelectorAll('.object');
 
@@ -206,63 +200,42 @@ var andrewrossco = andrewrossco || {};
                     var obj = svgObjs[i];
 
                     // get associated holder within the octocat svg
-                    var holder = obj.getAttribute('data-holder');
+                    var holderCat = obj.getAttribute('data-holder');
                     //console.log(holder);
-                    holder = document.getElementById(holder);
+                    holder = document.getElementById(holderCat);
 
+                    if ( obj.classList.contains('hair-with-headgear') ) {
+                        holder.classList.add('hair-with-headgear');
+                        expandHeadgear++;
+                    }
 
-                    // if ( g.classList.contains('hair') ) {
-                    //     console.log('run hair check');
-                    //
-                    //     var hasHair = artboard.querySelectorAll('.hair-with-headgear');
-                    //
-                    //     if( hasHair.length >= 1 ) {
-                    //         //g.classList.add('enlarge');
-                    //         console.log('Make headgear bigger to fit hair');
-                    //     } else {
-                    //         //g.classList.remove('enlarge');
-                    //         console.log('no hair detected');
-                    //     }
-                    // }
+                    if ( obj.classList.contains('hide-ears') ) {
+                        holder.classList.add('hide-ears');
+                        hideEars++;
+                    }
+
+                    if ( obj.classList.contains('hide-headgear') ) {
+                        holder.classList.add('hide-headgear');
+                        hideHeadgear++;
+                    }
+
 
                     var svg = obj.querySelectorAll('svg > g');
 
                     for(var s = 0; s < svg.length; s++) {
                         var s = svg[s];
-                            //console.log(s);
+
                         // Clone Objects
                         var gClone = s.cloneNode(true);
                         holder.append(gClone);
                     }
 
-
-
-                    // if ( g.classList.contains('back') ) {
-                    //     //Get correct holder in master svg
-                    //     holder = document.getElementById(cat + '-back-holder');
-                    //     holder.prepend(gClone);
-                    // } else {
-                    //     holder.append(gClone);
-                    // }
-
-
-
-                    // Check for hair hiding
-                    // if ( obj.classList.contains('hide-hair') ) {
-                    //     var hideHair = artboard.querySelectorAll('g.hair-no-headgear');
-                    //
-                    //     for(var h = 0; h < hideHair.length; h++) {
-                    //         hideHair[h].remove();
-                    //         console.log('hide hair piece');
-                    //     }
-                    // }
                 }
 
                 //console.log(objects.length);
-
-
-                headgearCheck();
-                earCheck();
+                headgearCheck(expandHeadgear, hideHeadgear);
+                earCheck(hideEars);
+                hairCheck();
 
             }
         }
@@ -282,87 +255,98 @@ var andrewrossco = andrewrossco || {};
             el.onclick = function() {
                 var cat = this.getAttribute('data-category'),
                     currCatCP = document.getElementById('cp-' + cat ),
-                    currActive = currCatCP.querySelectorAll('.object-preview'),
-                    currObj = artboard.querySelectorAll('g.' + cat);
+                    currActive = currCatCP.querySelectorAll('.object-preview');
 
-                    //console.log("active objs count " + currObj.length);
-
-                // remove all active class from Control Panel
-                for(var i = 0; i < currActive.length; i++) {
-                    currActive[i].classList.remove('is-active');
+                // Assign Active Class in Control Panel
+                for(var t = 0; t < currActive.length; t++) {
+                   currActive[t].classList.remove('is-active');
                 }
+                this.classList.add('is-active');
 
-                // remove all elements with this class
-                for(var i = 0; i < currObj.length; i++) {
-                    //var co = currObj[i];
-                    currObj[i].remove();
-                }
 
-                // Empty object holder incase anything left behind
+                // Empty object holder incase anything is left behind
                 var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
+                var ohKids = objectHolder.children;
+
                 for(var i = 0; i < objectHolder.length; i++) {
-                    objectHolder[i].innerHTML = '';
+                    var h = objectHolder[i];
+
+                    if ( h.classList.contains('hair-with-headgear') ) {
+                        h.classList.remove('hair-with-headgear');
+                        expandHeadgear--;
+                    }
+
+                    if ( h.classList.contains('hide-ears') ) {
+                        h.classList.remove('hide-ears');
+                        hideEars--;
+                    }
+
+                    if ( h.classList.contains('hide-headgear') ) {
+                        h.classList.remove('hide-headgear');
+                        hideHeadgear--;
+                    }
+                    h.innerHTML = '';
                 }
 
-
-                headgearCheck();
-                earCheck();
+                headgearCheck(expandHeadgear, hideHeadgear);
+                earCheck(hideEars);
+                hairCheck();
             }
         }
 
 
 
-        function earCheck(){
-            // Check if any active objects contain the hide ears class
-            activeObjs = artboard.querySelectorAll('g.hide-ears');
-            //console.log('Hide ear count ' + activeObjs.length);
-            if(activeObjs.length == 0) {
+        function earCheck(count){
+            if(count == 0) {
                 ears.classList.remove('is-hidden');
-                //console.log('Show ears');
             } else {
                 ears.classList.add('is-hidden');
-                //console.log('hide ears');
             }
         }
 
 
-        function headgearCheck(){
-            // Check if any active objects contain the hide headgear
-            activeObjs = artboard.querySelectorAll('.hide-headgear');
-            //console.log('Hide ear count ' + activeObjs.length);
-            if(activeObjs.length > 0) {
+        function headgearCheck(count, hide){
+            if(count == 0) {
+                octocat.classList.remove('enlarge-headgear');
+            } else {
+                octocat.classList.add('enlarge-headgear');
+            }
+
+
+            if(hide == 0) {
+                document.getElementById('headgear-preview').classList.remove('disabled');
+
+            } else {
                 document.getElementById('headgear-preview').classList.add('disabled');
 
-                headgear = artboard.querySelectorAll('.headgear');
-                for(var i = 0; i < headgear.length; i++) {
-                    headgear[i].remove();
+                var h = document.getElementById('headgear-holder');
+
+                if ( h.classList.contains('hide-ears') ) {
+                    h.classList.remove('hide-ears');
+                    hideEars--;
                 }
-                headgearCP = cp.querySelectorAll('#cp-headgear .object-preview');
-                for(var i = 0; i < headgearCP.length; i++) {
-                    headgearCP[i].classList.remove('is-active');
-                }
+                h.innerHTML = '';
 
-                //console.log('Hide headgear');
-            } else {
-                document.getElementById('headgear-preview').classList.remove('disabled');
-            }
-
-
-            // Check for hair that does allow headgear
-            activeObjs = artboard.querySelectorAll('.hair-with-headgear');
-
-            if(activeObjs.length == 0) {
-                artboard.classList.remove('enlarge-headgear');
-                //console.log('Regualr Headgear');
-            } else {
-                artboard.classList.add('enlarge-headgear');
-                //console.log('Enlarged Headgear');
+                earCheck(hideEars);
             }
         }
 
+
         function hairCheck() {
-            // Check if any active objects contain the hide hair
-            activeObjs = artboard.querySelectorAll('g.hide-hair');
+
+            var hh = document.getElementById('hair-holder');
+            var hhb = document.getElementById('hair-holder');
+
+            if( hh.childElementCount > 0) {
+                document.getElementById('hair-color-preview').classList.remove('disabled');
+            } else {
+                document.getElementById('hair-color-preview').classList.add('disabled');
+            }
+            if( hhb.childElementCount > 0) {
+                document.getElementById('hair-color-preview').classList.remove('disabled');
+            } else {
+                document.getElementById('hair-color-preview').classList.add('disabled');
+            }
         }
 
 
