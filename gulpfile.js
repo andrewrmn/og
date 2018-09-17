@@ -1,8 +1,8 @@
 // Project Specific Variables
 const projectPath 		= './';
 const devPath 			= projectPath + '_dev';
-const buildPath 		= projectPath + 'build';
-const projectURL 		= 'http://local.octocat';
+const buildPath 		= projectPath + 'assets';
+//const projectURL 		= 'http://local.octocat';
 
 // Global Gulp Dependency
 const gulp 				= require('gulp');
@@ -82,31 +82,15 @@ gulp.task('saveScript', function() {
 
 gulp.task('scripts', function() {
 	var scriptsToConcat = [
+		devPath + '/js/Tweenmax.js',
 		devPath + '/js/main.js'
 	];
 	gulp.src(scriptsToConcat)
-		//.pipe(concat('octocat.js'))
-		//.pipe(gulp.dest(buildPath + '/js/'))
+		.pipe(concat('main.js'))
 		//.pipe(uglify())
-		// .pipe(rename({
-		// 	suffix: ".min"
-		// }))
 		.pipe(gulp.dest(buildPath + '/js/'))
 });
 
-// gulp.task('scripts', function() {
-// 	var scriptsToConcat = [
-// 		devPath + '/js/scripts.js'
-// 	];
-// 	gulp.src(scriptsToConcat)
-// 		.pipe(concat('main.js'))
-// 		//.pipe(gulp.dest(buildPath + '/js/'))
-// 		//.pipe(uglify())
-// 		// .pipe(rename({
-// 		// 	suffix: ".min"
-// 		// }))
-// 		.pipe(gulp.dest(buildPath + '/js/'))
-// });
 
 // Images Gulp task, run by calling 'gulp images' in CLI
 gulp.task('images', function() {
@@ -118,8 +102,6 @@ gulp.task('images', function() {
 	}))
 	.pipe(gulp.dest(buildPath + '/images/'))
 });
-
-
 
 
 // Move fonts
@@ -142,7 +124,7 @@ gulp.task('server', function() {
 	browserSync.init({
 		open: false,
 		injectChanges: true,
-		proxy: projectURL,
+		//proxy: projectURL,
 		files: [buildPath + '/css/*.css', buildPath + '/js/*.js']
 	})
 	gulp.watch(projectPath + '**/*.php').on('change', browserSync.reload);

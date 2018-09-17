@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- META DATA -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+        <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
+        <meta name="theme-color" content= "#24292E">
+
+        <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+        <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+
+        <title>{{ page.title }} | {{ site.title }}</title>
+        <link href="/assets/css/main.css" rel="stylesheet">
+
+        <link rel="shortcut icon" type="image/ico" href="/assets/images/favicons/favicon.png" />
+        <link rel="apple-touch-icon" href="/assets/images/favicons/apple-touch-icon.png" />
+        <link rel="icon" href="/assets/images/favicons/android-favicon.png">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@github">
+        <meta name="twitter:title" content="{{ site.title }} | {{ page.title }}">
+        <meta name="twitter:description" content="{{ site.description }}">
+        {% if page.socialImg %}
+        <meta name="twitter:image" content="{{ site.url }}/assets/images/{{ page.socialImg }}">
+        {% else %}
+        <meta name="twitter:image" content="{{ site.url }}/assets/images/marketing/home/GitHub-Universe-Explore.jpg">
+        {% endif %}
+
+        <meta property="og:url" content="{{ page.url }}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="{{ site.title }} | {{ page.title }}" />
+        <meta property="og:description" content="{{ site.description }}" />
+        {% if page.socialImg %}
+        <meta property="og:image" content="{{ site.url }}/assets/images/{{ page.socialImg }}" />
+        {% else %}
+        <meta property="og:image" content="{{ site.url }}/assets/images/marketing/home/GitHub-Universe-Explore.jpg" />
+        {% endif %}
+
+    </head>
+
+    <body class="template-{{ page.id }}">
+
+        <a href="#content" class="sr-only">Skip to content</a>
+
+        {% include header.html %}
+
+        <main id="content" class="main page-content" aria-label="Content" role="main">
+            {{ content }}
+        </main>
+
+        {% include footer.html %}
+
+
+        <script src="/assets/js/main.js"></script>
+
+        {% if page.id == 'octocat-generator' %}
+        <script src="/assets/js/octocat.js" async></script>
+        <script src="/assets/js/save.js" async></script>
+        {% endif %}
+    </body>
+</html>

@@ -1,0 +1,143 @@
+---
+layout: default
+title: Build your Octocat
+id: octocat-generator
+permalink: /build-your-octocat/
+---
+
+
+<div id="octocat-generator">
+
+    <div id="ui-wrapper">
+        <div class="wrapper-wide d-flex flex-items-center flex-justify-center">
+            <div id="start-over">
+                <img class="mr-3" src="/assets/images/svgs/undo.svg" alt="Restart Icon" />
+                <p class="d-none d-sm-block">Start Over</p>
+            </div>
+
+            <div class="octocat-name">
+                <input id="octocat-name" type="text" placeholder="Name Your Octocat" value="" />
+            </div>
+
+            <div id="save">
+                <p class="d-none d-sm-block">Finish & Share</p>
+                <img class="ml-2" src="/assets/images/svgs/arrow-right.svg" alt="Restart Icon" />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="artboard">
+        <div id="octocat-wrap" class="artboard__inner">
+
+
+            <svg version="1.1" id="octocat" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 2000 2000" enable-background="new 0 0 2000 2000" xml:space="preserve" width="412" height="412">
+
+                <g id="hair-back-holder" data-cat="hair"></g>
+
+                {% include_relative objects/body/body-full.svg %}
+
+                <g id="pants-holder" data-cat="pants"></g>
+
+                <g id="shoes-holder" data-cat="shoes"></g>
+
+                <g id="shirts-holder" data-cat="shirts"></g>
+
+                <g id="accessories-holder" data-cat="accessories"></g>
+
+                <g id="hair-holder" data-cat="hair"></g>
+
+                <g id="headgear-holder" data-cat="headgear"></g>
+            </svg>
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <nav id="control-panel">
+
+        {% include_relative categories/body.html %}
+
+        {% include_relative categories/eyes.html %}
+
+        {% include_relative categories/hair.html %}
+
+        {% include_relative categories/hair-color.html %}
+
+        {% include_relative categories/headgear.html %}
+
+        {% include_relative categories/shirts.html %}
+
+        {% include_relative categories/pants.html %}
+
+        {% include_relative categories/shoes.html %}
+
+        {% include_relative categories/accessories.html %}
+
+
+        <div id="object-list">
+            <div>
+                <div class="category-tile category-tile--only-color" data-target="cp-body">
+                    <span>
+                        <img class="preview" src="/objects/body/octocat-preview.png" alt="" />
+                    </span>
+                </div>
+                <div class="category-tile category-tile--only-color" data-target="cp-eyes">
+                    <span>
+                        <img class="preview" src="/objects/body/eye-preview.svg" alt="" />
+                    </span>
+                </div>
+                <div class="category-tile" data-target="cp-hair">
+                    <span>
+                        <img class="preview" src="/objects/hair/hair-long-preview.svg" alt="" />
+                    </span>
+                </div>
+                <div class="category-tile category-tile--only-color disabled" data-target="cp-hair-color" id="hair-color-preview">
+                    <span>
+                        <img class="preview" src="/objects/hair/hair-long-preview.svg" alt="" />
+                    </span>
+                </div>
+                <div class="category-tile" data-target="cp-headgear" id="headgear-preview">
+                    <span>
+                        <img class="preview" src="/objects/headgear/viking-hat-preview.svg" alt="" />
+                    </span>
+                </div>
+                <div class="category-tile" data-target="cp-shirts">
+                    <span>
+                        <img class="preview" src="/objects/shirts/github-tee-preview.svg" alt="" />
+                    </span>
+                </div>
+                <div class="category-tile" data-target="cp-pants">
+                    <span>
+                        <img class="preview" src="/objects/pants/jeans-preview.svg" alt="" />
+                    </span>
+                </div>
+                <div class="category-tile" data-target="cp-shoes">
+                    <span>
+                        <img class="preview" src="/objects/shoes/sneaker-preview.svg" alt="" />
+                    </span>
+                </div>
+                <div class="category-tile" data-target="cp-accessories">
+                    <span>
+                        <img class="preview" src="/objects/accessories/bag-preview.svg" alt="" />
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</div>
+
+<div id="export">
+    <img id="img" src="" width="500" height="500" alt="Octocat" />
+
+    <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
+</div>

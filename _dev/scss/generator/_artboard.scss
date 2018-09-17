@@ -53,4 +53,15 @@ body.page-loaded #octocat-generator {
 
 #export {
     display: none;
+
+}
+
+.isEDGE {
+    #export {
+        display: block;
+
+        canvas {
+            display: none;
+        }
+    }
 }
