@@ -21,10 +21,11 @@
         <meta name="twitter:site" content="@github">
         <meta name="twitter:title" content="{{ site.title }} | {{ page.title }}">
         <meta name="twitter:description" content="{{ site.description }}">
+
         {% if page.socialImg %}
-        <meta name="twitter:image" content="{{ site.url }}/assets/images/{{ page.socialImg }}">
+        <meta name="twitter:image" content="">
         {% else %}
-        <meta name="twitter:image" content="{{ site.url }}/assets/images/marketing/home/GitHub-Universe-Explore.jpg">
+        <meta name="twitter:image" content="">
         {% endif %}
 
         <meta property="og:url" content="{{ page.url }}" />
@@ -36,6 +37,8 @@
         {% else %}
         <meta property="og:image" content="{{ site.url }}/assets/images/marketing/home/GitHub-Universe-Explore.jpg" />
         {% endif %}
+
+
 
     </head>
 
@@ -58,5 +61,6 @@
         <script src="/assets/js/octocat.js" async></script>
         <script src="/assets/js/save.js" async></script>
         {% endif %}
+
     </body>
 </html>

@@ -1,0 +1,78 @@
+---
+layout: default
+title: Share your Octocat
+id: share
+permalink: /share-your-octocat/
+---
+
+
+
+<div class="col-2">
+    <img src="" id="tableBanner" />
+</div>
+
+
+
+
+<script>
+    var dataImage = localStorage.getItem('imgData');
+    bannerImg = document.getElementById('tableBanner');
+    bannerImg.src = dataImage;
+
+
+</script>
+
+<!--
+<a class="btn btn--sm" href="https://twitter.com/share?text=My Octocat&amp;url={{site.url}}{{ page.url }}" target="_blank" rel="nofollow"> Twitter</a> -->
+
+
+<form id="post-to-twitter" enctype="multipart/form-data" action="" class="text-left">
+    <input type="text" id="name" name="name" value="Andrew"  />
+    <input type="text" id="image" name="media_data" value=""  />
+
+    <input class="btn btn--sm" type="submit" value="Submit" />
+
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+
+<script>
+    document.getElementById('image').value = dataImage;
+
+
+    var form = document.getElementById("post-to-twitter");
+
+    document.getElementById("post-to-twitter").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        var data = $('#post-to-twitter').serialize();
+        //var data = new FormData(this);
+        var octoName = document.getElementById('name').value;
+        var mediab64 = document.getElementById('image').value;
+
+        console.log(data);
+
+        fetch('https://ar-tweet-server.herokuapp.com/', {
+            method:'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify({name: octoName, media_data: mediab64 })
+        })
+        .then((res) => res.json())
+        //.then(text => console.log(text))
+        .then((data) => {
+            console.log(data.success);
+            if( data.success === true ){
+                //document.getElementById("eloquaForm").submit();
+                console.log("Now continue the process");
+            }
+        });
+    });
+
+
+
+</script>

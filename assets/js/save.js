@@ -2,12 +2,13 @@
 
 (function() {
     if(  document.getElementById('save') ){
+
+
         var save = document.getElementById('save');
 
         save.onclick = function() {
             convert('#artboard');
         }
-
 
         function convert(selectors){
             [].forEach.call(document.querySelectorAll(selectors),function(div){
@@ -28,12 +29,13 @@
                     sourceImage.width  = 2000;
                     sourceImage.height = 2000;
 
-
                     var filename = "octocat";
 
                     if( document.getElementById('octocat-name').value ) {
                         filename = document.getElementById('octocat-name').value;
                     }
+
+                    document.getElementById('form-name').value = filename;
 
                     sourceImage.onload = function(){
                         ctx.fillStyle = "#fff";
@@ -41,15 +43,24 @@
 
                         ctx.drawImage(sourceImage,0,0,2000,2000);
 
+
+
                         img.src = can.toDataURL();
 
-                        var a = document.createElement("a");
-                        a.download = filename+".png";
-                        a.href = img.src;
-                        document.body.appendChild(a);
-                        a.click();
+                        imgData = img.src.split("data:image/png;base64,").pop();
+                        //console.log();
+
+                        document.getElementById('form-image').value = imgData;
+                        //localStorage.setItem("imgData", img.src);
+
+                        // var a = document.createElement("a");
+                        // a.download = filename+".png";
+                        // a.href = img.src;
+                        // document.body.appendChild(a);
+                        // a.click();
                     };
                     sourceImage.src = svg ? svgDataURL(svg) : div.getAttribute('data-svgSource');
+
 
                 }catch(e){ console.log(e) }
             });
@@ -58,6 +69,7 @@
         function svgDataURL(svg) {
             var svgAsXML = (new XMLSerializer).serializeToString(svg);
             return "data:image/svg+xml," + encodeURIComponent(svgAsXML);
+
         }
     }
 })();

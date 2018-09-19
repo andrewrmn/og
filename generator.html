@@ -30,8 +30,6 @@ permalink: /build-your-octocat/
 
     <div id="artboard">
         <div id="octocat-wrap" class="artboard__inner">
-
-
             <svg version="1.1" id="octocat" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 2000 2000" enable-background="new 0 0 2000 2000" xml:space="preserve" width="412" height="412">
 
@@ -51,14 +49,7 @@ permalink: /build-your-octocat/
 
                 <g id="headgear-holder" data-cat="headgear"></g>
             </svg>
-
-
-
-
-
-
         </div>
-
     </div>
 
 
@@ -137,7 +128,57 @@ permalink: /build-your-octocat/
 </div>
 
 <div id="export">
+    <!-- <img id="img" src="" width="500" height="500" alt="Octocat" />
+
+    <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas> -->
+</div>
+
+
+<div id="export-modal">
+    {% assign socailNote = 'Just created my Octocat!' %}
+
     <img id="img" src="" width="500" height="500" alt="Octocat" />
+
+    <form id="post-to-twitter" enctype="multipart/form-data" action="" class="text-left">
+        <input type="text" id="form-name" name="name" value="Andrew"  />
+        <input type="text" id="form-image" name="media_data" value=""  />
+
+        <input class="btn btn--sm" type="submit" value="Submit" />
+    </form>
+
+
 
     <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
 </div>
+
+<script>
+
+    var form = document.getElementById("post-to-twitter");
+
+    document.getElementById("post-to-twitter").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        var name = document.getElementById('form-name').value;
+        var mediab64 = document.getElementById('form-image').value;
+
+        //console.log(data);
+
+        fetch('https://ar-tweet-server.herokuapp.com/', {
+            method:'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify({name: name, media_id: mediab64})
+        })
+        .then((res) => res.json())
+        //.then(text => console.log(text))
+        .then((data) => {
+            console.log(data.success);
+            if( data.success === true ){
+                //document.getElementById("eloquaForm").submit();
+                console.log("Now continue the process");
+            }
+        });
+    });
+</script>

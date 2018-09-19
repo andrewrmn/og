@@ -92,6 +92,8 @@ gulp.task('scripts', function() {
 });
 
 
+
+
 // Images Gulp task, run by calling 'gulp images' in CLI
 gulp.task('images', function() {
 	gulp.src([devPath + '/images/**/*.{png,jpg,gif,ico,svg}'])
@@ -117,6 +119,7 @@ gulp.task('watch', function() {
 	gulp.watch(devPath + '/js/octocat.js', ['octoScript']);
 	gulp.watch(devPath + '/js/save.js', ['saveScript']);
 	gulp.watch(devPath + '/js/main.js', ['scripts']);
+	gulp.watch(devPath + '/js/compile/*.js', ['twitter']);
 });
 
 // Server Gulp task, run by calling 'gulp server' in CLI
@@ -131,4 +134,4 @@ gulp.task('server', function() {
 });
 
 // Default Gulp task, run by calling 'gulp' in CLI
-gulp.task('default', ['styles', 'scripts', 'octoScript', 'saveScript', 'images', 'fonts', 'watch', 'server'])
+gulp.task('default', ['styles', 'scripts', 'octoScript', 'saveScript', 'images', 'watch', 'server'])

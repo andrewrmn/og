@@ -10,7 +10,7 @@
 
         <nav id="site-navigation">
             <ul>
-                <li class="is-active">
+                <li {% if page.id == 'octocat-generator' %}class="is-active"{% endif %}>
                     <a href="/build-your-octocat/">Create Your Octocat</a>
                 </li>
                 <li>

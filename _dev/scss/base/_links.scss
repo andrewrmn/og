@@ -9,6 +9,7 @@
     width: auto;
     background: $brand;
     border-radius: 6px;
+    min-width: 140px;
     border: none;
     color: $white;
     font-family: $display;
@@ -49,14 +50,10 @@
     @include btn;
 }
 
-.btn--alt {
-    background: transparent;
-    color: $brand;
+.btn--sm {
+    padding: 12px 17px;
+    font-size: 14px;
 
-    &:hover {
-        background: $brand;
-        color: $white;
-    }
 }
 
 .btn--light {
