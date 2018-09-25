@@ -16,8 +16,11 @@
     font-size: 18px;
     font-weight: 400;
     padding: 21px 17px;
-    transition: background $transition, color $transition;
+    transform: translate3d(0, 0, 0);
+    z-index: 1;
+    transition: transform $trans;
 
+    &:before,
     &:after {
         content: '';
         position: absolute;
@@ -26,22 +29,37 @@
         width: 100%;
         height: 100%;
         border-radius: 6px;
-        z-index: -1;
-        background: $brand-dark;
-        transform: translate3d(0, 4px, 0);
-        transition: transform $trans;
+        transition: transform $trans, background $trans;
     }
 
-    &:active,
-    &:focus,
+    &:before {
+        z-index: -1;
+        background: $brand;
+    }
+
+    &:after {
+        background: $brand-dark;
+        z-index: -2;
+        transform: translate3d(0, 4px, 0);
+    }
+
+
     &:hover {
         cursor: pointer;
-        background: $brand;
         border: none;
         color: $white;
 
+        &:before {
+            background: darken($brand, 5%);
+        }
+
+    }
+
+    &:active {
+        transform: translate3d(0, 3px, 0);
+
         &:after {
-            transform: translate3d(0, 2px, 0);
+            transform: translate3d(0, 1px, 0);
         }
     }
 }

@@ -40,3 +40,4 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - node_modules
+  - jekyll

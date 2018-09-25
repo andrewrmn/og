@@ -1,0 +1,27 @@
+<div class="category-panel" id="cp-bottoms">
+
+    <div class="category-objects-panel">
+        <div class="category-objects-panel__inner">
+
+            <div class="remove-category" data-category="bottoms">
+                <p class="sr-only">Remove object</p>
+            </div>
+
+            {% for item in site.data.bottoms %}
+
+            <div class="object-preview" data-category="bottoms">
+                <img class="preview" src="/objects/bottoms/icons/{{ item.icon }}" alt="{{ item.name }}" />
+
+                <div class="object bottoms{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="bottoms-holder">
+                    {% include_relative objects/bottoms/{{ item.image }} %}
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        {% include arrows.html %}
+    </div>
+</div>

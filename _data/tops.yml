@@ -1,0 +1,139 @@
+## Optinal Rules for tops:
+
+- name:
+  image: 01_Top_Cowboy_Vest_Shirt_v01.svg
+  icon: tops-cowboyvest.svg
+  rules:
+    - rule:
+
+- name:
+  image: 02_Tops_Hippie_Shirt.svg
+  icon: tops-hippieshirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 03_Top_BiznessSuit_JacketShirtTie.svg
+  icon: tops-businesssuit.svg
+  rules:
+    - rule:
+
+- name:
+  image: 05_Top_Cyclist_Shirt_v01.svg
+  icon: tops-cyclistshirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 07_Top_SuperHero_Tights.svg
+  icon: tops-Superherotights.svg
+  rules:
+    - rule:
+
+- name:
+  image: 08_Top_Firefighter_Jacket_v01.svg
+  icon:
+  rules:
+    - rule:
+
+- name:
+  image: 09_Top_Wizard_Robe_v01.svg
+  icon:
+  rules:
+    - rule:
+
+- name:
+  image: 15_Top_Tunic.svg
+  icon: tops-tunic.svg
+  rules:
+    - rule:
+
+- name:
+  image: 16_Top_ZipUp_Hoodie.svg
+  icon: tops-zipuphoodie.svg
+  rules:
+    - rule:
+
+- name:
+  image: 17_Top_ButtonDownLong_Shirt.svg
+  icon: tops-buttondownlongshirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 18_Top_ButtonDownShort_Shirt.svg
+  icon: tops-buttondownshortshirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 19_Top_SportsJersey.svg
+  icon: tops-sportsjersey.svg
+  rules:
+    - rule:
+
+- name:
+  image: 21_Top_TankTop_Shirt.svg
+  icon: tops-tanktop.svg
+  rules:
+    - rule:
+
+- name:
+  image: 22_Top_Lab_Coat.svg
+  icon: tops-labcoat.svg
+  rules:
+    - rule:
+
+- name:
+  image: 23_Top_Leather_Jacket.svg
+  icon: tops-leatherjacket.svg
+  rules:
+    - rule:
+
+- name:
+  image: 24_Top_Flannel_Shirt.svg
+  icon: tops-flannelshirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 25_Top_Mini_Dress.svg
+  icon: tops-minidress.svg
+  rules:
+    - rule:
+
+- name:
+  image: 26_Top_Midi_Dress.svg
+  icon: tops-mididress.svg
+  rules:
+    - rule:
+
+- name:
+  image: 27_Top_Maxi_Dress.svg
+  icon: tops-maxidress.svg
+  rules:
+    - rule:
+
+- name:
+  image: 28_Top_Hawaiian_Shirt.svg
+  icon: tops-hawaiianshirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 29_Top_CropTop_Blouse.svg
+  icon: tops-croptopblouse.svg
+  rules:
+    - rule:
+
+- name:
+  image: 30_Top_Barbarian_FurVest.svg
+  icon: tops-barbarianvest.svg
+  rules:
+    - rule:
+
+- name:
+  image: 31_Top_Overalls_v01.svg
+  icon: tops-overalls.svg
+  rules:
+    - rule:

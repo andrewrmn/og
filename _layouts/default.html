@@ -52,8 +52,11 @@
             {{ content }}
         </main>
 
+        {% if page.id == homepage %}
         {% include footer.html %}
-
+        {% endif %}
+        
+        <span class="screen"></span>
 
         <script src="/assets/js/main.js"></script>
 

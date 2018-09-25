@@ -1,0 +1,27 @@
+<div class="category-panel" id="cp-faceHair">
+
+    <div class="category-objects-panel">
+        <div class="category-objects-panel__inner">
+
+            <div class="remove-category" data-category="faceHair" id="remove-faceHair">
+                <p class="sr-only">Remove object</p>
+            </div>
+
+            {% for item in site.data.faceHair %}
+
+            <div class="object-preview" data-category="faceHair">
+                <img class="preview" src="/objects/faceHair/icons/{{ item.icon }}" alt="{{ item.name }}" />
+
+                <div class="object faceHair{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="faceHair{% if item.position == 'back' %}-back{% endif %}-holder">
+                    {% include_relative objects/faceHair/{{ item.image }} %}
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% include arrows.html %}
+
+    </div>
+</div>

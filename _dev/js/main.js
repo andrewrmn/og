@@ -136,6 +136,11 @@ function lines() {
             line = document.getElementById('draw-svg-line'),
             arrow = document.getElementById('draw-svg-arrow');
 
+        arrow.onclick = function() {
+            TweenLite.to(window, 1, {scrollTo:"#how-it-works"});
+            console.log('here');
+        }
+
         TweenMax.to(line, 0, {alpha:0});
 
         TweenMax.to(arrow, 0, { scale:0.4, alpha: 0, transformOrigin:"50% 50%" });
@@ -165,6 +170,49 @@ function lines() {
 
 
     }
+
+
+    if (document.getElementById('js-draggable')){
+        var panel = document.getElementById('js-draggable'),
+            currentScroll = panel.scrollLeft;
+
+        panel.onmousedown = function(event) {
+            console.log('hre');
+            //console.log('Mouse down on element');
+            var par = this;
+            par.classList.add('dragging');
+            mouseStart = event.clientX;
+            currentScrollPos =  par.scrollLeft;
+
+            document.onmousemove = function(event) {
+                par.classList.add('moving');
+                amountMoved = -(event.clientX - mouseStart);
+                scrollAmount = (currentScrollPos + amountMoved);
+
+                if( scrollAmount >= par.scrollWidth ) {
+                    scrollAmount = par.scrollWidth;
+                }
+
+                TweenMax.to(par, 1, {scrollLeft: scrollAmount, ease: Circ.ease });
+
+            }
+
+            panel.onmouseout = function(event) {
+                console.log('hit');
+                document.onmousemove = '';
+                this.classList.remove('moving');
+                this.classList.remove('dragging');
+            }
+
+        }
+
+        panel.onmouseup = function(event) {
+            document.onmousemove = '';
+            this.classList.remove('moving');
+            this.classList.remove('dragging');
+        }
+    }
+
 }
 
 })();

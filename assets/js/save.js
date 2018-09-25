@@ -7,7 +7,16 @@
         var save = document.getElementById('save');
 
         save.onclick = function() {
+
+    
             convert('#artboard');
+            // document.body.classList.add('is-thinking');
+            //
+            // setTimeout(function(){
+            //     document.body.classList.remove('is-thinking');
+            //     document.body.classList.add('modal-is-open');
+            //     document.getElementById('export-modal').classList.add('is-active');
+            // }, 3000);
         }
 
         function convert(selectors){
@@ -31,11 +40,12 @@
 
                     var filename = "octocat";
 
-                    if( document.getElementById('octocat-name').value ) {
-                        filename = document.getElementById('octocat-name').value;
-                    }
-
-                    document.getElementById('form-name').value = filename;
+                    // if( document.getElementById('octocat-name').value ) {
+                    //     filename = document.getElementById('octocat-name').value;
+                    // }
+                    //
+                    // document.getElementById('form-name').value = filename;
+                    // document.getElementById('octocat-name-modal').value = filename;
 
                     sourceImage.onload = function(){
                         ctx.fillStyle = "#fff";
@@ -44,20 +54,22 @@
                         ctx.drawImage(sourceImage,0,0,2000,2000);
 
 
-
                         img.src = can.toDataURL();
 
-                        imgData = img.src.split("data:image/png;base64,").pop();
+                        // imgData = img.src.split("data:image/png;base64,").pop();
+                        // document.getElementById('form-image').value = imgData;
+
+
                         //console.log();
 
-                        document.getElementById('form-image').value = imgData;
                         //localStorage.setItem("imgData", img.src);
 
-                        // var a = document.createElement("a");
-                        // a.download = filename+".png";
-                        // a.href = img.src;
-                        // document.body.appendChild(a);
-                        // a.click();
+
+                        var a = document.createElement("a");
+                        a.download = filename+".png";
+                        a.href = img.src;
+                        document.body.appendChild(a);
+                        a.click();
                     };
                     sourceImage.src = svg ? svgDataURL(svg) : div.getAttribute('data-svgSource');
 

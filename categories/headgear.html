@@ -7,39 +7,20 @@
                 <p class="sr-only">Remove object</p>
             </div>
 
-            <div class="object-preview" data-category="headgear">
-                <img class="preview" src="/objects/headgear/viking-hat-preview.svg" alt="" />
+            {% for item in site.data.headgear %}
 
-                <div class="object headgear hide-ears" data-holder="headgear-holder">
-                    {% include_relative objects/headgear/viking-hat.svg %}
+            <div class="object-preview" data-category="headgear">
+                <img class="preview" src="/categories/icons/category-headgear.svg" alt="headgear" />
+
+                <div class="object headgear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="headgear-holder">
+                    {% include_relative objects/headgear/{{ item.image }} %}
                 </div>
             </div>
 
-
-
-            <div class="object-preview" data-category="headgear">
-                <img class="preview" src="/objects/headgear/hat-blue-preview.svg" alt="" />
-                <div class="object headgear" data-holder="headgear-holder">
-                    {% include_relative objects/headgear/hat-blue.svg %}
-                </div>
-            </div>
-
-
-            <div class="object-preview" data-category="headgear">
-                <img class="preview" src="/objects/headgear/chef-hat-preview.svg" alt="" />
-                <div class="object headgear" data-holder="headgear-holder">
-                    {% include_relative objects/headgear/chef-hat.svg %}
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
 
-        <div class="arrow scroll-left disabled">
-            <img src="/assets/images/svgs/angle-left.svg" alt="arrow right" />
-        </div>
-
-        <div class="arrow scroll-right disabled">
-            <img src="/assets/images/svgs/angle-right.svg" alt="arrow right" />
-        </div>
+        {% include arrows.html %}
     </div>
 </div>

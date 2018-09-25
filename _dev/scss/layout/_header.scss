@@ -69,7 +69,7 @@ $logo-height: 72px;
 		padding: 16px;
 		background: transparent;
 	}
-	
+
 
 	@include stop-at($header-breakpoint) {
 		opacity: 0;
@@ -119,6 +119,4 @@ $logo-height: 72px;
 			}
 		}
 	}
-
-
 }

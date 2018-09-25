@@ -1,0 +1,97 @@
+## Optinal Rules for bottoms:
+
+- name:
+  image: 01_Bottom_JeanRegular_Pants_v01.svg
+  icon: bottom-cowboyjeans.svg
+  rules:
+    - rule:
+
+- name:
+  image: 02_Bottom_JeansRipped_Pants_v01.svg
+  icon: bottom-jeansripped.svg
+  rules:
+    - rule:
+
+- name:
+  image: 03_Bottom_JeansCuffed_Pants_v01.svg
+  icon: bottom-jeanscuffed.svg
+  rules:
+    - rule:
+
+- name:
+  image: 04_Bottoms_BellBottoms_Pants.svg
+  icon: bottom-bellbottoms.svg
+  rules:
+    - rule:
+
+- name:
+  image: 05_Bottom_BizSuit_Pants.svg
+  icon: bottom-businesssuitpants.svg
+  rules:
+    - rule:
+
+- name:
+  image: 06_Bottoms_Mini_Skirt.svg
+  icon: bottom-miniskirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 07_Bottoms_Midi_Skirt_v02.svg
+  icon: bottom-midiskirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 08_Bottom_Maxi_Skirt_v01.svg
+  icon: bottom-maxiskirt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 10_Bottom_Cyclist_Shorts_v01.svg
+  icon: bottom-cyclistshorts.svg
+  rules:
+    - rule:
+
+- name:
+  image: 12_Bottom_SuperHero_Tights.svg
+  icon: bottom-superherotights.svg
+  rules:
+    - rule:
+
+- name:
+  image: 13_Bottom_Firefighter_Pants_v01.svg
+  icon:
+  rules:
+    - rule:
+
+- name:
+  image: 17_Bottoms_Dancer_LegWarmersTights.svg
+  icon: bottom-dancertights.svg
+  rules:
+    - rule:
+
+- name:
+  image: 20_Bottom_SwimTrunks_v01.svg
+  icon: bottom-swimtrunks.svg
+  rules:
+    - rule:
+
+- name:
+  image: 21_Bottom_Overalls_v01.svg
+  icon: bottom-overalls.svg
+  rules:
+    - rule:
+
+- name:
+  image: 22_Bottom_Kilt_v01.svg
+  icon: bottom-kilt.svg
+  rules:
+    - rule:
+
+- name:
+  image: 23_Bottom_SoccerShorts_v01.svg
+  icon: bottom-soccershorts.svg
+  rules:
+    - rule:

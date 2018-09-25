@@ -7,6 +7,23 @@ body {
     font-size: 62.5%;
 }
 
+body {
+    opacity: 0;
+    transition: opacity 0.2 ease;
+
+    &.page-loaded {
+        opacity: 1;
+    }
+
+    &.menu-is-open,
+    &.is-thinking,
+    &.modal-is-open {
+    	overflow: hidden;
+    }
+}
+
+
+
 body,
 input,
 button,

@@ -2,7 +2,7 @@
 const projectPath 		= './';
 const devPath 			= projectPath + '_dev';
 const buildPath 		= projectPath + 'assets';
-//const projectURL 		= 'http://local.octocat';
+const projectURL 		= 'http://local.octocat';
 
 // Global Gulp Dependency
 const gulp 				= require('gulp');
@@ -127,8 +127,8 @@ gulp.task('server', function() {
 	browserSync.init({
 		open: false,
 		injectChanges: true,
-		//proxy: projectURL,
-		files: [buildPath + '/css/*.css', buildPath + '/js/*.js']
+		proxy: projectURL,
+		files: [buildPath + '/css/*.css', buildPath + '/js/*.js', projectPath + '*.html']
 	})
 	gulp.watch(projectPath + '**/*.php').on('change', browserSync.reload);
 });

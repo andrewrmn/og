@@ -26,30 +26,34 @@ svg {
 	fill: currentColor;
 }
 
-.shape-inline {
-    display: inline-block;
+#draw-svg-arrow {
+    position: relative;
+    z-index: 2;
 
-    > * {
-		display: inline-block;
-		vertical-align: middle;
-        line-height: 1;
+    .draw-arrow-top {
+        transition: transform $trans;
+
+        circle {
+            transition: all $trans;
+        }
     }
 
-    > * + * {
-        margin-left: 10px;
-		transition: transform $transition;
+    &:hover {
+        //opacity: 0;
+        cursor: pointer;
+
+        .draw-arrow-top circle {
+            fill: darken(#444A50, 3%);
+        }
+
+
     }
-}
 
-.shape-inline + .shape-inline {
-    margin-left: 24px;
-}
-
-a.shape-inline:hover {
-
-	 > * + * {
-		transform: translateX(4px);
-	}
+    &:active {
+        .draw-arrow-top {
+            transform: translate3d(-2px, 2px, 0);
+        }
+    }
 }
 
 

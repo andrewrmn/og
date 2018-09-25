@@ -12,11 +12,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: rgba(0,0,0,0.4);
+	//background: rgba(0,0,0,0.4);
 	z-index: 2000;
 	transform: scale(0);
 	opacity: 0;
-	transition: opacity $transition;
+	transition: opacity 0.8s ease;
 
 	&.is-active {
 		opacity: 1;
@@ -29,19 +29,23 @@
 // ----------------------------------------
 .modal {
 	position: relative;
-	max-width: calc(100% - 20px);
-	max-height: calc(100% - 20px);
-	width: calc(100% - 20px);
-    height: calc(100% - 20px);
+	max-width: calc(100% - 12px);
+	max-height: calc(100% - 12px);
+	border-radius: 6px;
+	width: 510px;
+    height: auto;
 	overflow: scroll;
 	background: $white;
 	transition: all $transition;
 
-	@media (min-width: $medium) and (min-height: 540px) {
-		width: 720px;
-		max-height: calc(100% - 20px);
-		height: auto;
+	padding: 36px;
+	text-align: center;
+
+
+	canvas {
+		display: none;
 	}
+
 }
 
 .modal__inner {
@@ -55,6 +59,7 @@
 body.modal-is-active {
 	overflow: hidden;
 }
+
 
 
 // ----------------------------------------

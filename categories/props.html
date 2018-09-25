@@ -1,0 +1,25 @@
+<div class="category-panel" id="cp-props">
+
+    <div class="category-objects-panel">
+        <div class="category-objects-panel__inner">
+
+            <div class="remove-category" data-category="props">
+                <p class="sr-only">Remove object</p>
+            </div>
+
+            {% for item in site.data.props %}
+
+            <div class="object-preview" data-category="props">
+                <img class="preview" src="/objects/props/icons/{{ item.icon }}" alt="{{ item.name }}" />
+
+                <div class="object props{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="props-holder">
+                    {% include_relative objects/props/{{ item.image }} %}
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        {% include arrows.html %}
+    </div>
+</div>

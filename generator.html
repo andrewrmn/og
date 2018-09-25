@@ -15,9 +15,9 @@ permalink: /build-your-octocat/
                 <p class="d-none d-sm-block">Start Over</p>
             </div>
 
-            <div class="octocat-name">
+            <!-- <div class="octocat-name">
                 <input id="octocat-name" type="text" placeholder="Name Your Octocat" value="" />
-            </div>
+            </div> -->
 
             <div id="save">
                 <p class="d-none d-sm-block">Finish & Share</p>
@@ -27,27 +27,41 @@ permalink: /build-your-octocat/
     </div>
 
 
-
     <div id="artboard">
         <div id="octocat-wrap" class="artboard__inner">
             <svg version="1.1" id="octocat" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     viewBox="0 0 2000 2000" enable-background="new 0 0 2000 2000" xml:space="preserve" width="412" height="412">
+                     viewBox="0 0 2000 2000" enable-background="new 0 0 2000 2000" xml:space="preserve" width="412" height="412" body-color="#282828" body-color-secondary="#494949">
 
                 <g id="hair-back-holder" data-cat="hair"></g>
 
-                {% include_relative objects/body/body-full.svg %}
+                {% include_relative objects/body/BaseOctocat_v1.svg %}
 
-                <g id="pants-holder" data-cat="pants"></g>
+                <g id="footwear-back-holder" data-cat="footwear"></g>
 
-                <g id="shoes-holder" data-cat="shoes"></g>
+                <g id="bottoms-holder" data-cat="bottoms"></g>
 
-                <g id="shirts-holder" data-cat="shirts"></g>
-
-                <g id="accessories-holder" data-cat="accessories"></g>
+                <g id="footwear-holder" data-cat="footwear"></g>
 
                 <g id="hair-holder" data-cat="hair"></g>
 
+                <g id="misc-back-holder" data-cat="misc"></g>
+
+                <g id="faceHair-back-holder" data-cat="faceHair"></g>
+
+                <g id="tops-holder" data-cat="tops"></g>
+
+                <g id="faceHair-holder" data-cat="faceHair"></g>
+
+
+                <g id="eyewear-holder" data-cat="eyewear"></g>
+
                 <g id="headgear-holder" data-cat="headgear"></g>
+
+                <g id="misc-holder" data-cat="misc"></g>
+
+                <g id="props-holder" data-cat="props"></g>
+
+
             </svg>
         </div>
     </div>
@@ -55,100 +69,148 @@ permalink: /build-your-octocat/
 
     <nav id="control-panel">
 
+        {% include_relative categories/face.html %}
         {% include_relative categories/body.html %}
-
         {% include_relative categories/eyes.html %}
-
         {% include_relative categories/hair.html %}
-
         {% include_relative categories/hair-color.html %}
-
         {% include_relative categories/headgear.html %}
-
-        {% include_relative categories/shirts.html %}
-
-        {% include_relative categories/pants.html %}
-
-        {% include_relative categories/shoes.html %}
-
-        {% include_relative categories/accessories.html %}
+        {% include_relative categories/tops.html %}
+        {% include_relative categories/bottoms.html %}
+        {% include_relative categories/footwear.html %}
+        {% include_relative categories/props.html %}
+        {% include_relative categories/eyewear.html %}
+        {% include_relative categories/faceHair.html %}
+        {% include_relative categories/faceHairColor.html %}
+        {% include_relative categories/expressions.html %}
+        {% include_relative categories/mouths.html %}
+        {% include_relative categories/misc.html %}
 
 
         <div id="object-list">
             <div>
-                <div class="category-tile category-tile--only-color" data-target="cp-body">
+
+                <div class="category-tile" data-target="cp-body">
                     <span>
-                        <img class="preview" src="/objects/body/octocat-preview.png" alt="" />
+                        <img class="preview" src="/categories/icons/category-skin-color.svg" alt="skin color" />
                     </span>
                 </div>
-                <div class="category-tile category-tile--only-color" data-target="cp-eyes">
+
+                <div class="category-tile" data-target="cp-face">
                     <span>
-                        <img class="preview" src="/objects/body/eye-preview.svg" alt="" />
+                        <img class="preview" src="/categories/icons/category-facial-expressions.svg" alt="skin color" />
                     </span>
                 </div>
+
+
+                <div class="category-tile" data-target="cp-eyes">
+                    <span>
+                        <img class="preview" src="/categories/icons/category-eyes.svg" alt="eye color" />
+                    </span>
+                </div>
+
+                <div class="category-tile" data-target="cp-mouths">
+                    <span>
+                        <img class="preview" src="/categories/icons/category-mouths.svg" alt="mouths" />
+                    </span>
+                </div>
+
                 <div class="category-tile" data-target="cp-hair">
                     <span>
-                        <img class="preview" src="/objects/hair/hair-long-preview.svg" alt="" />
+                        <img class="preview" src="/categories/icons/category-hair.svg" alt="hair" />
                     </span>
                 </div>
-                <div class="category-tile category-tile--only-color disabled" data-target="cp-hair-color" id="hair-color-preview">
+
+                <div class="category-tile disabled" data-target="cp-hair-color" id="hair-color-preview">
                     <span>
-                        <img class="preview" src="/objects/hair/hair-long-preview.svg" alt="" />
+                        <img class="preview" src="/categories/icons/category-hair-color.svg" alt="hair-color" />
                     </span>
                 </div>
+
+                <div class="category-tile" data-target="cp-faceHair">
+                    <span>
+                        <img class="preview" src="/categories/icons/category-facial-hair.svg" alt="facial hair" />
+                    </span>
+                </div>
+                <div class="category-tile disabled" data-target="cp-facehair-color" id="face-hair-color-preview">
+                    <span>
+                        <img class="preview" src="/categories/icons/category-facial-hair-color.svg" alt="facial hair" />
+                    </span>
+                </div>
+
+                <div class="category-tile" data-target="cp-tops">
+                    <span>
+                        <img class="preview" src="/categories/icons/category-tops.svg" alt="tops" />
+                    </span>
+                </div>
+
+                <div class="category-tile" data-target="cp-bottoms">
+                    <span>
+                        <img class="preview" src="/categories/icons/category-bottoms.svg" alt="bottoms" />
+                    </span>
+                </div>
+
+                <div class="category-tile" data-target="cp-footwear">
+                    <span>
+                        <img class="preview" src="/categories/icons/category-footwear.svg" alt="footwear" />
+                    </span>
+                </div>
+
                 <div class="category-tile" data-target="cp-headgear" id="headgear-preview">
                     <span>
-                        <img class="preview" src="/objects/headgear/viking-hat-preview.svg" alt="" />
+                        <img class="preview" src="/categories/icons/category-headgear.svg" alt="headgear" />
                     </span>
                 </div>
-                <div class="category-tile" data-target="cp-shirts">
+
+                <div class="category-tile" data-target="cp-eyewear">
                     <span>
-                        <img class="preview" src="/objects/shirts/github-tee-preview.svg" alt="" />
+                        <img class="preview" src="/categories/icons/category-eyewear.svg" alt="eyewear" />
                     </span>
                 </div>
-                <div class="category-tile" data-target="cp-pants">
+
+                <div class="category-tile" data-target="cp-misc">
                     <span>
-                        <img class="preview" src="/objects/pants/jeans-preview.svg" alt="" />
+                        <img class="preview" src="/categories/icons/category-misc.svg" alt="misc" />
                     </span>
                 </div>
-                <div class="category-tile" data-target="cp-shoes">
+
+                <div class="category-tile" data-target="cp-props">
                     <span>
-                        <img class="preview" src="/objects/shoes/sneaker-preview.svg" alt="" />
+                        <img class="preview" src="/categories/icons/category-props.svg" alt="bottoms" />
                     </span>
                 </div>
-                <div class="category-tile" data-target="cp-accessories">
-                    <span>
-                        <img class="preview" src="/objects/accessories/bag-preview.svg" alt="" />
-                    </span>
-                </div>
+
             </div>
         </div>
 
     </nav>
 </div>
 
-<div id="export">
-    <!-- <img id="img" src="" width="500" height="500" alt="Octocat" />
-
-    <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas> -->
-</div>
 
 
-<div id="export-modal">
+
+
+<div class="modal-wrap" id="export-modal">
     {% assign socailNote = 'Just created my Octocat!' %}
 
-    <img id="img" src="" width="500" height="500" alt="Octocat" />
+    <div class="modal">
+        <div>
 
-    <form id="post-to-twitter" enctype="multipart/form-data" action="" class="text-left">
-        <input type="text" id="form-name" name="name" value="Andrew"  />
-        <input type="text" id="form-image" name="media_data" value=""  />
+            <div id="octocat-name-modal" class="mb-2">
+                Octocat
+            </div>
+            <img id="img" src="/assets/images/base-octocat.svg" alt="Octocat" />
+            <!-- <img id="img" src="/assets/images/base-octocat.svg" width="500" height="500" alt="Octocat" /> -->
 
-        <input class="btn btn--sm" type="submit" value="Submit" />
-    </form>
+            <form id="post-to-twitter" enctype="multipart/form-data" action="">
+                <input type="hidden" id="form-name" name="name" value="Andrew"  />
+                <input type="hidden" id="form-image" name="media_data" value=""  />
+                <button class="btn btn--sm" type="submit">Tweet Me</button>
+            </form>
 
-
-
-    <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
+            <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -163,22 +225,22 @@ permalink: /build-your-octocat/
 
         //console.log(data);
 
-        fetch('https://ar-tweet-server.herokuapp.com/', {
-            method:'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-type':'application/json'
-            },
-            body:JSON.stringify({name: name, media_id: mediab64})
-        })
-        .then((res) => res.json())
-        //.then(text => console.log(text))
-        .then((data) => {
-            console.log(data.success);
-            if( data.success === true ){
-                //document.getElementById("eloquaForm").submit();
-                console.log("Now continue the process");
-            }
-        });
+        // fetch('https://ar-tweet-server.herokuapp.com/', {
+        //     method:'POST',
+        //     headers: {
+        //         'Accept': 'application/json, text/plain, */*',
+        //         'Content-type':'application/json'
+        //     },
+        //     body:JSON.stringify({name: name, media_id: mediab64})
+        // })
+        // .then((res) => res.json())
+        // //.then(text => console.log(text))
+        // .then((data) => {
+        //     console.log(data.success);
+        //     if( data.success === true ){
+        //         //document.getElementById("eloquaForm").submit();
+        //         console.log("Now continue the process");
+        //     }
+        // });
     });
 </script>

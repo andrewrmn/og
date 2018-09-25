@@ -18,7 +18,7 @@ $category-tile-size: 64px;
     justify-content: center;
     background: $gray-light;
 
-    transition: border-color $trans, background $trans;
+    transition: transform $trans;
     pointer-events: inherit;
 
     width: $category-tile-size-xs;
@@ -74,7 +74,6 @@ $category-tile-size: 64px;
 
     &.is-active {
 
-
         span {
             border-color: $green;
             background: $white;
@@ -83,10 +82,6 @@ $category-tile-size: 64px;
         &:before {
             opacity: 1;
         }
-    }
-
-    &.category-tile--only-color:before {
-        display: none;
     }
 
     span {
@@ -120,9 +115,10 @@ $category-tile-size: 64px;
 
     &:hover {
         cursor: pointer;
+        transform: translate3d(0, 2px, 0);
 
         &:after {
-            transform: translate3d(0, 3px, 0);
+            transform: translate3d(0, 2px, 0);
         }
     }
 }
@@ -207,23 +203,35 @@ $swatch-size: 44px;
     min-width: $swatch-size;
     height: 42px;
     border-radius: 4px;
-    background: $white;
+    background: transparent;
     position: relative;
     margin: 0 5px;
+    z-index: 1;
 
     @include start-at($large) {
         margin: 0 6px;
     }
 
+    span,
     &:before,
     &:after {
-        content: '';
         @include cover-parent;
         display: block;
         border-radius: 4px;
-        z-index: -4;
-        transform: translate3d(0, 4px, 0);
         transition: transform $trans;
+    }
+
+    span {
+        background: currentColor;
+        z-index: 1;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        z-index: -2;
+        transform: translate3d(0, 4px, 0);
+
     }
 
     &:before {
@@ -238,10 +246,10 @@ $swatch-size: 44px;
     &:hover {
         cursor: pointer;
 
-        &:before,
-        &:after {
-            transform: translate3d(0, 3px, 0);
+        span {
+            transform: translate3d(0, 2px, 0);
         }
+
     }
 }
 

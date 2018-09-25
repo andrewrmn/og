@@ -1,0 +1,123 @@
+## Optinal Rules for headgear: hide-ears, no-big-hair
+
+- name: Cowboy Hat
+  image: 01_HeadGear_CowboyHat_v01.svg
+  icon:
+  rules:
+    - rule: hide-ears
+    - rule: no-big-hair
+
+
+- name: Cyclist Helmet
+  image: 04_HeadGear_CyclistHelmet_v01.svg
+  icon:
+  rules:
+    - rule: hide-ears
+    - rule: no-big-hair
+
+- name: Firefighter Hard Hat
+  image: 06_HeadGear_FirefighterHardHat_v01.svg
+  icon:
+  rules:
+    - rule: no-big-hair
+
+
+- name: Wizard Hat
+  image: 07_HeadGear_WizardHat_v01.svg
+  icon:
+  rules:
+    - rule: no-big-hair
+
+- name: Turban
+  image: 12_HeadGear_Turban_v1.svg
+  icon:
+  rules:
+    - rule: no-big-hair
+
+
+- name: Head Wrap
+  image: 14_HeadGear_HeadWrap_v1.svg
+  icon:
+  rules:
+    - rule:
+
+- name:  Bandana
+  image: 15_HeadGear_Bandana_v1.svg
+  icon:
+  rules:
+    - rule:
+
+
+- name: Headphones
+  image: 16_HeadGear_Headphones_v1.svg
+  icon:
+  rules:
+    - rule:
+
+- name: Dad cap
+  image: 17_HeadGear_DadCap_v1.svg
+  icon:
+  rules:
+    - rule: no-big-hair
+
+
+- name: Snapback
+  image: 18_HeadGear_Snapback_v1.svg
+  icon:
+  rules:
+    - rule: hide-ears
+    - rule: no-big-hair
+
+- name: Sweatband
+  image: 19_HeadGear_Sweatband_v1.svg
+  icon:
+  rules:
+    - rule:
+
+
+- name: Newsie Cap
+  image: 20_HeadGear_NewsieCap_v1.svg
+  icon:
+  rules:
+    - rule: no-big-hair
+
+- name: Fedora
+  image: 21_HeadGear_Fedora_v1.svg
+  icon:
+  rules:
+    - rule: hide-ears
+    - rule: no-big-hair
+
+- name: Jester Hat
+  image: 22_HeadGear_JesterHat_v1.svg
+  icon:
+  rules:
+    - rule: hide-ears
+    - rule: no-big-hair
+
+- name: Bow
+  image: 23_HeadGear_Bow_v1.svg
+  icon:
+  rules:
+    - rule:
+
+
+- name: Crown
+  image: 24_HeadGear_Crown_v1.svg
+  icon:
+  rules:
+    - rule:
+
+- name: Viking Helmet
+  image: 25_HeadGear_VikingHelmet_v4.svg
+  icon:
+  rules:
+    - rule: hide-ears
+    - rule: no-big-hair
+
+
+- name: Superhero Crown
+  image: 26_HeadGear_SuperheroCrown_v1.svg
+  icon:
+  rules:
+    - rule:
