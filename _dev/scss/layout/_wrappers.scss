@@ -96,45 +96,33 @@
     flex-wrap: wrap;
     align-items: stretch;
 
+    .octocat-intro__octocat-sm {
+        max-width: 120px;
+        margin: 0 auto;
+
+        @include start-at($small) {
+            display: none;
+        }
+    }
+
+}
+
+.octocat-intro__octocat {
+    position: relative;
+
+    img {
+        max-height: 100%;
+        width: auto;
+        position: absolute;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+    }
 
     @include stop-at($small) {
-
-
-        .octocat-intro__octocat {
-            order: -1;
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: -48px;
-            //display: none;
-
-            img {
-                max-height: 140px;
-                margin: 0 0 24px !important;
-                margin-bottom: 24px;
-                //
-                // position: absolute;
-                // top: 24px;
-                // right: -24px;
-                // z-index: -1;
-                // max-height: 220px;
-            }
-        }
+        display: none;
     }
 }
 
-@include start-at($small) {
-    .octocat-intro__octocat {
-        position: relative;
-
-        img {
-            max-height: 100%;
-            width: auto;
-            position: absolute;
-            left: 50%;
-            transform: translate3d(-50%, 0, 0);
-        }
-    }
-}
 
 #draw-svg {
     display: inline-block;
@@ -156,8 +144,12 @@
 @include stop-at($small) {
     .wrapper-scroll-sm-wrap {
         width: 100%;
-        overflow: auto;
         overflow-y: hidden;
+        overflow-x: scroll;
+        overflow-style: -ms-autohiding-scrollbar;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+
         background: $off-white;
         padding: 24px 0 12px;
 
@@ -206,7 +198,7 @@
         display: flex;
         justify-content: space-between;
         width: 300%;
-        overflow: auto;
+        overflow: hidden;
         pointer-events: none;
         //background: red;
 

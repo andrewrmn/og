@@ -3,21 +3,114 @@
 (function() {
     if(  document.getElementById('save') ){
 
-
-        var save = document.getElementById('save');
+        var save = document.getElementById('save'),
+            download = document.getElementById('download-ocotocat'),
+            post = document.getElementById('post-to-twitter-submit'),
+            octocat = document.getElementById('octocat'),
+            exportModal = document.getElementById('export-modal');
 
         save.onclick = function() {
+            if(octocat.classList.contains('no-big-hair')) {
+                if(octocat.querySelector('g.big-hair')){
+                    octocat.querySelector('g.big-hair').innerHTML = '';
+                }
 
-    
-            convert('#artboard');
-            // document.body.classList.add('is-thinking');
-            //
-            // setTimeout(function(){
-            //     document.body.classList.remove('is-thinking');
-            //     document.body.classList.add('modal-is-open');
-            //     document.getElementById('export-modal').classList.add('is-active');
-            // }, 3000);
+            }
+            if(octocat.classList.contains('no-hair')) {
+                document.getElementById('hair-back-holder').innerHTML = '';
+                document.getElementById('hair-holder').innerHTML = '';
+            }
+
+            exportModal.classList.add('is-active');
+            document.body.classList.add('modal-is-active');
         }
+
+        // Agree to Terms & Conditions
+        document.getElementById('terms').onclick = function() {
+            if ( this.checked ) {
+                post.removeAttribute('disabled');
+                download.removeAttribute('disabled');
+            } else {
+                post.setAttribute('disabled', '');
+                download.setAttribute('disabled', '');
+            }
+        }
+
+        exportModal.querySelector('.screen').onclick = function() {
+            exportModal.classList = 'modal-wrap';
+            document.body.classList.remove('modal-is-active');
+        }
+
+
+        var closeExportModal = exportModal.querySelectorAll('.keep-editing');
+        for(var i = 0; i < closeExportModal.length; i++) {
+            closeExportModal[i].onclick = function(e) {
+                e.preventDefault();
+                exportModal.classList = 'modal-wrap';
+                document.body.classList.remove('modal-is-active');
+            }
+        }
+
+        exportModal.querySelector('.back-to-options').onclick = function(e) {
+            e.preventDefault();
+            exportModal.classList.remove('error');
+        }
+
+
+        var svgMaskLoad = document.getElementById('load-svg-mask');
+
+        download.onclick = function(e) {
+            e.preventDefault();
+            convert('#artboard');
+            setTimeout(function(){
+                exportModal.classList.add('completed');
+            }, 1000);
+        }
+
+        post.onclick = function(e) {
+            e.preventDefault();
+            exportModal.classList.add('posting');
+
+            TweenMax.to(svgMaskLoad, 3, { scaleY: 0.3, transformOrigin:"top center",ease: Power0.easeInOut }).delay(.4);
+
+            var form = document.getElementById("post-to-twitter");
+
+            var name = document.getElementById('form-name').value;
+            var mediab64 = document.getElementById('form-image').value;
+
+            //console.log(data);
+
+            fetch('https://ar-tweet-server.herokuapp.com/', {
+                method:'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type':'application/json'
+                },
+                body:JSON.stringify({name: name, media_id: mediab64})
+            })
+            .then((res) => res.json())
+            //.then(text => console.log(text))
+            .then((data) => {
+                console.log(data.success);
+                if( data.success === true ){
+                    TweenMax.to(svgMaskLoad, .3, { scaleY: 0, transformOrigin:"top center", ease: Power0.easeNone }).delay(3.4);
+                    setTimeout(function(){
+                        exportModal.classList.remove('posting');
+                        exportModal.classList.add('completed');
+                    }, 4300);
+                    console.log("Now continue the process");
+                } else {
+                    setTimeout(function(){
+                        console.log('There was an issue');
+                        exportModal.classList.remove('posting');
+                        exportModal.classList.add('error');
+                    }, 4300);
+                }
+            });
+
+
+        }
+
 
         function convert(selectors){
             [].forEach.call(document.querySelectorAll(selectors),function(div){

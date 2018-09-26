@@ -54,9 +54,15 @@
         }
     }
 
-    #hair-holder.no-big-hair  {
+    &.no-big-hair .big-hair  {
         display: none;
     }
+
+    &.no-hair #hair-holder  {
+        display: none;
+    }
+
+
 
 }
 
@@ -85,6 +91,12 @@
     padding: 12px 0;
     z-index: 2;
 
+    .wrapper-wide {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     @media(min-height: 600px) {
         padding: 24px 0;
     }
@@ -98,7 +110,6 @@
 }
 
 #start-over {
-    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -116,7 +127,7 @@
 
 
 #save {
-    flex-grow: 1;
+
     display: flex;
     align-items: center;
     justify-content: flex-end;

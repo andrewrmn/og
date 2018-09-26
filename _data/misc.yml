@@ -1,97 +1,97 @@
 ## Optinal Rules for misc:
 
-- name:
+- name: Cowboy Buckle Belt
   image: 01_Misc_CowboyBuckleBelt._v01.svg
   icon: misc-cowboybuckle.svg
   rules:
     - rule:
 
-- name:
+- name: Dress Buckle Belt
   image: 02_Misc_DressBuckleBelt_v01.svg
   icon: misc-dressbucklebelt.svg
   rules:
     - rule:
 
-- name:
+- name: Bow Tie
   image: 03_Misc_TiesBow_v01.svg
   icon: misc-tiesbow.svg
   rules:
     - rule:
 
-- name:
+- name: Bolo Tie
   image: 04_Misc_TiesBolo_v01.svg
   icon: misc-tiesbolo.svg
   rules:
     - rule:
 
-- name:
+- name: Ties Oxford
   image: 05_Misc_TiesOxford_v01.svg
   icon: misc-tiesoxford.svg
   rules:
     - rule:
 
-- name:
+- name: Messenger Bag
   image: 06_Misc_MessengerBag_Misc_v01.svg
   icon: misc-messengerbag.svg
   rules:
     - rule:
 
-- name:
+- name: Cape
   image: 07_Misc_Cape_Misc._v01.svg
   icon: misc-cape.svg
   position: back
   rules:
     - rule:
 
-- name:
+- name: Camera
   image: 09_Misc_Camera_v01.svg
   icon: misc-camera.svg
   rules:
     - rule:
 
-- name:
+- name: Jewlery Gold Chain
   image: 10_Misc_JewelryGoldChain_01.svg
   icon: misc-jewelrygoldchain.svg
   rules:
     - rule:
 
-- name:
+- name: Pearls
   image: 11_Misc_JewelryPearls_v01.svg
   icon: misc-jewelrypearls.svg
   rules:
     - rule:
 
-- name:
+- name: Watch
   image: 12_Misc_JewelryWatch_v01.svg
   icon: misc-jewelrywatch.svg
   rules:
     - rule:
 
-- name:
+- name: Bracelet
   image: 13_Misc_JewelryBracelet_v01.svg
   icon: misc-jewelrybracelet.svg
   rules:
     - rule:
 
-- name:
+- name: Earrings
   image: 14_Misc_PiercingsEarrings_v01.svg
   icon: misc-piercingearrings.svg
   rules:
     - rule:
 
-- name:
+- name: Nose Ring
   image: 15_Misc_PiercingsNoseRings_v01.svg
   icon: misc-piercingnoserings.svg
   rules:
     - rule:
 
-- name:
+- name: Eyebrow Ring
   image: 16_Misc_PiercingsEyebrowRings_v01.svg
   icon: misc-piercingeyebrowrings.svg
   rules:
     - rule:
 
-- name:
+- name: Tattoo
   image: 17_Misc_Tattoo_v01.svg
   icon: misc-tattoo.svg
   position: back

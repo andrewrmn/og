@@ -3,6 +3,7 @@
 - name:
   image: 01_Bottom_JeanRegular_Pants_v01.svg
   icon: bottom-cowboyjeans.svg
+  position: front
   rules:
     - rule:
 
@@ -15,12 +16,14 @@
 - name:
   image: 03_Bottom_JeansCuffed_Pants_v01.svg
   icon: bottom-jeanscuffed.svg
+  position: front
   rules:
     - rule:
 
 - name:
   image: 04_Bottoms_BellBottoms_Pants.svg
   icon: bottom-bellbottoms.svg
+  position: front
   rules:
     - rule:
 
@@ -45,12 +48,27 @@
 - name:
   image: 08_Bottom_Maxi_Skirt_v01.svg
   icon: bottom-maxiskirt.svg
+  position: front
   rules:
     - rule:
+
+
+- name:
+  image: 09_Bottom_Snow_Pants_v01.svg
+  icon:
+  rules:
+    - rule:
+
 
 - name:
   image: 10_Bottom_Cyclist_Shorts_v01.svg
   icon: bottom-cyclistshorts.svg
+  rules:
+    - rule:
+
+- name:
+  image: 11_Bottom_PJs_Pants_v01.svg
+  icon:
   rules:
     - rule:
 
@@ -62,6 +80,13 @@
 
 - name:
   image: 13_Bottom_Firefighter_Pants_v01.svg
+  position: front
+  icon:
+  rules:
+    - rule:
+
+- name:
+  image: 15_Bottom_Scuba_WetSuit_v01.svg
   icon:
   rules:
     - rule:
@@ -73,6 +98,19 @@
     - rule:
 
 - name:
+  image: 18_Bottom_BunnySuit_v01.svg
+  icon:
+  rules:
+    - rule:
+
+- name:
+  image: 19_Bottom_ArmorSuit_v01.svg
+  icon:
+  rules:
+    - rule:
+
+
+- name:
   image: 20_Bottom_SwimTrunks_v01.svg
   icon: bottom-swimtrunks.svg
   rules:
@@ -81,6 +119,7 @@
 - name:
   image: 21_Bottom_Overalls_v01.svg
   icon: bottom-overalls.svg
+  position: front
   rules:
     - rule:
 

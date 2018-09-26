@@ -9,7 +9,7 @@
 
             {% for item in site.data.misc %}
 
-            <div class="object-preview" data-category="misc">
+            <div class="object-preview" data-category="misc" id="misc-{{ item.name | slugify }}">
                 <img class="preview" src="/objects/misc/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
                 <div class="object misc{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="misc{% if item.position == 'back' %}-back{% endif %}-holder">

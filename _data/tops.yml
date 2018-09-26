@@ -19,10 +19,25 @@
     - rule:
 
 - name:
+  image: 04_Top_Ski_Jacket_v01.svg
+  icon:
+  rules:
+    - rule:
+
+
+- name:
   image: 05_Top_Cyclist_Shirt_v01.svg
   icon: tops-cyclistshirt.svg
   rules:
     - rule:
+
+
+- name:
+  image: 06_Top_PJs_Shirt_v01.svg
+  icon:
+  rules:
+    - rule:
+
 
 - name:
   image: 07_Top_SuperHero_Tights.svg
@@ -41,6 +56,26 @@
   icon:
   rules:
     - rule:
+
+
+- name:
+  image: 11_Top_Scuba_Wetsuit_v01.svg
+  icon:
+  rules:
+    - rule:
+
+- name:
+  image: 13_Top_BunnySuit_v01.svg
+  icon:
+  rules:
+    - rule:
+
+- name:
+  image: 14_Top_ArmorSuit_v01.svg
+  icon:
+  rules:
+    - rule:
+
 
 - name:
   image: 15_Top_Tunic.svg
@@ -69,6 +104,13 @@
 - name:
   image: 19_Top_SportsJersey.svg
   icon: tops-sportsjersey.svg
+  rules:
+    - rule:
+
+
+- name:
+  image: 20_Top_GitHubPride_Shirts_v01.svg
+  icon:
   rules:
     - rule:
 

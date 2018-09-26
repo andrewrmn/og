@@ -92,6 +92,20 @@ gulp.task('scripts', function() {
 });
 
 
+// Scripts Gulp task, run by calling 'gulp scripts' in CLI
+gulp.task('pwScript', function() {
+	var scriptsToConcat = [
+		devPath + '/js/password.js'
+	];
+	gulp.src(scriptsToConcat)
+		.pipe(concat('password.js'))
+		//.pipe(gulp.dest(buildPath + '/js/'))
+		//.pipe(uglify())
+		// .pipe(rename({
+		// 	suffix: ".min"
+		// }))
+		.pipe(gulp.dest(buildPath + '/js/'))
+});
 
 
 // Images Gulp task, run by calling 'gulp images' in CLI
@@ -120,6 +134,8 @@ gulp.task('watch', function() {
 	gulp.watch(devPath + '/js/save.js', ['saveScript']);
 	gulp.watch(devPath + '/js/main.js', ['scripts']);
 	gulp.watch(devPath + '/js/compile/*.js', ['twitter']);
+
+	gulp.watch(devPath + '/js/password.js', ['pwScript']);
 });
 
 // Server Gulp task, run by calling 'gulp server' in CLI
@@ -134,4 +150,4 @@ gulp.task('server', function() {
 });
 
 // Default Gulp task, run by calling 'gulp' in CLI
-gulp.task('default', ['styles', 'scripts', 'octoScript', 'saveScript', 'images', 'watch', 'server'])
+gulp.task('default', ['styles', 'scripts', 'pwScript', 'octoScript', 'saveScript', 'images', 'watch', 'server'])

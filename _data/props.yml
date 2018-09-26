@@ -28,6 +28,18 @@
     - rule: hide-hand
 
 
+- name: Snowboard
+  image: 05_Props_Snowboard_v01.svg
+  icon:
+  rules:
+    - rule:
+
+- name: Newspaper
+  image: 06_Props_Newspaper_v01.svg
+  icon:
+  rules:
+    - rule: hide-hand
+
 - name: Kryptonite
   image: 07_Props_Kryptonite_v01.svg
   icon: props-kryptonite.svg
@@ -38,6 +50,19 @@
 - name: Wizard Wand
   image: 10_Props_WizardWand_v01.svg
   icon: props-wizardwand.svg
+  rules:
+    - rule: hide-hand
+
+
+- name: Treasure
+  image: 13_Props_Treasure_v01.svg
+  icon:
+  rules:
+    - rule: hide-hand
+
+- name: Sword
+  image: 14_Props_Sword_v01.svg
+  icon:
   rules:
     - rule: hide-hand
 

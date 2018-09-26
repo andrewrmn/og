@@ -15,10 +15,14 @@
     font-family: $display;
     font-size: 18px;
     font-weight: 400;
-    padding: 21px 17px;
+    padding: 16px 24px;
     transform: translate3d(0, 0, 0);
     z-index: 1;
     transition: transform $trans;
+
+    @include start-at($medium){
+        padding: 21px 48px;
+    }
 
     &:before,
     &:after {
@@ -62,6 +66,12 @@
             transform: translate3d(0, 1px, 0);
         }
     }
+
+
+    &[disabled] {
+        opacity: 0.2;
+        pointer-events: none;
+    }
 }
 
 .btn {
@@ -71,18 +81,47 @@
 .btn--sm {
     padding: 12px 17px;
     font-size: 14px;
+}
 
+.btn--alt {
+
+    &:before {
+        background: #1DA1F2;
+    }
+
+    &:after {
+        background: #005FD1;
+    }
+
+    &:hover {
+        &:before {
+            background: darken(#1DA1F2, 5%);
+        }
+    }
+}
+
+.btn--wide {
+    display: block;
+    width: 100%;
 }
 
 .btn--light {
-    background: transparent;
-    color: $white;
-    border-color: $white;
+    color: $black;
+
+    &:before {
+        background: #EFF3F6;
+    }
+
+    &:after {
+        background: #CDD4D9;
+    }
 
     &:hover {
-        cursor: pointer;
-        background: $white;
-        color: $brand;
+        color: $black;
+
+        &:before {
+            background: darken(#EFF3F6, 5%);
+        }
     }
 }
 

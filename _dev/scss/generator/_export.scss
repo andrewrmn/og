@@ -2,7 +2,7 @@
 //  Export Styles
 // ---------------------------------------------------------------------
 
-.screen {
+.loading-screen {
     position: fixed;
     top: 0;
     left: 0;
@@ -29,14 +29,14 @@
 }
 
 body.is-thinking {
-    .screen:after {
+    .loading-screen:after {
         transform: rotate(1440deg);
     }
 }
 
 body.is-thinking,
 body.modal-is-open {
-    .screen {
+    .loading-screen {
         opacity: 1;
     }
 }
@@ -46,10 +46,62 @@ body.modal-is-open {
 // ----------------------------------------
 
 #export-modal {
-	img {
+	#img {
 		max-width: 240px;
 	    margin: 0 auto 36px;
+        display: none;
 	}
+
+    .export-options {
+        display: block;
+    }
+    .export-twitter-posting {
+        display: none;
+
+        img, svg {
+            width: 82px;
+            margin: 0 auto;
+        }
+    }
+
+    .complete,
+    .error {
+        display: none;
+    }
+
+    &.posting {
+        .export-options,
+        .complete,
+        .error {
+            display: none;
+        }
+        .export-twitter-posting {
+            display: block;
+        }
+    }
+
+    &.completed {
+        .export-options,
+        .export-twitter-posting,
+        .error {
+            display: none;
+        }
+
+        .complete {
+            display: block;
+        }
+    }
+
+    &.error {
+        .export-options,
+        .export-twitter-posting,
+        .complete {
+            display: none;
+        }
+        .error {
+            display: block;
+        }
+    }
 
 }
 

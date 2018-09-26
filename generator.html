@@ -9,7 +9,7 @@ permalink: /build-your-octocat/
 <div id="octocat-generator">
 
     <div id="ui-wrapper">
-        <div class="wrapper-wide d-flex flex-items-center flex-justify-center">
+        <div class="wrapper-wide">
             <div id="start-over">
                 <img class="mr-3" src="/assets/images/svgs/undo.svg" alt="Restart Icon" />
                 <p class="d-none d-sm-block">Start Over</p>
@@ -42,6 +42,8 @@ permalink: /build-your-octocat/
 
                 <g id="footwear-holder" data-cat="footwear"></g>
 
+                <g id="bottoms-front-holder" data-cat="bottoms"></g>
+
                 <g id="hair-holder" data-cat="hair"></g>
 
                 <g id="misc-back-holder" data-cat="misc"></g>
@@ -50,14 +52,14 @@ permalink: /build-your-octocat/
 
                 <g id="tops-holder" data-cat="tops"></g>
 
-                <g id="faceHair-holder" data-cat="faceHair"></g>
 
+                <g id="misc-holder" data-cat="misc"></g>
+
+                <g id="faceHair-holder" data-cat="faceHair"></g>
 
                 <g id="eyewear-holder" data-cat="eyewear"></g>
 
                 <g id="headgear-holder" data-cat="headgear"></g>
-
-                <g id="misc-holder" data-cat="misc"></g>
 
                 <g id="props-holder" data-cat="props"></g>
 
@@ -187,60 +189,4 @@ permalink: /build-your-octocat/
 </div>
 
 
-
-
-
-<div class="modal-wrap" id="export-modal">
-    {% assign socailNote = 'Just created my Octocat!' %}
-
-    <div class="modal">
-        <div>
-
-            <div id="octocat-name-modal" class="mb-2">
-                Octocat
-            </div>
-            <img id="img" src="/assets/images/base-octocat.svg" alt="Octocat" />
-            <!-- <img id="img" src="/assets/images/base-octocat.svg" width="500" height="500" alt="Octocat" /> -->
-
-            <form id="post-to-twitter" enctype="multipart/form-data" action="">
-                <input type="hidden" id="form-name" name="name" value="Andrew"  />
-                <input type="hidden" id="form-image" name="media_data" value=""  />
-                <button class="btn btn--sm" type="submit">Tweet Me</button>
-            </form>
-
-            <canvas id="canvas" style="width: 500px; height: 500px; background: red;"></canvas>
-        </div>
-    </div>
-</div>
-
-<script>
-
-    var form = document.getElementById("post-to-twitter");
-
-    document.getElementById("post-to-twitter").addEventListener("submit", function(e){
-        e.preventDefault();
-
-        var name = document.getElementById('form-name').value;
-        var mediab64 = document.getElementById('form-image').value;
-
-        //console.log(data);
-
-        // fetch('https://ar-tweet-server.herokuapp.com/', {
-        //     method:'POST',
-        //     headers: {
-        //         'Accept': 'application/json, text/plain, */*',
-        //         'Content-type':'application/json'
-        //     },
-        //     body:JSON.stringify({name: name, media_id: mediab64})
-        // })
-        // .then((res) => res.json())
-        // //.then(text => console.log(text))
-        // .then((data) => {
-        //     console.log(data.success);
-        //     if( data.success === true ){
-        //         //document.getElementById("eloquaForm").submit();
-        //         console.log("Now continue the process");
-        //     }
-        // });
-    });
-</script>
+{% include modals.html %}

@@ -12,7 +12,7 @@
             <div class="object-preview" data-category="bottoms">
                 <img class="preview" src="/objects/bottoms/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object bottoms{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="bottoms-holder">
+                <div class="object bottoms{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="bottoms{% if item.position == 'front' %}-front{% endif %}-holder">
                     {% include_relative objects/bottoms/{{ item.image }} %}
                 </div>
             </div>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="robots" content="noindex, nofollow" />
+
         <!-- META DATA -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
@@ -37,33 +39,50 @@
         {% else %}
         <meta property="og:image" content="{{ site.url }}/assets/images/marketing/home/GitHub-Universe-Explore.jpg" />
         {% endif %}
-
-
-
     </head>
 
+
+
     <body class="template-{{ page.id }}">
+        <div id="password-modal">
 
-        <a href="#content" class="sr-only">Skip to content</a>
+            <div class="modal modal__content-sm">
+                <div>
+                    <form id="password-form">
+                        <input type="text" id="password" />
 
-        {% include header.html %}
+                    </form>
+                    <div class="btn btn--sm btn--alt" onClick="passWord()">Enter</div>
+                </div>
+            </div>
+        </div>
+        <div id="page">
 
-        <main id="content" class="main page-content" aria-label="Content" role="main">
-            {{ content }}
-        </main>
+            <a href="#content" class="sr-only">Skip to content</a>
 
-        {% if page.id == homepage %}
-        {% include footer.html %}
-        {% endif %}
-        
-        <span class="screen"></span>
+            {% include header.html %}
 
-        <script src="/assets/js/main.js"></script>
+            <main id="content" class="main page-content" aria-label="Content" role="main">
+                {{ content }}
+            </main>
 
-        {% if page.id == 'octocat-generator' %}
-        <script src="/assets/js/octocat.js" async></script>
-        <script src="/assets/js/save.js" async></script>
-        {% endif %}
+            {% if page.id == 'homepage' %}
+            {% include footer.html %}
+            {% endif %}
 
+
+            <script src="/assets/js/main.js"></script>
+
+            {% if page.id == 'octocat-generator' %}
+            <script src="/assets/js/octocat.js" async></script>
+            <script src="/assets/js/save.js" async></script>
+            {% endif %}
+
+        </div>
+
+        <script id="password" src="/assets/js/password.js"></script>
     </body>
+
+
+
 </html>

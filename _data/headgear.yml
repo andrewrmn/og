@@ -15,11 +15,18 @@
     - rule: hide-ears
     - rule: no-big-hair
 
+- name:
+  image: 05_HeadGear_PJSleepingCap_v01.svg
+  icon:
+  rules:
+    - rule: no-big-hair
+
+
 - name: Firefighter Hard Hat
   image: 06_HeadGear_FirefighterHardHat_v01.svg
   icon:
   rules:
-    - rule: no-big-hair
+    - rule: no-hair
 
 
 - name: Wizard Hat
@@ -28,18 +35,32 @@
   rules:
     - rule: no-big-hair
 
+- name:
+  image: 09_HeadGear_BunnySuit_v01.svg
+  icon:
+  rules:
+    - rule: hide-ears
+    - rule: no-hair
+
+- name:
+  image: 11_HeadGear_ArmorHelmet_v01.svg
+  icon:
+  rules:
+    - rule: no-hair
+
+
 - name: Turban
   image: 12_HeadGear_Turban_v1.svg
   icon:
   rules:
-    - rule: no-big-hair
+    - rule: no-hair
 
 
 - name: Head Wrap
   image: 14_HeadGear_HeadWrap_v1.svg
   icon:
   rules:
-    - rule:
+    - rule: no-hair
 
 - name:  Bandana
   image: 15_HeadGear_Bandana_v1.svg
@@ -95,6 +116,7 @@
     - rule: hide-ears
     - rule: no-big-hair
 
+
 - name: Bow
   image: 23_HeadGear_Bow_v1.svg
   icon:
@@ -107,6 +129,7 @@
   icon:
   rules:
     - rule:
+
 
 - name: Viking Helmet
   image: 25_HeadGear_VikingHelmet_v4.svg
@@ -121,3 +144,10 @@
   icon:
   rules:
     - rule:
+
+- name:
+  image: 27_HeadGear_ScubaHead_v01.svg
+  icon:
+  rules:
+    - rule: no-hair
+    - rule: hide-ears

@@ -108,7 +108,7 @@
 }
 
 @mixin p-sm {
-    font-size: 1.4rem;
+    font-size: 14px;
     line-height: 1.7124;
 }
 
@@ -132,4 +132,9 @@ p {
 
 .p-sm {
   @include p-sm;
+}
+
+
+.text-display {
+    font-family: $display;
 }

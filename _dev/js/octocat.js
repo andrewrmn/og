@@ -81,22 +81,6 @@ var andrewrossco = andrewrossco || {};
                 mainColor = this.getAttribute('data-color');
                 secondColor = this.getAttribute('data-second-color');
 
-                // var currentBodyColor = artboard.querySelectorAll('.current-body-color');
-                // for(var k = 0; k < currentBodyColor.length; k++) {
-                //     var paths = currentBodyColor[k];
-                //     paths.setAttribute('fill', bgColor);
-                // }
-
-
-
-                // secondColor = this.getAttribute('data-second-color');
-                // secondaryBodyColor = artboard.querySelectorAll('.secondary-body-fill');
-                //
-                // for(var k = 0; k < secondaryBodyColor.length; k++) {
-                //     var paths = secondaryBodyColor[k];
-                //     paths.setAttribute('fill', secondColor);
-                // }
-
                 octocat.setAttribute('body-color', mainColor);
                 octocat.setAttribute('body-color-secondary', secondColor);
                 colorCheck();
@@ -215,52 +199,57 @@ var andrewrossco = andrewrossco || {};
                     currActive = currCatCP.querySelectorAll('.object-preview');
 
 
-                //Check if item is Active
-                if( this.classList.contains('is-active') ){
-                    var removeBtn = currCatCP.querySelector('.remove-category[data-category=' + cat + ']');
-                    removeBtn.click();
-                    console.log('hit');
-                    return;
+                if(cat == 'misc') {
+                    var elClass = this.getAttribute('id');
+
+                    if( this.classList.contains('is-active') ){
+                        artboard.querySelector('.' + elClass).remove();
+                        cp.querySelector('#' + elClass).classList.remove('is-active');
+                        return;
+                    }
+                } else {
+
+                    //Check if item is Active
+                    if( this.classList.contains('is-active') ){
+                        var removeBtn = currCatCP.querySelector('.remove-category[data-category=' + cat + ']');
+                        removeBtn.click();
+                        return;
+                    }
+
+                    // Assign Active Class in Control Panel
+                    for(var t = 0; t < currActive.length; t++) {
+                       currActive[t].classList.remove('is-active');
+                    }
+
+                    // Empty object holder incase anything is left behind
+                    var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
+                    var ohKids = objectHolder.children;
+
+                    for(var i = 0; i < objectHolder.length; i++) {
+                        var h = objectHolder[i];
+
+                        if ( h.classList.contains('hair-with-headgear') ) {
+                            h.classList.remove('hair-with-headgear');
+                            expandHeadgear--;
+                        }
+                        if ( h.classList.contains('hide-ears') ) {
+                            h.classList.remove('hide-ears');
+                            hideEars--;
+                        }
+                        if ( h.classList.contains('hide-headgear') ) {
+                            h.classList.remove('hide-headgear');
+                            hideHeadgear--;
+                        }
+                        if ( h.classList.contains('hide-hand') ) {
+                            h.classList.remove('hide-hand');
+                            hideHand--;
+                        }
+                        h.innerHTML = '';
+                    }
+
                 }
-
-
-                // Assign Active Class in Control Panel
-                for(var t = 0; t < currActive.length; t++) {
-                   currActive[t].classList.remove('is-active');
-                }
-
 
                 this.classList.add('is-active');
-
-
-
-                // Empty object holder incase anything is left behind
-                var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
-                var ohKids = objectHolder.children;
-
-                for(var i = 0; i < objectHolder.length; i++) {
-                    var h = objectHolder[i];
-
-                    if ( h.classList.contains('hair-with-headgear') ) {
-                        h.classList.remove('hair-with-headgear');
-                        expandHeadgear--;
-                    }
-                    if ( h.classList.contains('hide-ears') ) {
-                        h.classList.remove('hide-ears');
-                        hideEars--;
-                    }
-                    if ( h.classList.contains('hide-headgear') ) {
-                        h.classList.remove('hide-headgear');
-                        hideHeadgear--;
-                    }
-                    if ( h.classList.contains('hide-hand') ) {
-                        h.classList.remove('hide-hand');
-                        hideHand--;
-                    }
-                    h.innerHTML = '';
-                }
-
-
 
                 ////////// Add the element to artboard
                 //Get asset objects
@@ -279,22 +268,28 @@ var andrewrossco = andrewrossco || {};
                         expandHeadgear++;
                     }
 
-                    var hair = document.getElementById('hair-holder');
+                    if(cat == 'hair') {
+                        var hair = document.getElementById('hair-holder');
 
-                    if ( obj.classList.contains('big-hair') ) {
-                        hair.classList.add('big-hair');
-                    } else if ( obj.classList.contains('hair') ) {
-                        hair.classList.remove('big-hair');
-                    }
-
-                    if ( obj.classList.contains('no-big-hair') ) {
-                        holder.classList.add('no-big-hair');
-
-                        if ( hair.classList.contains('big-hair') ) {
-                            hair.classList.add('no-big-hair');
+                        if ( obj.classList.contains('big-hair') ) {
+                            hair.classList.add('big-hair');
+                        } else {
+                            hair.classList.remove('big-hair');
                         }
-                    } else {
-                        hair.classList.remove('no-big-hair');
+                    }
+                    if(cat == 'headgear') {
+                        var hair = document.getElementById('hair-holder');
+                        if ( obj.classList.contains('no-big-hair') ) {
+                            octocat.classList.add('no-big-hair');
+                        } else {
+                            octocat.classList.remove('no-big-hair');
+                        }
+
+                        if ( obj.classList.contains('no-hair') ) {
+                            octocat.classList.add('no-hair');
+                        } else {
+                            octocat.classList.remove('no-hair');
+                        }
                     }
 
                     if ( obj.classList.contains('hide-ears') ) {
@@ -317,7 +312,9 @@ var andrewrossco = andrewrossco || {};
 
                     for(var s = 0; s < svg.length; s++) {
                         var s = svg[s];
-
+                        if(cat == 'misc') {
+                            s.classList.add(elClass);
+                        }
                         // Clone Objects
                         var gClone = s.cloneNode(true);
                         holder.append(gClone);
@@ -378,6 +375,13 @@ var andrewrossco = andrewrossco || {};
                     if ( h.classList.contains('no-big-hair') ) {
                         document.getElementById('hair-holder').classList.remove('no-big-hair');
                         h.classList.remove('no-big-hair');
+                    }
+
+                    if(cat == 'headgear') {
+
+                        octocat.classList.remove('no-big-hair');
+                        octocat.classList.remove('no-hair');
+
                     }
 
                     if ( h.classList.contains('hide-ears') ) {
@@ -449,14 +453,17 @@ var andrewrossco = andrewrossco || {};
                 document.getElementById('hair-color-preview').classList.add('disabled');
             }
 
-            if( hh.classList.contains('big-hair') ) {
-
-            }
+            // if( octocat.classList.contains('no-big-hair') ) {
+            //     document.getElementById('hair-holder').classList.add('no-big-hair');
+            // } else {
+            //     document.getElementById('hair-holder').classList.remove('no-big-hair');
+            // }
 
 
 
             var fhh = document.getElementById('faceHair-holder');
-            if( fhh.childElementCount > 0) {
+            var fhbh = document.getElementById('faceHair-back-holder');
+            if( fhh.childElementCount > 0 || fhbh.childElementCount > 0 ) {
                 document.getElementById('face-hair-color-preview').classList.remove('disabled');
             } else {
                 document.getElementById('face-hair-color-preview').classList.add('disabled');
@@ -465,7 +472,6 @@ var andrewrossco = andrewrossco || {};
 
         var handCloned = false;
         var handClone = hand.innerHTML;
-        console.log('init = ' + handClone);
 
         function handCheck(count){
             var hand = document.getElementById('hand');
@@ -474,8 +480,7 @@ var andrewrossco = andrewrossco || {};
             if(count == 0) {
                 octocat.classList.remove('hide-hand');
                 hand.innerHTML = handClone;
-                console.log('put back');
-                 colorCheck();
+                colorCheck();
             } else {
                 octocat.classList.add('hide-hand');
                 hand.innerHTML = '';
@@ -614,84 +619,82 @@ var andrewrossco = andrewrossco || {};
         }
 
 
+
+
         // ---------------------------------------------------------------------
         //  Start Over
         // ---------------------------------------------------------------------
 
-        function reset() {
-            window.location.reload();
+
+
+        var reset = document.getElementById('start-over'),
+            icon = reset.querySelector('img'),
+            resetModal = document.getElementById('reset-modal'),
+            cookieInput = document.getElementById('reset-message');
+
+        //localStorage.removeItem('quickReset');
+
+        reset.onclick = function() {
+            if( localStorage.getItem('quickReset') ) {
+                window.location.reload();
+            } else {
+                resetModal.classList.add('is-active');
+                document.body.classList.add('modal-is-active');
+            }
         }
 
+        document.getElementById('reset').onclick = function(e) {
+            e.preventDefault();
 
-        //Cookie Code
-
-        // $(document).ready(function(){
-        //     var loaded = parseInt(localStorage.getItem('loaded'), 10),
-        //         loaded_numb = loaded?loaded+1:1;
-        //     localStorage.setItem('loaded', loaded_numb);
-        //
-        //     if( loaded_numb == 1 ) {
-        //         setTimeout(function(){
-        //             document.getElementById('newsletter-signup').classList.add('is-active');
-        //         }, 6000);
-        //     }
-        // });
-
-        document.getElementById('start-over').onclick = function() {
-            reset();
+            if( cookieInput.checked ) {
+                localStorage.setItem('quickReset', true);
+                window.location.reload();
+            } else {
+                window.location.reload();
+            }
         }
 
+        document.getElementById('close-reset-modal').onclick = function(e) {
+            e.preventDefault();
+            resetModal.classList.remove('is-active');
+            document.body.classList.remove('modal-is-active');
+        }
+
+        resetModal.querySelector('.screen').onclick = function() {
+            resetModal.classList.remove('is-active');
+            document.body.classList.remove('modal-is-active');
+        }
+
+        reset.addEventListener("mouseenter", function( event ) {
+            TweenMax.to(icon, 0.8, {rotation: -360, transformOrigin:"50% 50%", ease:  Power4.easeOut });
+        });
+
+        reset.addEventListener("mouseout", function( event ) {
+            TweenMax.to(icon, 0, {rotation: 0});
+        });
+
+
+
+        var finish = document.getElementById('save'),
+            fIcon = finish.querySelector('img');
+
+        finish.addEventListener("mouseenter", function( event ) {
+            TweenMax.to(fIcon, 0.8, {x: 4, ease:  Power4.easeOut });
+        });
+        finish.addEventListener("mouseout", function( event ) {
+            TweenMax.to(fIcon, 0.8, {x: 0, ease:  Power4.easeOut });
+        });
 
 
 
 
 
 
+        // ---------------------------------------------------------------------
+        //  UI
+        // ---------------------------------------------------------------------
 
-        // // ---------------------------------------------------------------------
-        // //  Save
-        // // ---------------------------------------------------------------------
-        //
-        // var save = document.getElementById('save');
-        // var hg = document.getElementById('octocat');
-        //
-        // // var ah = document.getElementById('asset-holders');
-        // // var ahClone = ah.cloneNode(true);
-        // //
-        // // var ah = document.getElementById('render');
-        // // render.append(ahClone);
-        //
-        // var options = {
-        //     allowTaint: true,
-        //     foreignObjectRendering: true,
-        //     imageTimeout: 0
-        // };
-        // save.onclick = function() {
-        //
-        //     var ah = document.getElementById('asset-holders');
-        //     var ahClone = ah.cloneNode(true);
-        //
-        //     var render = document.getElementById('render');
-        //     render.append(ahClone);
-        //
-        //     html2canvas(render, options).then(canvas => {
-        //         document.body.appendChild(canvas)
-        //     });
-        //
-        //     // html2canvas(document.getElementById('octocat'), {
-        //     //     onrendered: function(canvas) {
-        //     // 		var canvas1 = document.getElementById('myCanvas');
-        //     //         var ctx = canvas1.getContext('2d');
-        //     //         ctx.drawImage(canvas, 0, 0);
-        //     //     }
-        //     // });
-        //
-        //
-        //     // var c = document.getElementById("myCanvas");
-        //     // var ctx = c.getContext("2d");
-        //     // var img = document.getElementById("asset-holders");
-        //     // ctx.drawImage(img,10,10);
-        // }
+
 
     }
 }(andrewrossco));

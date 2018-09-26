@@ -22,7 +22,7 @@
 
 #object-list {
     width: 100%;
-    overflow: hidden;
+    overflow: scroll;
     position: relative;
     display: flex;
     align-items: flex-end;
@@ -40,9 +40,14 @@
     > * {
         display: flex;
         align-items: center;
-        overflow: auto;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        overflow-style: -ms-autohiding-scrollbar;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
         width: auto;
         padding: 12px 0;
+
 
         &:before,
         &:after {
@@ -106,7 +111,11 @@
 .category-objects-panel__inner {
     display: flex;
     align-items: center;
-    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
     width: auto;
     padding: 6px 36px;
 
@@ -154,9 +163,9 @@
 
 
 
-@-moz-document url-prefix() {
-    .color-panel__inner,
-    .category-objects-panel__inner {
-        overflow: hidden;
-    }
-}
+// @-moz-document url-prefix() {
+//     .color-panel__inner,
+//     .category-objects-panel__inner {
+//         overflow: hidden;
+//     }
+// }

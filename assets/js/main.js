@@ -192,6 +192,17 @@ function lines() {
         TweenMax.to(arrow, 3, { scale:scaleW, ease: Elastic.easeOut.config(1, 0.3) }).delay(2.8);
 
 
+        function resizeArrow() {
+            var scaleW = 1;
+
+            if( window.innerWidth < 600) {
+                scaleW = 2;
+            }
+            TweenMax.to(arrow, 1, { scale:scaleW, ease: Elastic.easeOut.config(1, 0.3) });
+        }
+
+        window.addEventListener('resize', resizeArrow);
+
     }
 
 
