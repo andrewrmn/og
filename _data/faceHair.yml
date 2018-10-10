@@ -34,12 +34,14 @@
 - name: Goatee
   image: 06_FacialHair_Goatee_v01.svg
   icon: facialhair-goatee.svg
+  position: back
   rules:
     - rule:
 
 - name: Soul Patch
   image: 07_FacialHair_SoulPatch_v01.svg
   icon: facialhair-soulpatch.svg
+  position: back
   rules:
     - rule:
 

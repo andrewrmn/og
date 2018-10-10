@@ -27,16 +27,16 @@
         left: 0;
     }
 
-    #headgear-holder {
-        transform: scale(1);
-        transform-origin: center;
-    }
+    // #headgear-holder {
+    //     transform: scale(1);
+    //     transform-origin: center;
+    // }
 
-
-    &.enlarge-headgear #headgear-holder {
-        transform: scale(1.07);
-        transform-origin: 45% 25.7%;
-    }
+    //
+    // &.enlarge-headgear #headgear-holder {
+    //     transform: scale(1.07);
+    //     transform-origin: 45% 25.7%;
+    // }
 
     g.is-hidden {
         display: none;
@@ -54,11 +54,38 @@
         }
     }
 
+    &.hide-whiskers {
+        #whiskers {
+            display: none;
+        }
+    }
+
     &.no-big-hair .big-hair  {
         display: none;
     }
 
+    &.no-medium-hair .medium-hair  {
+        display: none;
+    }
+
     &.no-hair #hair-holder  {
+        display: none;
+    }
+
+    // &.no-back-facialhair #faceHair-back-holder {
+    //     display: none;
+    // }
+
+    &.no-big-collars .big-collar {
+        display: none;
+    }
+
+
+    &.no-pants [data-cat="bottoms"] {
+        display: none;
+    }
+
+    &.no-xl-pants .xl-pants {
         display: none;
     }
 

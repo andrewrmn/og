@@ -188,7 +188,7 @@ function lines() {
             currentScroll = panel.scrollLeft;
 
         panel.onmousedown = function(event) {
-            console.log('hre');
+
             //console.log('Mouse down on element');
             var par = this;
             par.classList.add('dragging');
@@ -200,16 +200,20 @@ function lines() {
                 amountMoved = -(event.clientX - mouseStart);
                 scrollAmount = (currentScrollPos + amountMoved);
 
-                if( scrollAmount >= par.scrollWidth ) {
-                    scrollAmount = par.scrollWidth;
+                finalScroll = scrollAmount * 1;
+                timing = 0.6;
+
+                if( finalScroll >= (par.scrollWidth - window.innerWidth) ) {
+                    finalScroll = par.scrollWidth - window.innerWidth;
+                    timing = 0;
                 }
 
-                TweenMax.to(par, 1, {scrollLeft: scrollAmount, ease: Circ.ease });
+                TweenMax.to(par, timing, {scrollLeft: finalScroll, ease: Circ.ease });
+
 
             }
 
             panel.onmouseout = function(event) {
-                console.log('hit');
                 document.onmousemove = '';
                 this.classList.remove('moving');
                 this.classList.remove('dragging');

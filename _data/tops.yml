@@ -20,9 +20,9 @@
 
 - name:
   image: 04_Top_Ski_Jacket_v01.svg
-  icon:
+  icon: tops-ski-jacket.svg
   rules:
-    - rule:
+    - rule: big-collar
 
 
 - name:
@@ -34,7 +34,7 @@
 
 - name:
   image: 06_Top_PJs_Shirt_v01.svg
-  icon:
+  icon: tops-pjs-shirt.svg
   rules:
     - rule:
 
@@ -47,34 +47,41 @@
 
 - name:
   image: 08_Top_Firefighter_Jacket_v01.svg
-  icon:
+  icon: tops-firefighter-jacket.svg
   rules:
-    - rule:
+    - rule: big-collar
 
 - name:
   image: 09_Top_Wizard_Robe_v01.svg
-  icon:
+  icon: tops-wizard-robe.svg
   rules:
     - rule:
 
 
 - name:
   image: 11_Top_Scuba_Wetsuit_v01.svg
-  icon:
+  icon: tops-scuba-wetsuit.svg
   rules:
     - rule:
 
 - name:
+  image: 12_Top_Dancer_Tights.svg
+  icon: tops-dancertights.svg
+  rules:
+    - rule:
+
+
+- name:
   image: 13_Top_BunnySuit_v01.svg
-  icon:
+  icon: tops-bunny-suit.svg
   rules:
     - rule:
 
 - name:
   image: 14_Top_ArmorSuit_v01.svg
-  icon:
+  icon: tops-armorsuit.svg
   rules:
-    - rule:
+    - rule: 
 
 
 - name:
@@ -110,7 +117,7 @@
 
 - name:
   image: 20_Top_GitHubPride_Shirts_v01.svg
-  icon:
+  icon: tops-githubpride-shirts.svg
   rules:
     - rule:
 
@@ -124,7 +131,7 @@
   image: 22_Top_Lab_Coat.svg
   icon: tops-labcoat.svg
   rules:
-    - rule:
+    - rule: no-xl-pants
 
 - name:
   image: 23_Top_Leather_Jacket.svg
@@ -148,13 +155,13 @@
   image: 26_Top_Midi_Dress.svg
   icon: tops-mididress.svg
   rules:
-    - rule:
+    - rule: no-pants
 
 - name:
   image: 27_Top_Maxi_Dress.svg
   icon: tops-maxidress.svg
   rules:
-    - rule:
+    - rule: no-pants
 
 - name:
   image: 28_Top_Hawaiian_Shirt.svg

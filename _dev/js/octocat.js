@@ -18,6 +18,12 @@ var andrewrossco = andrewrossco || {};
 
             artboard.style.height = ah + 'px';
             generator.style.height = gh + 'px';
+
+            if( !generator.classList.contains('is-ready') ) {
+                setTimeout(function(){
+                    generator.classList.add('is-ready');
+                }, 200);
+            }
         }
 
         setHeights();
@@ -56,7 +62,6 @@ var andrewrossco = andrewrossco || {};
                     target = this.getAttribute('data-target');
                     target = document.getElementById(target);
                     target.classList.add('is-active');
-                    //console.log('category active');
 
                     checkPanelWidth();
                 }
@@ -78,14 +83,32 @@ var andrewrossco = andrewrossco || {};
             el.style.color = bgColor;
 
             el.onclick = function() {
+                for(var cs = 0; cs < bodyColorSwatches.length; cs++) {
+                    bodyColorSwatches[cs].parentNode.classList.remove('is-active');
+                }
+                this.parentNode.classList.add('is-active');
+
                 mainColor = this.getAttribute('data-color');
                 secondColor = this.getAttribute('data-second-color');
+                thirdColor = this.getAttribute('data-third-color');
 
                 octocat.setAttribute('body-color', mainColor);
                 octocat.setAttribute('body-color-secondary', secondColor);
+                octocat.setAttribute('body-color-teriary', thirdColor);
                 colorCheck();
             }
         }
+        // Set prop color classes
+        var propObjects = document.querySelectorAll('.object.props [fill="#282828"], .object.headgear [fill="#282828"]');
+        for(var i = 0; i < propObjects.length; i++) {
+            propObjects[i].classList.add('main-body-fill');
+        }
+        // Set prop color classes
+        propSecondObjects = document.querySelectorAll('.object.props [fill="#494949"]');
+        for(var i = 0; i < propSecondObjects.length; i++) {
+            propSecondObjects[i].classList.add('secondary-body-fill');
+        }
+
 
 
         ///////////////////////// Face Color /////////////////////////
@@ -100,14 +123,20 @@ var andrewrossco = andrewrossco || {};
             el.style.color = bgColor;
 
             el.onclick = function() {
+                for(var cs = 0; cs < colorSwatches.length; cs++) {
+                    colorSwatches[cs].parentNode.classList.remove('is-active');
+                }
+                this.parentNode.classList.add('is-active');
+
                 bgColor = this.getAttribute('data-color');
+                accentColor = this.getAttribute('data-color-nose');
+                octocat.setAttribute('body-color-accent', accentColor);
 
                 var currentBodyColor = artboard.querySelectorAll('.face-fill-color');
                 for(var k = 0; k < currentBodyColor.length; k++) {
-                    var paths = currentBodyColor[k];
-                    paths.setAttribute('fill', bgColor);
+                    currentBodyColor[k].setAttribute('fill', bgColor);
                 }
-
+                colorCheck();
             }
         }
 
@@ -125,15 +154,29 @@ var andrewrossco = andrewrossco || {};
             el.style.color = bgColor;
 
             el.onclick = function() {
-                bgColor = this.getAttribute('data-color');
-                var currentEyeColor = artboard.querySelectorAll('.eye-fill-color');
-
-                for(var k = 0; k < currentEyeColor.length; k++) {
-                    var paths = currentEyeColor[k];
-                    paths.setAttribute('fill', bgColor);
+                for(var cs = 0; cs < eyeColorSwatches.length; cs++) {
+                    eyeColorSwatches[cs].parentNode.classList.remove('is-active');
                 }
+                this.parentNode.classList.add('is-active');
+                bgColor = this.getAttribute('data-color');
+                octocat.setAttribute('eye-color', bgColor);
+
+                colorCheck();
             }
         }
+
+        // Eye Accent Color
+        var eyeObjects = document.querySelectorAll('.object.eyes [fill="#A34F3E"]');
+        for(var i = 0; i < eyeObjects.length; i++) {
+            eyeObjects[i].classList.add('eye-fill-color');
+        }
+
+        // Eye Accent Color
+        var eyeAccentObjects = document.querySelectorAll('.object.eyes [fill="#8D5548"], .object.eyes [fill="#8d5548"]');
+        for(var i = 0; i < eyeAccentObjects.length; i++) {
+            eyeAccentObjects[i].classList.add('face-accent-fill-color');
+        }
+
 
 
         ///////////////////////// Hair Color /////////////////////////
@@ -143,18 +186,22 @@ var andrewrossco = andrewrossco || {};
         for(var i = 0; i < hairColorSwatches.length; i++) {
             var el = hairColorSwatches[i];
             bgColor = el.getAttribute('data-color');
-
-            //el.style.background = bgColor;
             el.style.color = bgColor;
 
             el.onclick = function() {
-                bgColor = this.getAttribute('data-color');
-                var currentHair = artboard.querySelectorAll('[data-cat="hair"] > g > path');
-                for(var k = 0; k < currentHair.length; k++) {
-                    var paths = currentHair[k];
-                    paths.setAttribute('fill', bgColor);
+                for(var cs = 0; cs < hairColorSwatches.length; cs++) {
+                    hairColorSwatches[cs].parentNode.classList.remove('is-active');
                 }
+                this.parentNode.classList.add('is-active');
+                bgColor = this.getAttribute('data-color');
+                octocat.setAttribute('hair-color', bgColor);
+                colorCheck();
             }
+        }
+        // Set hair color classes
+        var hairObjects = document.querySelectorAll('.object.hair [fill="#9F592A"]');
+        for(var i = 0; i < hairObjects.length; i++) {
+            hairObjects[i].classList.add('hair-color');
         }
 
         ///////////////////////// Facial Hair Color /////////////////////////
@@ -164,18 +211,22 @@ var andrewrossco = andrewrossco || {};
         for(var i = 0; i < facehairColorSwatches.length; i++) {
             var el = facehairColorSwatches[i];
             bgColor = el.getAttribute('data-color');
-
-            //el.style.background = bgColor;
             el.style.color = bgColor;
 
             el.onclick = function() {
-                bgColor = this.getAttribute('data-color');
-                var currentHair = artboard.querySelectorAll('[data-cat="faceHair"] > g > path');
-                for(var k = 0; k < currentHair.length; k++) {
-                    var paths = currentHair[k];
-                    paths.setAttribute('fill', bgColor);
+                for(var cs = 0; cs < facehairColorSwatches.length; cs++) {
+                    facehairColorSwatches[cs].parentNode.classList.remove('is-active');
                 }
+                this.parentNode.classList.add('is-active');
+                bgColor = this.getAttribute('data-color');
+                octocat.setAttribute('face-hair-color', bgColor);
+                colorCheck();
             }
+        }
+        // Set hair color classes
+        var faceHairObjects = document.querySelectorAll('.object.faceHair [fill="#9F592A"]');
+        for(var i = 0; i < faceHairObjects.length; i++) {
+            faceHairObjects[i].classList.add('faceHair-color');
         }
 
 
@@ -212,7 +263,10 @@ var andrewrossco = andrewrossco || {};
                     //Check if item is Active
                     if( this.classList.contains('is-active') ){
                         var removeBtn = currCatCP.querySelector('.remove-category[data-category=' + cat + ']');
-                        removeBtn.click();
+                        if(removeBtn){
+                            removeBtn.click();
+                        }
+
                         return;
                     }
 
@@ -228,10 +282,10 @@ var andrewrossco = andrewrossco || {};
                     for(var i = 0; i < objectHolder.length; i++) {
                         var h = objectHolder[i];
 
-                        if ( h.classList.contains('hair-with-headgear') ) {
-                            h.classList.remove('hair-with-headgear');
-                            expandHeadgear--;
-                        }
+                        // if ( h.classList.contains('hair-with-headgear') ) {
+                        //     h.classList.remove('hair-with-headgear');
+                        //     expandHeadgear--;
+                        // }
                         if ( h.classList.contains('hide-ears') ) {
                             h.classList.remove('hide-ears');
                             hideEars--;
@@ -263,18 +317,23 @@ var andrewrossco = andrewrossco || {};
                     //console.log(holder);
                     holder = document.getElementById(holderCat);
 
-                    if ( obj.classList.contains('hair-with-headgear') ) {
-                        holder.classList.add('hair-with-headgear');
-                        expandHeadgear++;
-                    }
+                    // if ( obj.classList.contains('hair-with-headgear') ) {
+                    //     holder.classList.add('hair-with-headgear');
+                    //     expandHeadgear++;
+                    // }
 
                     if(cat == 'hair') {
                         var hair = document.getElementById('hair-holder');
-
                         if ( obj.classList.contains('big-hair') ) {
                             hair.classList.add('big-hair');
                         } else {
                             hair.classList.remove('big-hair');
+                        }
+
+                        if ( obj.classList.contains('medium-hair') ) {
+                            hair.classList.add('medium-hair');
+                        } else {
+                            hair.classList.remove('medium-hair');
                         }
                     }
                     if(cat == 'headgear') {
@@ -285,10 +344,74 @@ var andrewrossco = andrewrossco || {};
                             octocat.classList.remove('no-big-hair');
                         }
 
+
+                        if ( obj.classList.contains('no-medium-hair') ) {
+                            octocat.classList.add('no-medium-hair');
+                        } else {
+                            octocat.classList.remove('no-medium-hair');
+                        }
+
                         if ( obj.classList.contains('no-hair') ) {
                             octocat.classList.add('no-hair');
                         } else {
                             octocat.classList.remove('no-hair');
+                        }
+
+                        if ( obj.classList.contains('hide-whiskers') ) {
+                            octocat.classList.add('hide-whiskers');
+                        } else {
+                            octocat.classList.remove('hide-whiskers');
+                        }
+                    }
+
+                    if(cat == 'mouths') {
+                        if ( obj.classList.contains('no-back-facialhair') ) {
+                            octocat.classList.add('no-back-facialhair');
+                        } else {
+                            octocat.classList.remove('no-back-facialhair');
+                        }
+                    }
+
+                    if(cat == 'tops') {
+                        if ( obj.classList.contains('no-pants') ) {
+                            octocat.classList.add('no-pants');
+                            holder.classList.add('disable-pants');
+                            document.getElementById('bottoms-preview').classList.add('disabled');
+                        } else {
+                            octocat.classList.remove('no-pants');
+                            holder.classList.remove('disable-pants');
+                            document.getElementById('bottoms-preview').classList.remove('disabled');
+                        }
+
+                        if ( obj.classList.contains('no-xl-pants') ) {
+                            octocat.classList.add('no-xl-pants');
+                        } else {
+                            octocat.classList.remove('no-xl-pants');
+                        }
+
+                        if ( obj.classList.contains('big-collar') ) {
+                            holder.classList.add('big-collar');
+                        } else {
+                            holder.classList.remove('big-collar');
+                        }
+                    }
+
+                    if(cat == 'bottoms') {
+                        if ( obj.classList.contains('xl-pants') ) {
+                            holder.classList.add('xl-pants');
+                            console.log('hit');
+                        } else {
+                            holder.classList.remove('xl-pants');
+                        }
+                    }
+
+
+                    if(cat == 'headgear') {
+                        if ( obj.classList.contains('no-big-collars') ) {
+                            octocat.classList.add('no-big-collars');
+                            console.log('hit');
+                        } else {
+                            octocat.classList.remove('no-big-collars');
                         }
                     }
 
@@ -321,9 +444,6 @@ var andrewrossco = andrewrossco || {};
                     }
 
 
-                    //if ( obj.classList.contains('props') ) {
-                        colorCheck();
-                    // }
 
                 }
 
@@ -332,7 +452,7 @@ var andrewrossco = andrewrossco || {};
                 earCheck(hideEars);
                 hairCheck();
                 handCheck(hideHand);
-
+                colorCheck();
             }
         }
 
@@ -367,10 +487,10 @@ var andrewrossco = andrewrossco || {};
                 for(var i = 0; i < objectHolder.length; i++) {
                     var h = objectHolder[i];
 
-                    if ( h.classList.contains('hair-with-headgear') ) {
-                        h.classList.remove('hair-with-headgear');
-                        expandHeadgear--;
-                    }
+                    // if ( h.classList.contains('hair-with-headgear') ) {
+                    //     h.classList.remove('hair-with-headgear');
+                    //     expandHeadgear--;
+                    // }
 
                     if ( h.classList.contains('no-big-hair') ) {
                         document.getElementById('hair-holder').classList.remove('no-big-hair');
@@ -378,11 +498,23 @@ var andrewrossco = andrewrossco || {};
                     }
 
                     if(cat == 'headgear') {
-
+                        octocat.classList.remove('no-medium-hair');
                         octocat.classList.remove('no-big-hair');
                         octocat.classList.remove('no-hair');
-
+                        octocat.classList.remove('no-big-collars');
+                        octocat.classList.remove('hide-whiskers');
                     }
+
+                    if(cat == 'hair') {
+                        document.getElementById('hair-holder').classList = '';
+                    }
+
+                    if(cat == 'tops') {
+                        octocat.classList.remove('no-pants');
+                        document.getElementById('tops-holder').classList = '';
+                        //document.getElementById('bottoms-preview').classList.remove('disabled');
+                    }
+
 
                     if ( h.classList.contains('hide-ears') ) {
                         h.classList.remove('hide-ears');
@@ -418,11 +550,11 @@ var andrewrossco = andrewrossco || {};
         }
 
         function headgearCheck(count, hide){
-            if(count == 0) {
-                octocat.classList.remove('enlarge-headgear');
-            } else {
-                octocat.classList.add('enlarge-headgear');
-            }
+            // if(count == 0) {
+            //     octocat.classList.remove('enlarge-headgear');
+            // } else {
+            //     octocat.classList.add('enlarge-headgear');
+            // }
 
 
             if(hide == 0) {
@@ -463,11 +595,26 @@ var andrewrossco = andrewrossco || {};
 
             var fhh = document.getElementById('faceHair-holder');
             var fhbh = document.getElementById('faceHair-back-holder');
+            var hideHairColor = true;
             if( fhh.childElementCount > 0 || fhbh.childElementCount > 0 ) {
                 document.getElementById('face-hair-color-preview').classList.remove('disabled');
+                hideHairColor = false;
             } else {
                 document.getElementById('face-hair-color-preview').classList.add('disabled');
+                hideHairColor = true;
             }
+
+
+            if ( octocat.classList.contains('no-hair') ) {
+                //document.getElementById('hair-preview').classList.add('disabled');
+                //document.getElementById('hair-color-preview').classList.add('disabled');
+            } else {
+                //document.getElementById('hair-preview').classList.remove('disabled');
+                // if(hideHairColor == false) {
+                //     document.getElementById('face-hair-color-preview').classList.remove('disabled');
+                // }
+            }
+
         }
 
         var handCloned = false;
@@ -500,6 +647,41 @@ var andrewrossco = andrewrossco || {};
             for(var ai = 0; ai < sbc.length; ai++) {
                 sbc[ai].setAttribute('fill', cbcs);
             }
+
+
+            // Teriary Body Color (Suction Cups)
+            var cbct = octocat.getAttribute('body-color-teriary');
+            var tbc = document.querySelectorAll('.teriary-body-fill');
+            for(var ai = 0; ai < tbc.length; ai++) {
+                tbc[ai].setAttribute('fill', cbct);
+            }
+
+            // Accent Colors
+            var cac = artboard.querySelectorAll('.face-accent-fill-color');
+            var ac = octocat.getAttribute('body-color-accent');
+            for(var k = 0; k < cac.length; k++) {
+                cac[k].setAttribute('fill', ac);
+            }
+
+            // Eye Color
+            var cec = artboard.querySelectorAll('.eye-fill-color');
+            var ec = octocat.getAttribute('eye-color');
+            for(var k = 0; k < cec.length; k++) {
+                cec[k].setAttribute('fill', ec);
+            }
+
+            // Hair Color
+            var hc = octocat.getAttribute('hair-color');
+            var hcc = document.querySelectorAll('.hair-color');
+            for(var ai = 0; ai < hcc.length; ai++) {
+                hcc[ai].setAttribute('fill', hc);
+            }
+
+            // Face Hair Color
+            var fhc = document.querySelectorAll('.faceHair-color');
+            for(var ai = 0; ai < fhc.length; ai++) {
+                fhc[ai].setAttribute('fill', octocat.getAttribute('face-hair-color'));
+            }
         }
 
 
@@ -509,7 +691,7 @@ var andrewrossco = andrewrossco || {};
         //  Panel Movement Controller
         // ---------------------------------------------------------------------
 
-        var catPanel = document.querySelectorAll('.category-objects-panel__inner, .color-panel__inner'),
+        var catPanel = document.querySelectorAll('.category-objects-panel__inner'),
             scrollDist = 350;
 
         function checkPanelWidth() {

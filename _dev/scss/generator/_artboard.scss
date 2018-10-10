@@ -12,6 +12,10 @@
     opacity: 0;
     transition: opacity 0.5s ease-out;
 
+    &.is-ready {
+        opacity: 1;
+    }
+
     #artboard {
         position: relative;
         z-index: 4;
@@ -43,9 +47,6 @@
 
 }
 
-body.page-loaded #octocat-generator {
-    opacity: 1;
-}
 
 // ----------------------------------------
 //

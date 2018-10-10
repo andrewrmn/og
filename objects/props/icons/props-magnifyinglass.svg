@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="49px" height="48px" viewBox="0 0 49 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>props-magnifyingGlass</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="SVGs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Slices" transform="translate(-649.000000, -354.000000)"></g>
+        <g id="Magnafying-Glass" transform="translate(23.637603, 24.500000) rotate(45.000000) translate(-23.637603, -24.500000) translate(16.637603, 10.000000)">
+            <rect id="Rectangle-79" fill="#DDDDDD" transform="translate(6.836569, 14.848364) rotate(-360.000000) translate(-6.836569, -14.848364) " x="5.43696783" y="13.9152959" width="2.79920298" height="1.86613532"></rect>
+            <rect id="Rectangle-79-Copy" fill="#134032" transform="translate(6.836569, 22.253449) rotate(-360.000000) translate(-6.836569, -22.253449) " x="5.10232594" y="15.5241314" width="3.46848675" height="13.4586354"></rect>
+            <circle id="Oval-23" stroke="#28B292" fill="#78F5D8" fill-rule="nonzero" transform="translate(6.724381, 7.190915) rotate(-360.000000) translate(-6.724381, -7.190915) " cx="6.72438101" cy="7.19091484" r="6.72438101"></circle>
+            <g id="Group-131" transform="translate(7.464541, 2.799203)" fill="#FFFFFF">
+                <circle id="Oval-74" transform="translate(1.506340, 1.465333) rotate(-360.000000) translate(-1.506340, -1.465333) " cx="1.5063402" cy="1.46533329" r="1.34003867"></circle>
+                <circle id="Oval-74" transform="translate(2.386793, 3.838251) rotate(-360.000000) translate(-2.386793, -3.838251) " cx="2.38679293" cy="3.83825106" r="1"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

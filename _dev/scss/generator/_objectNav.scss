@@ -30,6 +30,20 @@
 
     user-select: none;
 
+    #js-draggable:hover {
+        cursor: grab;
+    }
+
+    #js-draggable.dragging {
+        //background: red;
+        cursor: grabbing;
+
+        // * {
+        //     user-select: none;
+        //     pointer-events: none;
+        // }
+    }
+
     ::-webkit-scrollbar {
         display: none;
     }

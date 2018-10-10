@@ -12,7 +12,7 @@
             <div class="object-preview" data-category="props">
                 <img class="preview" src="/objects/props/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object props{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="props-holder">
+                <div class="object props{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="props{% if item.position %}-{{ item.position }}{% endif %}-holder">
                     {% include_relative objects/props/{{ item.image }} %}
                 </div>
             </div>

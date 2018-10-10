@@ -195,6 +195,36 @@ $object-preview-size: 82px;
 // Color Swatches
 // ----------------------------------------
 
+.color-swatch-wrap {
+    //padding: 6px 4px 10px;
+    border-radius: 4px;
+    margin: 0 2px;
+    transition: background $trans;
+
+
+    // @include start-at($small) {
+    //     margin: 0 2px;
+    // }
+    //
+    // @include start-at($medium) {
+    //     margin: 0 6px;
+    // }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    min-width: 64px;
+    height: 64px;
+    margin: 0;
+
+
+    &.is-active {
+        background: $off-white;
+    }
+}
+
 
 $swatch-size: 44px;
 .color-swatch {
@@ -211,6 +241,8 @@ $swatch-size: 44px;
     @include start-at($large) {
         margin: 0 6px;
     }
+
+
 
     span,
     &:before,

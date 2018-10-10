@@ -6,12 +6,15 @@ if( localStorage.getItem('newsletterShow') ) {
     var page = document.getElementById('page').innerHTML;
     page.innerHTML = '';
 
-    function passWord() {
+    document.getElementById("password-form").addEventListener("submit", function(e){
+        e.preventDefault();
+        alert('here');
         var pass = document.getElementById('password').value;
-        if ( pass.toLowerCase() == "letmein" ) {
+        if ( pass.toLowerCase() == "monalisa" ) {
             page.innerHTML = page;
             pw.remove();
             localStorage.setItem('newsletterShow', true);
         }
-    }
+    });
+
 }

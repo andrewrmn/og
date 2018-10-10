@@ -138,3 +138,36 @@ p {
 .text-display {
     font-family: $display;
 }
+
+
+.text-content {
+    > * {
+        margin-bottom: 16px;
+    }
+}
+
+
+.long-form {
+    p {
+        margin-bottom: 16px;
+        font-size: 16px;
+    }
+
+    li {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    ul {
+        list-style: initial;
+        padding-left: 48px;
+        margin: 24px 0;
+    }
+
+    ol {
+        list-style: decimal;
+        padding-left: 48px;
+        margin: 24px 0;
+    }
+
+}

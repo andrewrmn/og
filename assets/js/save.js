@@ -14,11 +14,30 @@
                 if(octocat.querySelector('g.big-hair')){
                     octocat.querySelector('g.big-hair').innerHTML = '';
                 }
-
+            }
+            if(octocat.classList.contains('no-medium-hair')) {
+                if(octocat.querySelector('g.medium-hair')){
+                    octocat.querySelector('g.medium-hair').innerHTML = '';
+                }
             }
             if(octocat.classList.contains('no-hair')) {
                 document.getElementById('hair-back-holder').innerHTML = '';
                 document.getElementById('hair-holder').innerHTML = '';
+            }
+            if(octocat.classList.contains('no-back-facialhair')) {
+                document.getElementById('faceHair-back-holder').innerHTML = '';
+            }
+            if(octocat.classList.contains('no-pants')) {
+                document.getElementById('bottoms-holder').innerHTML = '';
+                document.getElementById('bottoms-front-holder').innerHTML = '';
+            }
+
+            if(octocat.classList.contains('no-xl-pants')) {
+                octocat.querySelector('g.xl-pants').innerHTML = '';
+            }
+
+            if(octocat.classList.contains('no-big-collars')) {
+                octocat.querySelector('g.big-collar').innerHTML = '';
             }
 
             exportModal.classList.add('is-active');
@@ -71,7 +90,7 @@
             e.preventDefault();
             exportModal.classList.add('posting');
 
-            TweenMax.to(svgMaskLoad, 3, { scaleY: 0.3, transformOrigin:"top center",ease: Power0.easeInOut }).delay(.4);
+            TweenMax.to(svgMaskLoad, 3, { scaleY: 0.3, transformOrigin:"top center",ease: Power4.easeOut }).delay(.4);
 
             var form = document.getElementById("post-to-twitter");
 
@@ -97,6 +116,7 @@
                     setTimeout(function(){
                         exportModal.classList.remove('posting');
                         exportModal.classList.add('completed');
+                        TweenMax.to(svgMaskLoad, 1, { scaleY: 1}).delay(1);
                     }, 4300);
                     console.log("Now continue the process");
                 } else {
@@ -141,7 +161,7 @@
                     // document.getElementById('octocat-name-modal').value = filename;
 
                     sourceImage.onload = function(){
-                        ctx.fillStyle = "#fff";
+                        ctx.fillStyle = "#f6f8fa";
                         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                         ctx.drawImage(sourceImage,0,0,2000,2000);

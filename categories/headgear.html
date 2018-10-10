@@ -10,11 +10,19 @@
             {% for item in site.data.headgear %}
 
             <div class="object-preview" data-category="headgear">
-                <img class="preview" src="/categories/icons/category-headgear.svg" alt="headgear" />
+                <img class="preview" src="/objects/headgear/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object headgear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="headgear-holder">
+                <div class="object headgear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="headgear{% if item.position %}-{{ item.position }}{% endif %}-holder">
                     {% include_relative objects/headgear/{{ item.image }} %}
                 </div>
+
+                {% if item.moreObjects %}
+                {% for object in item.moreObjects %}
+                <div class="object headgear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="headgear{% if object.position %}-{{ object.position }}{% endif %}-holder">
+                    {% include_relative objects/headgear/{{ object.object }} %}
+                </div>
+                {% endfor %}
+                {% endif %}
             </div>
 
             {% endfor %}

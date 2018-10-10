@@ -30,13 +30,13 @@
 
 - name: Snowboard
   image: 05_Props_Snowboard_v01.svg
-  icon:
+  icon: props-snowboard.svg
   rules:
     - rule:
 
 - name: Newspaper
   image: 06_Props_Newspaper_v01.svg
-  icon:
+  icon: props-newspaper.svg
   rules:
     - rule: hide-hand
 
@@ -56,13 +56,13 @@
 
 - name: Treasure
   image: 13_Props_Treasure_v01.svg
-  icon:
+  icon: props-treasure.svg
   rules:
     - rule: hide-hand
 
 - name: Sword
   image: 14_Props_Sword_v01.svg
-  icon:
+  icon: props-sword.svg
   rules:
     - rule: hide-hand
 
@@ -104,62 +104,62 @@
 
 - name: Prosthetic Hand
   image: 21_Props_ProstheticHand_v01.svg
-  icon:
+  icon: props-prosthetichand.svg
   rules:
     - rule: hide-hand
 
 
 - name: Books
   image: 22_Props_Books_v01.svg
-  icon:
+  icon: props-books.svg
   rules:
     - rule:
 
 
 - name: Skateboard
   image: 23_Props_Skateboard_v01.svg
-  icon:
+  icon: props-skateboard.svg
   rules:
     - rule: hide-hand
 
 
 - name: Soccer Ball
   image: 24_Props_SoccerBall_v01.svg
-  icon:
+  icon: props-soccerball.svg
   rules:
     - rule: hide-hand
 
 
 - name: Magnifying Glass
   image: 25_Props_MagnifyingGlass_v01.svg
-  icon:
+  icon: props-magnifyinglass.svg
   rules:
     - rule: hide-hand
 
 
 - name: Beachball
   image: 26_Props_Beachball_v01.svg
-  icon:
+  icon: props-beachball.svg
   rules:
     - rule: hide-hand
 
 
 - name: Ship It Squirrel
   image: 27_Props_ShipItSquirrel_v01.svg
-  icon:
+  icon: props-shipitsquirrel.svg
   rules:
     - rule:
 
 
 - name: Guitar
   image: 29_Props_Guitar_v01.svg
-  icon:
+  icon: props-guitar.svg
   rules:
     - rule: hide-hand
 
 
 - name: Boba Cup
   image: 30_Props_BobaCup_v01.svg
-  icon:
+  icon: props-bobacup.svg
   rules:
     - rule: hide-hand

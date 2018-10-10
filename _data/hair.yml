@@ -4,7 +4,7 @@
   image: 01_Hair_Mohawk_v01.svg
   icon: hair-mohawk.svg
   rules:
-    - rule: big-hair
+    - rule: medium-hair
 
 
 - name: Afro
@@ -18,15 +18,15 @@
   image: 03_Hair_Flattop_v01.svg
   icon: hair-flattop.svg
   rules:
-    - rule: big-hair
-    - rule: hair-with-headgear
+    - rule: medium-hair
+    # - rule: hair-with-headgear
 
 
 - name: Short dreadlocks
   image: 04_Hair_DreadlocksShort_v01.svg
   icon: hair-dreadlocksshort.svg
   rules:
-    - rule: big-hair
+    - rule: medium-hair
 
 - name: Medium dreadlocks
   image: 05_Hair_DreadlocksMedium_v01.svg
@@ -40,7 +40,7 @@
   icon: hair-undercut.svg
   rules:
     - rule: big-hair
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 
 - name: Bun
@@ -54,90 +54,91 @@
   image: 08_Hair_Pompadour_v01.svg
   icon: hair-pompadour.svg
   rules:
-    - rule: big-hair
-    - rule: hair-with-headgear
+    - rule: medium-hair
+    # - rule: hair-with-headgear
 
 
 - name: Mullet
   image: 09_Hair_Mullet_v01.svg
   icon: hair-mullet.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 - name: Pixie
   image: 10_Hair_Pixie_v01.svg
   icon: hair-pixie.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 - name: Bob
   image: 11_Hair_Bob_v01.svg
   icon: hair-bob.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 
 - name: Rainbow Streak
   image: 12_Hair_RainbowStreak_v01.svg
   icon: hair-rainbowstreak.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
+    - rule: medium-hair
 
 
 - name: Dip dyed
   image: 13_Hair_DipDyed_v01.svg
   icon: hair-dipdyed.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 - name: Pigtails
   image: 14_Hair_Pigtails_v01.svg
   icon: hair-pigtails.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 
 - name: Milkmaid Braids
   image: 15_Hair_MilkmaidBraids_v01.svg
   icon: hair-milkmaidbraids.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 
 - name: Front Bangs
   image: 16_Hair_FrontBangs_v01.svg
   icon: hair-frontbangs.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 
 - name: Shaved
   image: 17_Hair_Shaved_v01.svg
   icon: hair-shaved.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 
 - name: Curly Short
   image: 18_Hair_CurlyShort_v01.svg
   icon: hair-curlyshort.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 
 - name: Soft Waves Short
   image: 19_Hair_SoftWavesShort_v01.svg
   icon: hair-softwavesshort.svg
   rules:
-    - rule: big-hair
-    - rule: hair-with-headgear
+    - rule: medium-hair
+    # - rule: hair-with-headgear
 
 
 - name: Soft Waves Long
   image: 20_Hair_SoftWavesLong_v02.svg
   icon: hair-softwaveslong.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 
 - name: Ponytail
@@ -150,22 +151,22 @@
   image: 22_Hair_SidePartBangsStraightMed_v01.svg
   icon: hair-sidepartsbangsstraightmed.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 - name: Side Part Bangs Wavy Medium
   image: 23_Hair_SidePartBangsWavytMed_v01.svg
   icon: hair-sidepartswavymed.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 - name: Side Part Bangs Curly Medium
   image: 24_Hair_SidePartBangsCurlyMed_v01.svg
   icon: hair-sidepartbangcurlymed.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear
 
 - name: Ponytail Low
   image: 25_Hair_PonytailLow_v01.svg
-  icon: hair-ponytail.svg
+  icon: hair-ponytaillow.svg
   rules:
-    - rule: hair-with-headgear
+    # - rule: hair-with-headgear

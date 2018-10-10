@@ -1,0 +1,14 @@
+<div class="category-panel" id="cp-eyeColor">
+    <div class="category-objects-panel" id="eye-color">
+        <div class="category-objects-panel__inner">
+
+            {% for item in site.data.eyeColor %}
+            <div class="color-swatch-wrap{% if item.isActive %} is-active{% endif %}">
+                <span class="color-swatch" data-color="#{{ item.color }}"><span></span></span>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% include arrows.html %}
+    </div>
+</div>

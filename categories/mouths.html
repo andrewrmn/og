@@ -3,16 +3,14 @@
     <div class="category-objects-panel">
         <div class="category-objects-panel__inner">
 
-            <div class="remove-category" data-category="mouths" id="remove-mouths">
-                <p class="sr-only">Remove object</p>
-            </div>
+
 
             {% for item in site.data.mouths %}
 
-            <div class="object-preview" data-category="mouths">
+            <div class="object-preview{% if item.isActive %} is-active{% endif %}" data-category="mouths">
                 <img class="preview" src="/objects/mouths/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object mouths{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="mouths-holder">
+                <div class="object mouths{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="mouths{% if item.position %}-{{ item.position }}{% endif %}-holder">
                     {% include_relative objects/mouths/{{ item.image }} %}
                 </div>
             </div>
