@@ -235,6 +235,7 @@ var andrewrossco = andrewrossco || {};
         var hideHeadgear = 0;
         var hideHand = 0;
 
+
         // ---------------------------------------------------------------------
         //  Add Object Controller
         // ---------------------------------------------------------------------
@@ -247,7 +248,8 @@ var andrewrossco = andrewrossco || {};
             el.onclick = function() {
                 var cat = this.getAttribute('data-category'),
                     currCatCP = document.getElementById('cp-' + cat ),
-                    currActive = currCatCP.querySelectorAll('.object-preview');
+                    currActive = currCatCP.querySelectorAll('.is-active'),
+                    clickedEl = this;
 
 
                 if(cat == 'misc') {
@@ -258,194 +260,293 @@ var andrewrossco = andrewrossco || {};
                         cp.querySelector('#' + elClass).classList.remove('is-active');
                         return;
                     }
+
                 } else {
 
-                    //Check if item is Active
-                    if( this.classList.contains('is-active') ){
-                        var removeBtn = currCatCP.querySelector('.remove-category[data-category=' + cat + ']');
-                        if(removeBtn){
-                            removeBtn.click();
-                        }
 
-                        return;
-                    }
+                    //Check if item is Active
+                    // if( this.classList.contains('is-active') ){
+                    //     var removeBtn = currCatCP.querySelector('.remove-category[data-category=' + cat + ']');
+                    //     if(removeBtn){
+                    //         removeBtn.click();
+                    //     }
+                    //     return;
+                    // }
 
                     // Assign Active Class in Control Panel
-                    for(var t = 0; t < currActive.length; t++) {
-                       currActive[t].classList.remove('is-active');
-                    }
+                    // for(var t = 0; t < currActive.length; t++) {
+                    //    currActive[t].classList.remove('is-active');
+                    // }
 
                     // Empty object holder incase anything is left behind
-                    var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
-                    var ohKids = objectHolder.children;
+                    // var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
+                    // var ohKids = objectHolder.children;
 
-                    for(var i = 0; i < objectHolder.length; i++) {
-                        var h = objectHolder[i];
-
-                        // if ( h.classList.contains('hair-with-headgear') ) {
-                        //     h.classList.remove('hair-with-headgear');
-                        //     expandHeadgear--;
-                        // }
-                        if ( h.classList.contains('hide-ears') ) {
-                            h.classList.remove('hide-ears');
-                            hideEars--;
-                        }
-                        if ( h.classList.contains('hide-headgear') ) {
-                            h.classList.remove('hide-headgear');
-                            hideHeadgear--;
-                        }
-                        if ( h.classList.contains('hide-hand') ) {
-                            h.classList.remove('hide-hand');
-                            hideHand--;
-                        }
-                        h.innerHTML = '';
-                    }
+                    // for(var i = 0; i < objectHolder.length; i++) {
+                    //     var h = objectHolder[i];
+                    //
+                    //     if ( h.classList.contains('hide-ears') ) {
+                    //         h.classList.remove('hide-ears');
+                    //         hideEars--;
+                    //     }
+                    //     if ( h.classList.contains('hide-headgear') ) {
+                    //         h.classList.remove('hide-headgear');
+                    //         hideHeadgear--;
+                    //     }
+                    //     if ( h.classList.contains('hide-hand') ) {
+                    //         h.classList.remove('hide-hand');
+                    //         hideHand--;
+                    //     }
+                    //     h.innerHTML = '';
+                    // }
 
                 }
 
-                this.classList.add('is-active');
+                //
+
+
+
+
+                var elClasses = String(clickedEl.getAttribute('data-classes')).split(',');
+                for(var c = 0; c < elClasses.length; c++) {
+                    cl = elClasses[c];
+                    incompatible = 'no-' + cl;
+
+                    if( cp.classList.contains(incompatible) ) {
+                        console.log('incompatible');
+                        octocat.querySelector(incompatible);
+                    }
+
+                    cp.classList.add(cl);
+
+                    catHolders = octocat.querySelectorAll("[data-cat=" + cat + "]");
+                    for(var ch = 0; ch < catHolders.length; ch++) {
+                        catHolders[ch].classList.add(cl);
+                    }
+
+                    console.log(cl);
+                }
+
+
 
                 ////////// Add the element to artboard
                 //Get asset objects
                 var svgObjs = this.querySelectorAll('.object');
 
+                console.log(svgObjs.length);
+
                 for(var i = 0; i < svgObjs.length; i++) {
                     var obj = svgObjs[i];
 
+                    // console.log(elClasses);
+
                     // get associated holder within the octocat svg
                     var holderCat = obj.getAttribute('data-holder');
+
+                    console.log(holderCat);
+
                     //console.log(holder);
                     holder = document.getElementById(holderCat);
 
-                    // if ( obj.classList.contains('hair-with-headgear') ) {
-                    //     holder.classList.add('hair-with-headgear');
-                    //     expandHeadgear++;
+                    for(var c = 0; c < elClasses.length; c++) {
+                        cl = elClasses[c];
+                        incompatible = 'no-' + cl;
+
+                        if( cp.classList.contains(incompatible) ) {
+                            console.log('incompatible');
+                            octocat.querySelector(incompatible);
+                        }
+
+                        cp.classList.add(cl);
+
+
+                        console.log(cl);
+                    }
+
+                    // if( clickedEl.classList.contains('is-active') ) {
+                    //     holder.innerHTML = '';
+                    //     clickedEl.classList.remove('is-active');
+                    //
+                    // } else {
+                    //
                     // }
 
-                    if(cat == 'hair') {
-                        var hair = document.getElementById('hair-holder');
-                        if ( obj.classList.contains('big-hair') ) {
-                            hair.classList.add('big-hair');
-                        } else {
-                            hair.classList.remove('big-hair');
+                    // if( clickedEl.classList.contains('is-active') ) {
+                    //     console.log('now remove!');
+                    //     clickedEl.classList.remove('is-active');
+
+                        // Remove
+                        // if(elClasses.length) {
+                        //     for(var c = 0; c < elClasses.length; c++) {
+                        //         octocat.classList.remove(elClasses[c]);
+                        //     }
+                        // }
+
+
+                    //} else {
+
+                        //console.log(currActive.length);
+
+                        for(var t = 0; t < currActive.length; t++) {
+                            currActive[t].click();
                         }
 
-                        if ( obj.classList.contains('medium-hair') ) {
-                            hair.classList.add('medium-hair');
-                        } else {
-                            hair.classList.remove('medium-hair');
+
+                        //console.log('now add');
+                        //console.log(elClasses);
+
+                        // Add Classes
+                        // if(elClasses.length) {
+                        //     for(var c = 0; c < elClasses.length; c++) {
+                        //         octocat.classList.add(elClasses[c]);
+                        //         cp.classList.add(elClasses[c]);
+                        //         holder.classList.add(elClasses[c]);
+                        //         //console.log('add class ' + elClasses[c] );
+                        //     }
+                        // }
+
+                        // if( octocat.classList.contains('no-big-hair') ) {
+                        //     targets = octocat.querySelectorAll('no-big-hair');
+                        //     for(var c = 0; c < targets.length; c++) {
+                        //         targets[c].style.display = 'none';
+                        //     }
+                        // }
+
+
+                        // var ocl = octocat.classList;
+                        //
+                        // octocat.classList = ocl + ' ' + objClasses;
+
+                        // if(cat == 'hair') {
+                        //     var hair = document.getElementById('hair-holder');
+                        //     if ( obj.classList.contains('big-hair') ) {
+                        //         hair.classList.add('big-hair');
+                        //     } else {
+                        //         hair.classList.remove('big-hair');
+                        //     }
+                        //
+                        //     if ( obj.classList.contains('medium-hair') ) {
+                        //         hair.classList.add('medium-hair');
+                        //     } else {
+                        //         hair.classList.remove('medium-hair');
+                        //     }
+                        // }
+
+                        // if(cat == 'headgear') {
+                        //
+                        //     if ( obj.classList.contains('no-big-hair') ) {
+                        //         octocat.classList.add('no-big-hair');
+                        //     } else {
+                        //         octocat.classList.remove('no-big-hair');
+                        //     }
+                        //
+                        //
+                        //     if ( obj.classList.contains('no-medium-hair') ) {
+                        //         octocat.classList.add('no-medium-hair');
+                        //     } else {
+                        //         octocat.classList.remove('no-medium-hair');
+                        //     }
+                        //
+                        //     if ( obj.classList.contains('no-hair') ) {
+                        //         octocat.classList.add('no-hair');
+                        //     } else {
+                        //         octocat.classList.remove('no-hair');
+                        //     }
+                        //
+                        //     if ( obj.classList.contains('hide-whiskers') ) {
+                        //         octocat.classList.add('hide-whiskers');
+                        //     } else {
+                        //         octocat.classList.remove('hide-whiskers');
+                        //     }
+                        // }
+
+                        // if(cat == 'mouths') {
+                        //     if ( obj.classList.contains('no-back-facialhair') ) {
+                        //         octocat.classList.add('no-back-facialhair');
+                        //     } else {
+                        //         octocat.classList.remove('no-back-facialhair');
+                        //     }
+                        // }
+                        //
+                        // if(cat == 'tops') {
+                        //     if ( obj.classList.contains('no-pants') ) {
+                        //         octocat.classList.add('no-pants');
+                        //         holder.classList.add('disable-pants');
+                        //         document.getElementById('bottoms-preview').classList.add('disabled');
+                        //     } else {
+                        //         octocat.classList.remove('no-pants');
+                        //         holder.classList.remove('disable-pants');
+                        //         document.getElementById('bottoms-preview').classList.remove('disabled');
+                        //     }
+                        //
+                        //     if ( obj.classList.contains('no-xl-pants') ) {
+                        //         octocat.classList.add('no-xl-pants');
+                        //     } else {
+                        //         octocat.classList.remove('no-xl-pants');
+                        //     }
+                        //
+                        //     if ( obj.classList.contains('big-collar') ) {
+                        //         holder.classList.add('big-collar');
+                        //     } else {
+                        //         holder.classList.remove('big-collar');
+                        //     }
+                        // }
+                        //
+                        // if(cat == 'bottoms') {
+                        //     if ( obj.classList.contains('xl-pants') ) {
+                        //         holder.classList.add('xl-pants');
+                        //         console.log('hit');
+                        //     } else {
+                        //         holder.classList.remove('xl-pants');
+                        //     }
+                        // }
+
+
+                        // if(cat == 'headgear') {
+                        //     if ( obj.classList.contains('no-big-collars') ) {
+                        //         octocat.classList.add('no-big-collars');
+                        //         console.log('hit');
+                        //     } else {
+                        //         octocat.classList.remove('no-big-collars');
+                        //     }
+                        // }
+
+                        // if ( obj.classList.contains('hide-ears') ) {
+                        //     holder.classList.add('hide-ears');
+                        //     hideEars++;
+                        // }
+                        //
+                        // if ( obj.classList.contains('hide-headgear') ) {
+                        //     holder.classList.add('hide-headgear');
+                        //     hideHeadgear++;
+                        // }
+                        // if ( obj.classList.contains('hide-hand') ) {
+                        //     holder.classList.add('hide-hand');
+                        //     hideHand++;
+                        // }
+
+
+
+                        var svg = obj.querySelectorAll('svg > g');
+
+                        for(var s = 0; s < svg.length; s++) {
+                            var s = svg[s];
+                            if(cat == 'misc') {
+                                s.classList.add(elClass);
+                            }
+                            // Clone Objects
+                            var gClone = s.cloneNode(true);
+                            holder.append(gClone);
                         }
-                    }
-                    if(cat == 'headgear') {
-                        var hair = document.getElementById('hair-holder');
-                        if ( obj.classList.contains('no-big-hair') ) {
-                            octocat.classList.add('no-big-hair');
-                        } else {
-                            octocat.classList.remove('no-big-hair');
-                        }
+                    //}
 
 
-                        if ( obj.classList.contains('no-medium-hair') ) {
-                            octocat.classList.add('no-medium-hair');
-                        } else {
-                            octocat.classList.remove('no-medium-hair');
-                        }
-
-                        if ( obj.classList.contains('no-hair') ) {
-                            octocat.classList.add('no-hair');
-                        } else {
-                            octocat.classList.remove('no-hair');
-                        }
-
-                        if ( obj.classList.contains('hide-whiskers') ) {
-                            octocat.classList.add('hide-whiskers');
-                        } else {
-                            octocat.classList.remove('hide-whiskers');
-                        }
-                    }
-
-                    if(cat == 'mouths') {
-                        if ( obj.classList.contains('no-back-facialhair') ) {
-                            octocat.classList.add('no-back-facialhair');
-                        } else {
-                            octocat.classList.remove('no-back-facialhair');
-                        }
-                    }
-
-                    if(cat == 'tops') {
-                        if ( obj.classList.contains('no-pants') ) {
-                            octocat.classList.add('no-pants');
-                            holder.classList.add('disable-pants');
-                            document.getElementById('bottoms-preview').classList.add('disabled');
-                        } else {
-                            octocat.classList.remove('no-pants');
-                            holder.classList.remove('disable-pants');
-                            document.getElementById('bottoms-preview').classList.remove('disabled');
-                        }
-
-                        if ( obj.classList.contains('no-xl-pants') ) {
-                            octocat.classList.add('no-xl-pants');
-                        } else {
-                            octocat.classList.remove('no-xl-pants');
-                        }
-
-                        if ( obj.classList.contains('big-collar') ) {
-                            holder.classList.add('big-collar');
-                        } else {
-                            holder.classList.remove('big-collar');
-                        }
-                    }
-
-                    if(cat == 'bottoms') {
-                        if ( obj.classList.contains('xl-pants') ) {
-                            holder.classList.add('xl-pants');
-                            console.log('hit');
-                        } else {
-                            holder.classList.remove('xl-pants');
-                        }
-                    }
-
-
-                    if(cat == 'headgear') {
-                        if ( obj.classList.contains('no-big-collars') ) {
-                            octocat.classList.add('no-big-collars');
-                            console.log('hit');
-                        } else {
-                            octocat.classList.remove('no-big-collars');
-                        }
-                    }
-
-                    if ( obj.classList.contains('hide-ears') ) {
-                        holder.classList.add('hide-ears');
-                        hideEars++;
-                    }
-
-                    if ( obj.classList.contains('hide-headgear') ) {
-                        holder.classList.add('hide-headgear');
-                        hideHeadgear++;
-                    }
-                    if ( obj.classList.contains('hide-hand') ) {
-                        holder.classList.add('hide-hand');
-                        hideHand++;
-                    }
-
-
-
-                    var svg = obj.querySelectorAll('svg > g');
-
-                    for(var s = 0; s < svg.length; s++) {
-                        var s = svg[s];
-                        if(cat == 'misc') {
-                            s.classList.add(elClass);
-                        }
-                        // Clone Objects
-                        var gClone = s.cloneNode(true);
-                        holder.append(gClone);
-                    }
 
 
 
                 }
+
+                clickedEl.classList.add('is-active');
 
                 //console.log(objects.length);
                 headgearCheck(expandHeadgear, hideHeadgear);
@@ -465,80 +566,92 @@ var andrewrossco = andrewrossco || {};
 
         var removeObj = cp.querySelectorAll('.remove-category');
 
-        for(var i = 0; i < removeObj.length; i++) {
-            var el = removeObj[i];
-
-            el.onclick = function() {
-                var cat = this.getAttribute('data-category'),
-                    currCatCP = document.getElementById('cp-' + cat ),
-                    currActive = currCatCP.querySelectorAll('.object-preview');
-
-                // Assign Active Class in Control Panel
-                for(var t = 0; t < currActive.length; t++) {
-                   currActive[t].classList.remove('is-active');
-                }
-                this.classList.add('is-active');
-
-
-                // Empty object holder incase anything is left behind
-                var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
-                var ohKids = objectHolder.children;
-
-                for(var i = 0; i < objectHolder.length; i++) {
-                    var h = objectHolder[i];
-
-                    // if ( h.classList.contains('hair-with-headgear') ) {
-                    //     h.classList.remove('hair-with-headgear');
-                    //     expandHeadgear--;
-                    // }
-
-                    if ( h.classList.contains('no-big-hair') ) {
-                        document.getElementById('hair-holder').classList.remove('no-big-hair');
-                        h.classList.remove('no-big-hair');
-                    }
-
-                    if(cat == 'headgear') {
-                        octocat.classList.remove('no-medium-hair');
-                        octocat.classList.remove('no-big-hair');
-                        octocat.classList.remove('no-hair');
-                        octocat.classList.remove('no-big-collars');
-                        octocat.classList.remove('hide-whiskers');
-                    }
-
-                    if(cat == 'hair') {
-                        document.getElementById('hair-holder').classList = '';
-                    }
-
-                    if(cat == 'tops') {
-                        octocat.classList.remove('no-pants');
-                        document.getElementById('tops-holder').classList = '';
-                        //document.getElementById('bottoms-preview').classList.remove('disabled');
-                    }
-
-
-                    if ( h.classList.contains('hide-ears') ) {
-                        h.classList.remove('hide-ears');
-                        hideEars--;
-                    }
-
-                    if ( h.classList.contains('hide-headgear') ) {
-                        h.classList.remove('hide-headgear');
-                        hideHeadgear--;
-                    }
-
-                    if ( h.classList.contains('hide-hand') ) {
-                        h.classList.remove('hide-hand');
-                        hideHand--;
-                    }
-                    h.innerHTML = '';
-                }
-
-                headgearCheck(expandHeadgear, hideHeadgear);
-                earCheck(hideEars);
-                hairCheck();
-                handCheck(hideHand);
-            }
-        }
+        // for(var i = 0; i < removeObj.length; i++) {
+        //     var el = removeObj[i];
+        //
+        //     el.onclick = function() {
+        //         var cat = this.getAttribute('data-category'),
+        //             currCatCP = document.getElementById('cp-' + cat ),
+        //             currActive = currCatCP.querySelectorAll('.object-preview');
+        //
+        //         // Assign Active Class in Control Panel
+        //         for(var t = 0; t < currActive.length; t++) {
+        //            currActive[t].classList.remove('is-active');
+        //         }
+        //         this.classList.add('is-active');
+        //
+        //
+        //         // Empty object holder incase anything is left behind
+        //         var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
+        //         var ohKids = objectHolder.children;
+        //
+        //         for(var i = 0; i < objectHolder.length; i++) {
+        //             var h = objectHolder[i];
+        //
+        //             var ocl = String(octocat.classList);
+        //             var hcl = String(h.classList),
+        //                 ncl = ocl.replace(hcl, ' ');
+        //
+        //             console.log(hcl);
+        //             //console.log(ncl);
+        //
+        //
+        //             octocat.classList.remove(hcl);
+        //
+        //
+        //             h.classList = '';
+        //             // if ( h.classList.contains('hair-with-headgear') ) {
+        //             //     h.classList.remove('hair-with-headgear');
+        //             //     expandHeadgear--;
+        //             // }
+        //
+        //             // if ( h.classList.contains('no-big-hair') ) {
+        //             //     document.getElementById('hair-holder').classList.remove('no-big-hair');
+        //             //     h.classList.remove('no-big-hair');
+        //             // }
+        //             //
+        //             // if(cat == 'headgear') {
+        //             //     octocat.classList.remove('no-medium-hair');
+        //             //     octocat.classList.remove('no-big-hair');
+        //             //     octocat.classList.remove('no-hair');
+        //             //     octocat.classList.remove('no-big-collars');
+        //             //     octocat.classList.remove('hide-whiskers');
+        //             // }
+        //             //
+        //             // if(cat == 'hair') {
+        //             //     document.getElementById('hair-holder').classList = '';
+        //             // }
+        //             //
+        //             // if(cat == 'tops') {
+        //             //     octocat.classList.remove('no-pants');
+        //             //     document.getElementById('tops-holder').classList = '';
+        //             //     //document.getElementById('bottoms-preview').classList.remove('disabled');
+        //             // }
+        //
+        //
+        //             if ( h.classList.contains('hide-ears') ) {
+        //                 h.classList.remove('hide-ears');
+        //                 hideEars--;
+        //             }
+        //
+        //             if ( h.classList.contains('hide-headgear') ) {
+        //                 h.classList.remove('hide-headgear');
+        //                 hideHeadgear--;
+        //             }
+        //
+        //             if ( h.classList.contains('hide-hand') ) {
+        //                 h.classList.remove('hide-hand');
+        //                 hideHand--;
+        //             }
+        //             h.innerHTML = '';
+        //         }
+        //
+        //         headgearCheck(expandHeadgear, hideHeadgear);
+        //         earCheck(hideEars);
+        //         hairCheck();
+        //         handCheck(hideHand);
+        //     }
+        // }
 
 
         function earCheck(count){
@@ -585,14 +698,6 @@ var andrewrossco = andrewrossco || {};
                 document.getElementById('hair-color-preview').classList.add('disabled');
             }
 
-            // if( octocat.classList.contains('no-big-hair') ) {
-            //     document.getElementById('hair-holder').classList.add('no-big-hair');
-            // } else {
-            //     document.getElementById('hair-holder').classList.remove('no-big-hair');
-            // }
-
-
-
             var fhh = document.getElementById('faceHair-holder');
             var fhbh = document.getElementById('faceHair-back-holder');
             var hideHairColor = true;
@@ -603,18 +708,6 @@ var andrewrossco = andrewrossco || {};
                 document.getElementById('face-hair-color-preview').classList.add('disabled');
                 hideHairColor = true;
             }
-
-
-            if ( octocat.classList.contains('no-hair') ) {
-                //document.getElementById('hair-preview').classList.add('disabled');
-                //document.getElementById('hair-color-preview').classList.add('disabled');
-            } else {
-                //document.getElementById('hair-preview').classList.remove('disabled');
-                // if(hideHairColor == false) {
-                //     document.getElementById('face-hair-color-preview').classList.remove('disabled');
-                // }
-            }
-
         }
 
         var handCloned = false;

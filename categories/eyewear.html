@@ -12,13 +12,13 @@
             <div class="object-preview" data-category="eyewear">
                 <img class="preview" src="/objects/eyewear/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object eyewear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="eyewear{% if item.position %}-{{ item.position }}{% endif %}-holder">
+                <div class="object eyewear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="eyewear{% if item.position %}-{{ item.position }}{% endif %}-holder" data-classes="{% for rule in item.rules %}{{rule.rule}} {% endfor %}">
                     {% include_relative objects/eyewear/{{ item.image }} %}
                 </div>
 
                 {% if item.moreObjects %}
                 {% for object in item.moreObjects %}
-                <div class="object eyewear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="eyewear-back-holder">
+                <div class="object eyewear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="eyewear-back-holder" data-classes="{% for rule in item.rules %}{{rule.rule}} {% endfor %}">
                     {% include_relative objects/eyewear/{{ object.object }} %}
                 </div>
                 {% endfor %}

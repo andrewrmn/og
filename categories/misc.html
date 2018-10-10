@@ -12,7 +12,7 @@
             <div class="object-preview" data-category="misc" id="misc-{{ item.name | slugify }}">
                 <img class="preview" src="/objects/misc/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object misc{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="misc{% if item.position %}-{{ item.position }}{% endif %}-holder">
+                <div class="object misc{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="misc{% if item.position %}-{{ item.position }}{% endif %}-holder" data-classes="{% for rule in item.rules %}{{rule.rule}} {% endfor %}">
                     {% include_relative objects/misc/{{ item.image }} %}
                 </div>
             </div>

@@ -8,7 +8,7 @@
             <div class="object-preview{% if item.isActive %} is-active{% endif %}" data-category="eyes">
                 <img class="preview" src="/objects/eyes/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object eyes{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="eyes{% if item.position %}-{{ item.position }}{% endif %}-holder">
+                <div class="object eyes{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="eyes{% if item.position %}-{{ item.position }}{% endif %}-holder" data-classes="{% for rule in item.rules %}{{rule.rule}} {% endfor %}">
                     {% include_relative objects/eyes/{{ item.image }} %}
                 </div>
             </div>

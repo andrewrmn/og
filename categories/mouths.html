@@ -10,7 +10,7 @@
             <div class="object-preview{% if item.isActive %} is-active{% endif %}" data-category="mouths">
                 <img class="preview" src="/objects/mouths/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object mouths{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="mouths{% if item.position %}-{{ item.position }}{% endif %}-holder">
+                <div class="object mouths{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="mouths{% if item.position %}-{{ item.position }}{% endif %}-holder" >
                     {% include_relative objects/mouths/{{ item.image }} %}
                 </div>
             </div>

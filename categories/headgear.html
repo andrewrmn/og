@@ -9,10 +9,10 @@
 
             {% for item in site.data.headgear %}
 
-            <div class="object-preview" data-category="headgear">
+            <div class="object-preview {% for rule in item.rules %}{{rule.rule}} {% endfor %}" data-category="headgear" data-classes="{% for rule in item.rules %}{{rule.rule}}{% if forloop.last %}{% else %},{% endif %}{% endfor %}">
                 <img class="preview" src="/objects/headgear/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
-                <div class="object headgear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="headgear{% if item.position %}-{{ item.position }}{% endif %}-holder">
+                <div class="object headgear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="headgear{% if item.position %}-{{ item.position }}{% endif %}-holder" >
                     {% include_relative objects/headgear/{{ item.image }} %}
                 </div>
 
