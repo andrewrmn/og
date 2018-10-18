@@ -43,7 +43,7 @@
     &:before {
         top: 0;
         right: 0;
-        background: $gray-dark;
+        background: lighten($gray-dark, 10%);
         z-index: -1;
         transition: transform $trans;
     }

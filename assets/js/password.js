@@ -8,7 +8,6 @@ if( localStorage.getItem('newsletterShow') ) {
 
     document.getElementById("password-form").addEventListener("submit", function(e){
         e.preventDefault();
-        alert('here');
         var pass = document.getElementById('password').value;
         if ( pass.toLowerCase() == "monalisa" ) {
             page.innerHTML = page;

@@ -9,7 +9,7 @@
 
             {% for item in site.data.eyewear %}
 
-            <div class="object-preview" data-category="eyewear">
+            <div class="object-preview {% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-category="eyewear" data-classes="{% for rule in item.rules %}{{rule.rule}}{% if forloop.last == false %},{% endif %}{% endfor %}">
                 <img class="preview" src="/objects/eyewear/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
                 <div class="object eyewear{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="eyewear{% if item.position %}-{{ item.position }}{% endif %}-holder" data-classes="{% for rule in item.rules %}{{rule.rule}} {% endfor %}">

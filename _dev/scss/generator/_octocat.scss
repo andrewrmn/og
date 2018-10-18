@@ -6,12 +6,11 @@
 #octocat {
     position: relative;
 
-    #ears {
-
-        &.is-hidden {
-            display: none;
-        }
-    }
+    // #ears {
+    //     &.is-hidden {
+    //         display: none;
+    //     }
+    // }
 
     #head {
         position: absolute;
@@ -27,20 +26,15 @@
         left: 0;
     }
 
-    // #headgear-holder {
-    //     transform: scale(1);
-    //     transform-origin: center;
-    // }
-
-    //
-    // &.enlarge-headgear #headgear-holder {
-    //     transform: scale(1.07);
-    //     transform-origin: 45% 25.7%;
-    // }
-
     g.is-hidden {
         display: none;
     }
+
+    // &.hide-ears {
+    //     #ears {
+    //         display: none;
+    //     }
+    // }
 
     &.hide-hand {
         g#hand {
@@ -72,9 +66,16 @@
         display: none;
     }
 
-    // &.no-back-facialhair #faceHair-back-holder {
-    //     display: none;
-    // }
+
+    &.big-hair-active {
+        .no-big-hair {
+            display: none;
+        }
+    }
+
+    &.no-back-facialhair #faceHair-back-holder {
+        display: none;
+    }
 
     &.no-big-collars .big-collar {
         display: none;
@@ -87,6 +88,17 @@
 
     &.no-xl-pants .xl-pants {
         display: none;
+    }
+
+    &.no-xxl-pants .xxl-pants {
+        display: none;
+    }
+
+
+    &.hide-low-facehair {
+        #faceHair-low-holder {
+            display: none;
+        }
     }
 
 
@@ -125,7 +137,8 @@
     }
 
     @media(min-height: 600px) {
-        padding: 24px 0;
+        //padding: 24px 0;
+        padding: 36px 0 24px;
     }
 
     p {
@@ -141,6 +154,7 @@
     align-items: center;
     justify-content: flex-start;
     transition: opacity $trans;
+    padding: 12px;
 
     p {
         color: #959DA5;
@@ -154,12 +168,11 @@
 
 
 #save {
-
     display: flex;
     align-items: center;
     justify-content: flex-end;
     transition: opacity $trans;
-
+    padding: 12px;
 
     p {
         color: $brand;

@@ -20,6 +20,10 @@ body {
     &.modal-is-open {
     	overflow: hidden;
     }
+
+    &.template-octocat-generator {
+        background: $off-white;
+    }
 }
 
 

@@ -37,7 +37,7 @@
   image: 06_Bottoms_Mini_Skirt.svg
   icon: bottom-miniskirt.svg
   rules:
-    - rule:
+    - rule: shorts
 
 - name: Midi Skirt
   image: 07_Bottoms_Midi_Skirt_v02.svg
@@ -110,6 +110,7 @@
   icon: bottom-armorsuit.svg
   rules:
     - rule: xl-pants
+    - rule: xxl-pants
 
 
 - name: Swim Trunks
@@ -135,4 +136,4 @@
   image: 23_Bottom_SoccerShorts_v01.svg
   icon: bottom-soccershorts.svg
   rules:
-    - rule:
+    - rule: shorts

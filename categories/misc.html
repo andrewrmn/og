@@ -9,7 +9,7 @@
 
             {% for item in site.data.misc %}
 
-            <div class="object-preview" data-category="misc" id="misc-{{ item.name | slugify }}">
+            <div class="object-preview {% for rule in item.rules %}{{rule.rule}} {% endfor %}" data-category="misc" id="misc-{{ item.name | slugify }}" data-classes="{% for rule in item.rules %}{{rule.rule}}{% if forloop.last == false %},{% endif %}{% endfor %}">
                 <img class="preview" src="/objects/misc/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
                 <div class="object misc{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="misc{% if item.position %}-{{ item.position }}{% endif %}-holder" data-classes="{% for rule in item.rules %}{{rule.rule}} {% endfor %}">

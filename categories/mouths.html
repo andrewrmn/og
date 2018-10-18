@@ -7,7 +7,7 @@
 
             {% for item in site.data.mouths %}
 
-            <div class="object-preview{% if item.isActive %} is-active{% endif %}" data-category="mouths">
+            <div class="object-preview {% for rule in item.rules %}{{rule.rule}} {% endfor %}{% if item.isActive %} is-active{% endif %}" data-category="mouths" data-classes="{% for rule in item.rules %}{{rule.rule}}{% if forloop.last == false %},{% endif %}{% endfor %}">
                 <img class="preview" src="/objects/mouths/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
                 <div class="object mouths{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="mouths{% if item.position %}-{{ item.position }}{% endif %}-holder" >

@@ -16,7 +16,7 @@ var andrewrossco = andrewrossco || {};
             ah = window.innerHeight - document.getElementById('ui-wrapper').offsetHeight - document.getElementById('site-header').offsetHeight - document.getElementById('control-panel').offsetHeight;
             gh = window.innerHeight - document.getElementById('site-header').offsetHeight;
 
-            artboard.style.height = ah + 'px';
+            artboard.style.height = (ah - 40) + 'px';
             generator.style.height = gh + 'px';
 
             if( !generator.classList.contains('is-ready') ) {
@@ -31,6 +31,70 @@ var andrewrossco = andrewrossco || {};
         window.addEventListener("resize", function() {
             setHeights();
         });
+
+
+        //var resetTimer();
+        //var idleInterval = setInterval(timerIncrement, 5000); // 1 minute
+
+        // window.addEventListener('scroll',function(e) {
+        //     resetTimer();
+        //     console.log('mouse move');
+        // });
+        //
+        // window.addEventListener('click',function(e) {
+        //     resetTimer();
+        //     console.log('onmouseclick');
+        // });
+        var inactivityTime = function () {
+
+            window.onload = resetTimer;
+            // DOM Events
+            document.onmousemove = resetTimer;
+            document.onkeypress = resetTimer;
+        };
+        var t;
+        inactivityTime();
+        var warningTimer = 60000 * 5; // 1 minute * how many?
+
+        function resetTimer() {
+            //console.log('reset');
+            clearTimeout(t);
+            t = setTimeout(warning, warningTimer);
+
+            // 1000 milisec = 1 sec
+        }
+        function logout() {
+            //console.log('page RELOAD triggered');
+            window.location.reload();
+        }
+        function warning() {
+            document.getElementById('timeout-modal').classList.add('is-active');
+            t = setTimeout(logout, 10000);
+        }
+
+        document.getElementById('timeout-modal-close').onclick = function(e) {
+            e.preventDefault();
+            document.getElementById('timeout-modal').classList.remove('is-active');
+            resetTimer();
+        }
+        document.querySelector('#timeout-modal .screen').onclick = function(e) {
+            e.preventDefault();
+            document.getElementById('timeout-modal').classList.remove('is-active');
+            resetTimer();
+            resetTimer();
+        }
+
+        // function timerIncrement() {
+        //     console.log(idleTime);
+        //     idleTime = idleTime + 1;
+        //     if (idleTime == 1) { // 20 minutess
+        //         document.getElementById('timeout-modal').classList.add('is-active');
+        //     }
+        //     if (idleTime > 1) { // 20 minutess
+        //         console.log('refresh');
+        //         window.location.reload();
+        //     }
+        // }
 
 
         ///////////////////////// Control Panel /////////////////////////
@@ -53,6 +117,7 @@ var andrewrossco = andrewrossco || {};
             var el = category[i];
 
             el.onclick = function() {
+                resetTimer();
                 if( this.classList.contains('is-active') ) {
                     clearActive();
                     return
@@ -230,11 +295,10 @@ var andrewrossco = andrewrossco || {};
         }
 
 
-        var expandHeadgear = 0;
+
         var hideEars = 0;
         var hideHeadgear = 0;
         var hideHand = 0;
-
 
         // ---------------------------------------------------------------------
         //  Add Object Controller
@@ -246,10 +310,10 @@ var andrewrossco = andrewrossco || {};
             var el = obj[i];
 
             el.onclick = function() {
+                resetTimer();
                 var cat = this.getAttribute('data-category'),
                     currCatCP = document.getElementById('cp-' + cat ),
-                    currActive = currCatCP.querySelectorAll('.is-active'),
-                    clickedEl = this;
+                    currActive = currCatCP.querySelectorAll('.object-preview');
 
 
                 if(cat == 'misc') {
@@ -260,297 +324,241 @@ var andrewrossco = andrewrossco || {};
                         cp.querySelector('#' + elClass).classList.remove('is-active');
                         return;
                     }
-
                 } else {
 
-
                     //Check if item is Active
-                    // if( this.classList.contains('is-active') ){
-                    //     var removeBtn = currCatCP.querySelector('.remove-category[data-category=' + cat + ']');
-                    //     if(removeBtn){
-                    //         removeBtn.click();
-                    //     }
-                    //     return;
-                    // }
+                    if( this.classList.contains('is-active') ){
+                        var removeBtn = currCatCP.querySelector('.remove-category[data-category=' + cat + ']');
+                        if(removeBtn){
+                            removeBtn.click();
+                        }
+
+                        return;
+                    }
 
                     // Assign Active Class in Control Panel
-                    // for(var t = 0; t < currActive.length; t++) {
-                    //    currActive[t].classList.remove('is-active');
-                    // }
+                    for(var t = 0; t < currActive.length; t++) {
+                       currActive[t].classList.remove('is-active');
+                    }
 
                     // Empty object holder incase anything is left behind
-                    // var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
-                    // var ohKids = objectHolder.children;
+                    var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
+                    var ohKids = objectHolder.children;
 
-                    // for(var i = 0; i < objectHolder.length; i++) {
-                    //     var h = objectHolder[i];
-                    //
-                    //     if ( h.classList.contains('hide-ears') ) {
-                    //         h.classList.remove('hide-ears');
-                    //         hideEars--;
-                    //     }
-                    //     if ( h.classList.contains('hide-headgear') ) {
-                    //         h.classList.remove('hide-headgear');
-                    //         hideHeadgear--;
-                    //     }
-                    //     if ( h.classList.contains('hide-hand') ) {
-                    //         h.classList.remove('hide-hand');
-                    //         hideHand--;
-                    //     }
-                    //     h.innerHTML = '';
-                    // }
+                    for(var i = 0; i < objectHolder.length; i++) {
+                        var h = objectHolder[i];
+
+                        if ( h.classList.contains('hide-hand') ) {
+                            h.classList.remove('hide-hand');
+                            hideHand--;
+                        }
+                        h.innerHTML = '';
+                    }
 
                 }
 
-                //
+                this.classList.add('is-active');
 
-
-
-
-                var elClasses = String(clickedEl.getAttribute('data-classes')).split(',');
-                for(var c = 0; c < elClasses.length; c++) {
-                    cl = elClasses[c];
-                    incompatible = 'no-' + cl;
-
-                    if( cp.classList.contains(incompatible) ) {
-                        console.log('incompatible');
-                        octocat.querySelector(incompatible);
-                    }
-
-                    cp.classList.add(cl);
-
-                    catHolders = octocat.querySelectorAll("[data-cat=" + cat + "]");
-                    for(var ch = 0; ch < catHolders.length; ch++) {
-                        catHolders[ch].classList.add(cl);
-                    }
-
-                    console.log(cl);
-                }
-
-
+                var elClasses = this.getAttribute('data-classes').split(',');
 
                 ////////// Add the element to artboard
                 //Get asset objects
                 var svgObjs = this.querySelectorAll('.object');
 
-                console.log(svgObjs.length);
-
                 for(var i = 0; i < svgObjs.length; i++) {
-                    var obj = svgObjs[i];
-
-                    // console.log(elClasses);
+                    obj = svgObjs[i];
 
                     // get associated holder within the octocat svg
-                    var holderCat = obj.getAttribute('data-holder');
-
-                    console.log(holderCat);
-
-                    //console.log(holder);
+                    holderCat = obj.getAttribute('data-holder');
                     holder = document.getElementById(holderCat);
 
-                    for(var c = 0; c < elClasses.length; c++) {
-                        cl = elClasses[c];
-                        incompatible = 'no-' + cl;
+                    holder.classList = '';
 
-                        if( cp.classList.contains(incompatible) ) {
-                            console.log('incompatible');
-                            octocat.querySelector(incompatible);
+                    if(elClasses.length > 0){
+                        for(var c = 0; c < elClasses.length; c++) {
+                            if(elClasses[c].length){
+                                holder.classList.add(elClasses[c]);
+                            }
                         }
-
-                        cp.classList.add(cl);
-
-
-                        console.log(cl);
                     }
 
-                    // if( clickedEl.classList.contains('is-active') ) {
-                    //     holder.innerHTML = '';
-                    //     clickedEl.classList.remove('is-active');
-                    //
-                    // } else {
-                    //
-                    // }
-
-                    // if( clickedEl.classList.contains('is-active') ) {
-                    //     console.log('now remove!');
-                    //     clickedEl.classList.remove('is-active');
-
-                        // Remove
-                        // if(elClasses.length) {
-                        //     for(var c = 0; c < elClasses.length; c++) {
-                        //         octocat.classList.remove(elClasses[c]);
-                        //     }
-                        // }
-
-
-                    //} else {
-
-                        //console.log(currActive.length);
-
-                        for(var t = 0; t < currActive.length; t++) {
-                            currActive[t].click();
+                    if(cat == 'hair') {
+                        //var hair = document.getElementById('hair-holder');
+                        if ( obj.classList.contains('big-hair') ) {
+                            cp.classList.add('big-hair');
+                        } else {
+                            cp.classList.remove('big-hair');
                         }
 
-
-                        //console.log('now add');
-                        //console.log(elClasses);
-
-                        // Add Classes
-                        // if(elClasses.length) {
-                        //     for(var c = 0; c < elClasses.length; c++) {
-                        //         octocat.classList.add(elClasses[c]);
-                        //         cp.classList.add(elClasses[c]);
-                        //         holder.classList.add(elClasses[c]);
-                        //         //console.log('add class ' + elClasses[c] );
-                        //     }
-                        // }
-
-                        // if( octocat.classList.contains('no-big-hair') ) {
-                        //     targets = octocat.querySelectorAll('no-big-hair');
-                        //     for(var c = 0; c < targets.length; c++) {
-                        //         targets[c].style.display = 'none';
-                        //     }
-                        // }
-
-
-                        // var ocl = octocat.classList;
-                        //
-                        // octocat.classList = ocl + ' ' + objClasses;
-
-                        // if(cat == 'hair') {
-                        //     var hair = document.getElementById('hair-holder');
-                        //     if ( obj.classList.contains('big-hair') ) {
-                        //         hair.classList.add('big-hair');
-                        //     } else {
-                        //         hair.classList.remove('big-hair');
-                        //     }
-                        //
-                        //     if ( obj.classList.contains('medium-hair') ) {
-                        //         hair.classList.add('medium-hair');
-                        //     } else {
-                        //         hair.classList.remove('medium-hair');
-                        //     }
-                        // }
-
-                        // if(cat == 'headgear') {
-                        //
-                        //     if ( obj.classList.contains('no-big-hair') ) {
-                        //         octocat.classList.add('no-big-hair');
-                        //     } else {
-                        //         octocat.classList.remove('no-big-hair');
-                        //     }
-                        //
-                        //
-                        //     if ( obj.classList.contains('no-medium-hair') ) {
-                        //         octocat.classList.add('no-medium-hair');
-                        //     } else {
-                        //         octocat.classList.remove('no-medium-hair');
-                        //     }
-                        //
-                        //     if ( obj.classList.contains('no-hair') ) {
-                        //         octocat.classList.add('no-hair');
-                        //     } else {
-                        //         octocat.classList.remove('no-hair');
-                        //     }
-                        //
-                        //     if ( obj.classList.contains('hide-whiskers') ) {
-                        //         octocat.classList.add('hide-whiskers');
-                        //     } else {
-                        //         octocat.classList.remove('hide-whiskers');
-                        //     }
-                        // }
-
-                        // if(cat == 'mouths') {
-                        //     if ( obj.classList.contains('no-back-facialhair') ) {
-                        //         octocat.classList.add('no-back-facialhair');
-                        //     } else {
-                        //         octocat.classList.remove('no-back-facialhair');
-                        //     }
-                        // }
-                        //
-                        // if(cat == 'tops') {
-                        //     if ( obj.classList.contains('no-pants') ) {
-                        //         octocat.classList.add('no-pants');
-                        //         holder.classList.add('disable-pants');
-                        //         document.getElementById('bottoms-preview').classList.add('disabled');
-                        //     } else {
-                        //         octocat.classList.remove('no-pants');
-                        //         holder.classList.remove('disable-pants');
-                        //         document.getElementById('bottoms-preview').classList.remove('disabled');
-                        //     }
-                        //
-                        //     if ( obj.classList.contains('no-xl-pants') ) {
-                        //         octocat.classList.add('no-xl-pants');
-                        //     } else {
-                        //         octocat.classList.remove('no-xl-pants');
-                        //     }
-                        //
-                        //     if ( obj.classList.contains('big-collar') ) {
-                        //         holder.classList.add('big-collar');
-                        //     } else {
-                        //         holder.classList.remove('big-collar');
-                        //     }
-                        // }
-                        //
-                        // if(cat == 'bottoms') {
-                        //     if ( obj.classList.contains('xl-pants') ) {
-                        //         holder.classList.add('xl-pants');
-                        //         console.log('hit');
-                        //     } else {
-                        //         holder.classList.remove('xl-pants');
-                        //     }
-                        // }
-
-
-                        // if(cat == 'headgear') {
-                        //     if ( obj.classList.contains('no-big-collars') ) {
-                        //         octocat.classList.add('no-big-collars');
-                        //         console.log('hit');
-                        //     } else {
-                        //         octocat.classList.remove('no-big-collars');
-                        //     }
-                        // }
-
-                        // if ( obj.classList.contains('hide-ears') ) {
-                        //     holder.classList.add('hide-ears');
-                        //     hideEars++;
-                        // }
-                        //
-                        // if ( obj.classList.contains('hide-headgear') ) {
-                        //     holder.classList.add('hide-headgear');
-                        //     hideHeadgear++;
-                        // }
-                        // if ( obj.classList.contains('hide-hand') ) {
-                        //     holder.classList.add('hide-hand');
-                        //     hideHand++;
-                        // }
-
-
-
-                        var svg = obj.querySelectorAll('svg > g');
-
-                        for(var s = 0; s < svg.length; s++) {
-                            var s = svg[s];
-                            if(cat == 'misc') {
-                                s.classList.add(elClass);
-                            }
-                            // Clone Objects
-                            var gClone = s.cloneNode(true);
-                            holder.append(gClone);
+                        if ( obj.classList.contains('medium-hair') ) {
+                            cp.classList.add('medium-hair');
+                        } else {
+                            cp.classList.remove('medium-hair');
                         }
-                    //}
+
+                        if ( obj.classList.contains('hair') ) {
+                            cp.classList.add('hair');
+                        } else {
+                            cp.classList.remove('hair');
+                        }
+                    }
+
+                    if(cat == 'headgear') {
+                        if ( obj.classList.contains('no-big-hair') ) {
+                            octocat.classList.add('no-big-hair');
+                            cp.classList.add('no-big-hair');
+                        } else {
+                            octocat.classList.remove('no-big-hair');
+                            cp.classList.remove('no-big-hair');
+                        }
+
+                        if ( obj.classList.contains('no-medium-hair') ) {
+                            octocat.classList.add('no-medium-hair');
+                            cp.classList.add('no-medium-hair');
+                        } else {
+                            octocat.classList.remove('no-medium-hair');
+                            cp.classList.remove('no-medium-hair');
+                        }
+
+                        if ( obj.classList.contains('no-hair') ) {
+                            octocat.classList.add('no-hair');
+                            cp.classList.add('no-hair');
+                        } else {
+                            octocat.classList.remove('no-hair');
+                            cp.classList.remove('no-hair');
+                        }
+
+                        if ( obj.classList.contains('hide-ears') ) {
+                            octocat.classList.add('hide-ears');
+                        } else {
+                            octocat.classList.remove('hide-ears');
+                        }
+
+                        if ( obj.classList.contains('hide-whiskers') ) {
+                            octocat.classList.add('hide-whiskers');
+                            cp.classList.add('hide-whiskers');
+                        } else {
+                            octocat.classList.remove('hide-whiskers');
+                            cp.classList.remove('hide-whiskers');
+                        }
+
+                        if ( obj.classList.contains('hide-low-facehair') ) {
+                            octocat.classList.add('hide-low-facehair');
+                        } else {
+                            octocat.classList.remove('hide-low-facehair');
+                        }
+
+                        if ( obj.classList.contains('no-big-collars') ) {
+                            octocat.classList.add('no-big-collars');
+                            cp.classList.add('no-big-collars');
+                        } else {
+                            octocat.classList.remove('no-big-collars');
+                            cp.classList.remove('no-big-collars');
+                        }
+                    }
+
+                    if(cat == 'mouths') {
+                        if ( obj.classList.contains('no-back-facialhair') ) {
+                            octocat.classList.add('no-back-facialhair');
+                            cp.classList.add('no-back-facialhair');
+                        } else {
+                            octocat.classList.remove('no-back-facialhair');
+                            cp.classList.remove('no-back-facialhair');
+                        }
+                    }
+
+                    if(cat == 'tops') {
+
+
+                        if ( obj.classList.contains('no-pants') ) {
+                            octocat.classList.add('no-pants');
+                            cp.classList.add('no-pants');
+
+                            holder.classList.add('disable-pants');
+                        } else {
+                            octocat.classList.remove('no-pants');
+                            cp.classList.remove('no-pants');
+                            holder.classList.remove('disable-pants');
+                        }
+
+                        if ( obj.classList.contains('no-xl-pants') ) {
+                            octocat.classList.add('no-xl-pants');
+                            cp.classList.add('no-xl-pants');
+                        } else {
+                            octocat.classList.remove('no-xl-pants');
+                            cp.classList.remove('no-xl-pants');
+                        }
+
+                        if ( obj.classList.contains('no-xxl-pants') ) {
+                            octocat.classList.add('no-xxl-pants');
+                            cp.classList.add('no-xxl-pants');
+                        } else {
+                            octocat.classList.remove('no-xxl-pants');
+                            cp.classList.remove('no-xxl-pants');
+                        }
+
+                        if ( obj.classList.contains('no-shorts') ) {
+                            octocat.classList.add('no-shorts');
+                            cp.classList.add('no-shorts');
+                        } else {
+                            octocat.classList.remove('no-shorts');
+                            cp.classList.remove('no-shorts');
+                        }
+
+                        if ( obj.classList.contains('big-collar') ) {
+                            holder.classList.add('big-collar');
+                        } else {
+                            holder.classList.remove('big-collar');
+                        }
+                    }
+
+                    if(cat == 'bottoms') {
+                        cp.classList.add('bottoms');
+
+                        if ( obj.classList.contains('xl-pants') ) {
+                            holder.classList.add('xl-pants');
+                            cp.classList.add('xl-pants');
+                        } else {
+                            holder.classList.remove('xl-pants');
+                            cp.classList.remove('xl-pants');
+                        }
+
+                        if ( obj.classList.contains('xxl-pants') ) {
+                            holder.classList.add('xxl-pants');
+                            cp.classList.add('xxl-pants');
+                        } else {
+                            holder.classList.remove('xxl-pants');
+                            cp.classList.remove('xxl-pants');
+                        }
+                    }
+
+                    if(cat == 'faceHair') {
+                        if ( obj.classList.contains('back-facial-hair') ) {
+                            cp.classList.add('back-facial-hair');
+                        } else {
+                            cp.classList.remove('back-facial-hair');
+                        }
+                    }
+
+                    if ( obj.classList.contains('hide-hand') ) {
+                        holder.classList.add('hide-hand');
+                        hideHand++;
+                    }
 
 
 
-
-
+                    var svg = obj.querySelectorAll('svg > g');
+                    for(var s = 0; s < svg.length; s++) {
+                        var s = svg[s];
+                        if(cat == 'misc') {
+                            s.classList.add(elClass);
+                        }
+                        // Clone Objects
+                        var gClone = s.cloneNode(true);
+                        holder.append(gClone);
+                    }
                 }
 
-                clickedEl.classList.add('is-active');
-
-                //console.log(objects.length);
-                headgearCheck(expandHeadgear, hideHeadgear);
-                earCheck(hideEars);
                 hairCheck();
                 handCheck(hideHand);
                 colorCheck();
@@ -566,125 +574,82 @@ var andrewrossco = andrewrossco || {};
 
         var removeObj = cp.querySelectorAll('.remove-category');
 
-        // for(var i = 0; i < removeObj.length; i++) {
-        //     var el = removeObj[i];
-        //
-        //     el.onclick = function() {
-        //         var cat = this.getAttribute('data-category'),
-        //             currCatCP = document.getElementById('cp-' + cat ),
-        //             currActive = currCatCP.querySelectorAll('.object-preview');
-        //
-        //         // Assign Active Class in Control Panel
-        //         for(var t = 0; t < currActive.length; t++) {
-        //            currActive[t].classList.remove('is-active');
-        //         }
-        //         this.classList.add('is-active');
-        //
-        //
-        //         // Empty object holder incase anything is left behind
-        //         var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
-        //         var ohKids = objectHolder.children;
-        //
-        //         for(var i = 0; i < objectHolder.length; i++) {
-        //             var h = objectHolder[i];
-        //
-        //             var ocl = String(octocat.classList);
-        //             var hcl = String(h.classList),
-        //                 ncl = ocl.replace(hcl, ' ');
-        //
-        //             console.log(hcl);
-        //             //console.log(ncl);
-        //
-        //
-        //             octocat.classList.remove(hcl);
-        //
-        //
-        //             h.classList = '';
-        //             // if ( h.classList.contains('hair-with-headgear') ) {
-        //             //     h.classList.remove('hair-with-headgear');
-        //             //     expandHeadgear--;
-        //             // }
-        //
-        //             // if ( h.classList.contains('no-big-hair') ) {
-        //             //     document.getElementById('hair-holder').classList.remove('no-big-hair');
-        //             //     h.classList.remove('no-big-hair');
-        //             // }
-        //             //
-        //             // if(cat == 'headgear') {
-        //             //     octocat.classList.remove('no-medium-hair');
-        //             //     octocat.classList.remove('no-big-hair');
-        //             //     octocat.classList.remove('no-hair');
-        //             //     octocat.classList.remove('no-big-collars');
-        //             //     octocat.classList.remove('hide-whiskers');
-        //             // }
-        //             //
-        //             // if(cat == 'hair') {
-        //             //     document.getElementById('hair-holder').classList = '';
-        //             // }
-        //             //
-        //             // if(cat == 'tops') {
-        //             //     octocat.classList.remove('no-pants');
-        //             //     document.getElementById('tops-holder').classList = '';
-        //             //     //document.getElementById('bottoms-preview').classList.remove('disabled');
-        //             // }
-        //
-        //
-        //             if ( h.classList.contains('hide-ears') ) {
-        //                 h.classList.remove('hide-ears');
-        //                 hideEars--;
-        //             }
-        //
-        //             if ( h.classList.contains('hide-headgear') ) {
-        //                 h.classList.remove('hide-headgear');
-        //                 hideHeadgear--;
-        //             }
-        //
-        //             if ( h.classList.contains('hide-hand') ) {
-        //                 h.classList.remove('hide-hand');
-        //                 hideHand--;
-        //             }
-        //             h.innerHTML = '';
-        //         }
-        //
-        //         headgearCheck(expandHeadgear, hideHeadgear);
-        //         earCheck(hideEars);
-        //         hairCheck();
-        //         handCheck(hideHand);
-        //     }
-        // }
+        for(var i = 0; i < removeObj.length; i++) {
+            var el = removeObj[i];
 
+            el.onclick = function() {
+                resetTimer();
+                var cat = this.getAttribute('data-category'),
+                    currCatCP = document.getElementById('cp-' + cat ),
+                    currActive = currCatCP.querySelectorAll('.object-preview');
 
-        function earCheck(count){
-            if(count == 0) {
-                ears.classList.remove('is-hidden');
-            } else {
-                ears.classList.add('is-hidden');
-            }
-        }
-
-        function headgearCheck(count, hide){
-            // if(count == 0) {
-            //     octocat.classList.remove('enlarge-headgear');
-            // } else {
-            //     octocat.classList.add('enlarge-headgear');
-            // }
-
-
-            if(hide == 0) {
-                document.getElementById('headgear-preview').classList.remove('disabled');
-
-            } else {
-                document.getElementById('headgear-preview').classList.add('disabled');
-
-                var h = document.getElementById('headgear-holder');
-
-                if ( h.classList.contains('hide-ears') ) {
-                    h.classList.remove('hide-ears');
-                    hideEars--;
+                // Assign Active Class in Control Panel
+                for(var t = 0; t < currActive.length; t++) {
+                   currActive[t].classList.remove('is-active');
                 }
-                h.innerHTML = '';
+                this.classList.add('is-active');
 
-                earCheck(hideEars);
+
+                // Empty object holder incase anything is left behind
+                var objectHolder = artboard.querySelectorAll('[data-cat=' + cat + ']');
+                var ohKids = objectHolder.children;
+
+                for(var i = 0; i < objectHolder.length; i++) {
+                    var h = objectHolder[i];
+
+                    // Remove Rules
+                    if(cat == 'headgear') {
+                        octocat.classList.remove('no-medium-hair');
+                        octocat.classList.remove('no-big-hair');
+                        octocat.classList.remove('no-hair');
+                        octocat.classList.remove('no-big-collars');
+                        octocat.classList.remove('hide-whiskers');
+                        octocat.classList.remove('hide-low-facehair');
+                        octocat.classList.remove('hide-ears');
+
+                        cp.classList.remove('no-medium-hair');
+                        cp.classList.remove('no-big-hair');
+                        cp.classList.remove('no-hair');
+                        cp.classList.remove('no-big-collars');
+                        cp.classList.remove('hide-whiskers');
+                        cp.classList.remove('hide-ears');
+                    }
+
+                    if(cat == 'hair') {
+                        document.getElementById('hair-holder').classList = '';
+                        cp.classList.remove('hair');
+                    }
+
+                    if(cat == 'tops') {
+                        octocat.classList.remove('no-pants');
+                        cp.classList.remove('no-pants');
+                        cp.classList.remove('no-xl-pants');
+                        cp.classList.remove('no-xxl-pants');
+                        document.getElementById('tops-holder').classList = '';
+                        document.getElementById('bottoms-preview').classList.remove('disabled');
+                    }
+                    if(cat == 'bottoms') {
+                        cp.classList.remove('bottoms');
+                        cp.classList.remove('xl-pants');
+                        cp.classList.remove('xxl-pants');
+
+                    }
+
+
+
+                    if(cat == 'faceHair') {
+                        cp.classList.remove('back-facial-hair');
+                    }
+
+                    if ( h.classList.contains('hide-hand') ) {
+                        h.classList.remove('hide-hand');
+                        hideHand--;
+                    }
+                    h.innerHTML = '';
+                }
+
+                hairCheck();
+                handCheck(hideHand);
             }
         }
 
@@ -715,8 +680,6 @@ var andrewrossco = andrewrossco || {};
 
         function handCheck(count){
             var hand = document.getElementById('hand');
-
-
             if(count == 0) {
                 octocat.classList.remove('hide-hand');
                 hand.innerHTML = handClone;
@@ -844,7 +807,7 @@ var andrewrossco = andrewrossco || {};
                 //console.log(currentScroll);
                 TweenMax.to(par, 0.7, {scrollLeft: currentScroll, ease: Circ.ease });
                 checkPos(par);
-
+                resetTimer();
                 //console.log(par);
             }
 
@@ -856,6 +819,7 @@ var andrewrossco = andrewrossco || {};
                 //console.log(currentScroll);
                 TweenMax.to(par, 0.7, {scrollLeft: currentScroll, ease: Circ.ease });
                 checkPos(par);
+                resetTimer();
             }
 
             panel.onmouseleave = function() {
@@ -867,7 +831,7 @@ var andrewrossco = andrewrossco || {};
             panel.onmousedown = function(event) {
                 //console.log('Mouse down on element');
                 var par = this;
-
+                resetTimer();
                 mouseStart = event.clientX;
                 currentScrollPos =  par.scrollLeft;
 
@@ -876,8 +840,8 @@ var andrewrossco = andrewrossco || {};
                     amountMoved = -(event.clientX - mouseStart);
                     scrollAmount = currentScrollPos + amountMoved;
                     //console.log('Amount to scroll this drag = ' + scrollAmount);
-                    //console.log(scrollAmount * 0.5);
-                    TweenMax.to(par, 1, {scrollLeft: scrollAmount, ease: Circ.ease });
+
+                    TweenMax.to(par, 0.3, {scrollLeft: scrollAmount, ease: Circ.ease });
                 }
                 panel.onmouseout = function(event) {
                     document.onmouseover = '';
@@ -901,7 +865,6 @@ var andrewrossco = andrewrossco || {};
         // ---------------------------------------------------------------------
 
 
-
         var reset = document.getElementById('start-over'),
             icon = reset.querySelector('img'),
             resetModal = document.getElementById('reset-modal'),
@@ -918,16 +881,16 @@ var andrewrossco = andrewrossco || {};
             }
         }
 
-        document.getElementById('reset').onclick = function(e) {
-            e.preventDefault();
-
-            if( cookieInput.checked ) {
-                localStorage.setItem('quickReset', true);
-                window.location.reload();
-            } else {
-                window.location.reload();
-            }
-        }
+        // document.getElementById('reset').onclick = function(e) {
+        //     e.preventDefault();
+        //
+        //     if( cookieInput.checked ) {
+        //         localStorage.setItem('quickReset', true);
+        //         window.location.reload();
+        //     } else {
+        //         window.location.reload();
+        //     }
+        // }
 
         document.getElementById('close-reset-modal').onclick = function(e) {
             e.preventDefault();

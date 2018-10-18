@@ -44,7 +44,8 @@ $category-tile-size: 64px;
         //border: 2px solid $gray-light;
 
         img {
-            max-height: 40px;
+            max-height: 60px;
+            min-height: 60px;
         }
     }
 
@@ -185,6 +186,7 @@ $object-preview-size: 82px;
 
     img {
         max-height: 60px;
+        min-height: 60px;
         pointer-events: none;
     }
 }

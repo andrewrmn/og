@@ -11,15 +11,17 @@
             <img id="img" src="/assets/images/base-octocat.svg" alt="Octocat" />
             <!-- <img id="img" src="/assets/images/base-octocat.svg" width="500" height="500" alt="Octocat" /> -->
 
-            <form id="post-to-twitter" enctype="multipart/form-data" action="" class="mt-4">
-                <input type="hidden" id="form-name" name="name" value="Andrew"  />
-                <input type="hidden" id="form-image" name="media_data" value=""  />
-                <button class="btn btn--sm btn--alt btn--wide" disabled type="submit" id="post-to-twitter-submit">Share To Twitter</button>
+            <form id="email-octocat" enctype="multipart/form-data" action="" class="mt-4">
+                <input type="email" id="form-email" class="mb-2" name="email" placeholder="Enter your email address" value=""  />
+                <input type="hidden" id="form-image" name="image" value=""  />
+                <button class="btn btn--sm btn--alt btn--wide" type="submit" id="email-submit">Email My Octocat</button>
             </form>
+
+            <!-- <a class="btn btn--sm btn--alt btn--wide mt-4" id="email-ocotocat" href="mailto:?subject=Your Ocotcat!&body=Here is your ocotcat">Email my Octocat</a> -->
 
             <a class="btn btn--sm  btn--wide mt-3" id="download-ocotocat" disabled href="">Download my Octocat</a>
 
-            <a class="btn btn--sm btn--wide btn--light mt-3 mb-4 keep-editing" href="">Keep Editing</a>
+            <a class="btn btn--sm btn--wide btn--light mt-5 mb-4 keep-editing" href="">Keep Editing</a>
 
             <div class="checkbox">
                 <input id="terms" name=="terms" type="checkbox" />
@@ -115,20 +117,43 @@
             <p class="p-sm">This will clear all the selections you’ve made and reset your Octocat.</p>
 
             <div class="d-flex flex-justify-center flex-wrap mt-4">
-                <a class="btn btn--sm mr-3 mb-5" id="reset" href="">Yes, Reset</a>
+                <a class="btn btn--sm mr-3 mb-5" id="reset" href="/">Yes, Reset</a>
                 <a class="btn btn--sm btn--light mb-5" href="" id="close-reset-modal">No, take me back</a>
             </div>
 
-            <div class="checkbox">
+            <!-- <div class="checkbox">
                 <input id="reset-message" name=="reset-message" type="checkbox" />
                 <label for="reset-message">Don’t show me this message again.</label>
-            </div>
+            </div> -->
         </div>
     </div>
 
     <div class="screen"></div>
 </div>
 
+
+
+
+<div class="modal-wrap" id="timeout-modal">
+
+    <div class="modal modal__content-sm">
+        <div>
+            <p class="p-sm text-display mb-2">Are you still here?</p>
+            <p class="p-sm">The page is about to refresh due to inactivity.</p>
+
+            <div class="d-flex flex-justify-center flex-wrap mt-4">
+                <a class="btn btn--sm mr-3 mb-5" id="timeout-modal-close" href="/">Yes, I'm here!</a>
+            </div>
+
+            <!-- <div class="checkbox">
+                <input id="reset-message" name=="reset-message" type="checkbox" />
+                <label for="reset-message">Don’t show me this message again.</label>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="screen"></div>
+</div>
 
 
 <!-- <script>

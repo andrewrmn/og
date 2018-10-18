@@ -35,7 +35,8 @@
 - name: Glasses Tortoise Shell
   image: 06_Eyewear_GlassesTortoiseShell.svg
   icon: Eyewear-glassestortoiseshell.svg
-  position: middle
+  moreObjects:
+      - object: 06_Eyewear_GlassesTortoiseShell-back.svg
   rules:
     - rule:
 
@@ -77,14 +78,16 @@
 - name: Sunglasses Ray Bans
   image: 12_Eyewear_SunglassesRayBans.svg
   icon: Eyewear-sunglassesraybans.svg
-  position: middle
+  moreObjects:
+      - object: 12_Eyewear_SunglassesRayBans-back.svg
   rules:
     - rule:
 
 - name: Sunglasses Alien Eyes
   image: 13_Eyewear_SunglassesAlienEyes.svg
   icon: Eyewear-eyeglassesalieneyes.svg
-  position: middle
+  moreObjects:
+      - object: 13_Eyewear_SunglassesAlienEyes-back.svg
   rules:
     - rule:
 

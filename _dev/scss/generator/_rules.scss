@@ -10,9 +10,101 @@
 #control-panel {
 
     &.no-big-hair {
-
         .object-preview.big-hair {
-            background: rgba(red, 0.1);
+            border: 1px solid red;
+            //border: 1px solid red;
+        }
+    }
+    &.no-medium-hair {
+        .object-preview.medium-hair {
+            border: 1px solid red;
+        }
+    }
+    &.no-hair {
+        [data-category="hair"].object-preview {
+            border: 1px solid red;
+        }
+    }
+
+    &.big-hair {
+        .object-preview.no-big-hair,
+        .object-preview.no-hair {
+            border: 1px solid red;
+        }
+    }
+
+    &.medium-hair {
+        .object-preview.no-medium-hair,
+        .object-preview.no-hair {
+            border: 1px solid red;
+        }
+    }
+
+    &.no-pants {
+        [data-category="bottoms"].object-preview {
+            border: 1px solid red;
+        }
+    }
+
+    &.no-xl-pants {
+        .object-preview.xl-pants {
+            border: 1px solid red;
+        }
+    }
+
+    &.no-big-collars {
+        .object-preview.big-collar {
+            border: 1px solid red;
+        }
+    }
+
+    &.no-back-facialhair {
+        .object-preview.back-facial-hair {
+            border: 1px solid red;
+        }
+    }
+
+    &.hair {
+        .object-preview.no-hair {
+            border: 1px solid red;
+        }
+    }
+
+    &.back-facial-hair {
+        .object-preview.no-back-facialhair {
+            border: 1px solid red;
+        }
+    }
+
+    &.xl-pants {
+        .object-preview.no-xl-pants,
+        .object-preview.no-pants {
+            border: 1px solid red;
+        }
+    }
+
+    &.xxl-pants {
+        .object-preview.no-xxl-pants,
+        .object-preview.no-pants {
+            border: 1px solid red;
+        }
+    }
+
+    &.no-xxl-pants {
+        .object-preview.xxl-pants {
+            border: 1px solid red;
+        }
+    }
+
+    &.bottoms {
+        .object-preview.no-pants {
+            border: 1px solid red;
+        }
+    }
+
+    &.no-shorts {
+        .object-preview.shorts {
+            border: 1px solid red;
         }
     }
 }

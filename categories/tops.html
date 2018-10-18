@@ -9,7 +9,7 @@
 
             {% for item in site.data.tops %}
 
-            <div class="object-preview" data-category="tops">
+            <div class="object-preview {% for rule in item.rules %}{{rule.rule}} {% endfor %}" data-category="tops" data-classes="{% for rule in item.rules %}{{rule.rule}}{% if forloop.last == false %},{% endif %}{% endfor %}">
                 <img class="preview" src="/objects/tops/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
                 <div class="object tops{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="tops{% if item.position %}-{{ item.position }}{% endif %}-holder" data-classes="{% for rule in item.rules %}{{rule.rule}} {% endfor %}">

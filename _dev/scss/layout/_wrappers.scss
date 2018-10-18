@@ -45,10 +45,9 @@
     z-index: 1;
     padding: 36px 0;
 
-
     @include start-at($small) {
         min-height: calc(100vh - 72px);
-        padding: 40px 0 12px;
+        padding: 72px 0 12px;
     }
 
 

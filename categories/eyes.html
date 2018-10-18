@@ -5,7 +5,7 @@
 
             {% for item in site.data.eyes %}
 
-            <div class="object-preview{% if item.isActive %} is-active{% endif %}" data-category="eyes">
+            <div class="object-preview {% for rule in item.rules %}{{rule.rule}} {% endfor %} {% if item.isActive %} is-active{% endif %}" data-category="eyes" data-classes="{% for rule in item.rules %}{{rule.rule}}{% if forloop.last == false %},{% endif %}{% endfor %}">
                 <img class="preview" src="/objects/eyes/icons/{{ item.icon }}" alt="{{ item.name }}" />
 
                 <div class="object eyes{% for rule in item.rules %} {{rule.rule}}{% endfor %}" data-holder="eyes{% if item.position %}-{{ item.position }}{% endif %}-holder" data-classes="{% for rule in item.rules %}{{rule.rule}} {% endfor %}">

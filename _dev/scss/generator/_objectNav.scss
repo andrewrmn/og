@@ -22,7 +22,10 @@
 
 #object-list {
     width: 100%;
-    overflow: scroll;
+    //overflow: scroll;
+    overflow: auto;
+    overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
     position: relative;
     display: flex;
     align-items: flex-end;

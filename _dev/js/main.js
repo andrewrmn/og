@@ -36,16 +36,16 @@ function general() {
         }
     }
 
-    var mt = document.getElementById('menu-toggle');
-		bd = document.body;
-
-	mt.onclick = function() {
-		if( bd.classList.contains('menu-is-open') ){
-			bd.classList.remove('menu-is-open');
-		} else {
-			bd.classList.add('menu-is-open');
-		}
-	}
+    // var mt = document.getElementById('menu-toggle');
+	// 	bd = document.body;
+    //
+	// mt.onclick = function() {
+	// 	if( bd.classList.contains('menu-is-open') ){
+	// 		bd.classList.remove('menu-is-open');
+	// 	} else {
+	// 		bd.classList.add('menu-is-open');
+	// 	}
+	// }
 }
 
 
@@ -133,41 +133,41 @@ function lines() {
     if(document.getElementById('draw-svg')) {
 
         var svg = document.getElementById('draw-svg'),
-            line = document.getElementById('draw-svg-line'),
+            //line = document.getElementById('draw-svg-line'),
             arrow = document.getElementById('draw-svg-arrow');
 
         arrow.onclick = function() {
             TweenLite.to(window, 1, {scrollTo:"#how-it-works"});
-            console.log('here');
         }
 
-        TweenMax.to(line, 0, {alpha:0});
+        //TweenMax.to(line, 0, {alpha:0});
+
+
+
+        // var orig = line, length, timer;
+        // var timing = 2;
+        //
+        // var obj = {
+        //     length: 0,
+        //     pathLength: orig.getTotalLength()
+        // }
+
+        // TweenMax.to(line, 0.4, {alpha:.2}).delay(1);
+        // var t = TweenMax.to(obj, timing, {length:obj.pathLength, onUpdate:drawLine, ease:Linear.easeInOut}).delay(1);
+        //
+        // function drawLine() {
+        //     orig.style.strokeDasharray = [obj.length,obj.pathLength].join(' ');
+        // }
 
         TweenMax.to(arrow, 0, { scale:0.4, alpha: 0, transformOrigin:"50% 50%" });
-
-        var orig = line, length, timer;
-        var timing = 2;
-
-        var obj = {
-            length: 0,
-            pathLength: orig.getTotalLength()
-        }
-
-        TweenMax.to(line, 0.4, {alpha:.2}).delay(1);
-        var t = TweenMax.to(obj, timing, {length:obj.pathLength, onUpdate:drawLine, ease:Linear.easeInOut}).delay(1);
-
-        function drawLine() {
-            orig.style.strokeDasharray = [obj.length,obj.pathLength].join(' ');
-        }
 
         var scaleW = 1;
 
         if( window.innerWidth < 600) {
             scaleW = 2;
         }
-        TweenMax.to(arrow, .4, {alpha: 1, ease: Power0.easeNone }).delay(2.8);
-        TweenMax.to(arrow, 3, { scale:scaleW, ease: Elastic.easeOut.config(1, 0.3) }).delay(2.8);
-
+        TweenMax.to(arrow, .4, {alpha: 1, ease: Power0.easeNone }).delay(.8);
+        TweenMax.to(arrow, 3, { scale:scaleW, ease: Elastic.easeOut.config(1, 0.3) }).delay(.8);
 
         function resizeArrow() {
             var scaleW = 1;

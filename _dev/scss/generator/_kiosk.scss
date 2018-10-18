@@ -1,0 +1,57 @@
+// ---------------------------------------------------------------------
+//  Kiosk Only Styles
+// ---------------------------------------------------------------------
+
+body.kiosk {
+    // cursor: none !important;
+    //
+    // *  {
+    //     cursor: none !important;
+    // }
+    //
+    // #control-panel {
+    //     cursor: none !important;
+    //
+    //     *,
+    //     .category-tile  {
+    //         cursor: none !important;
+    //
+    //         &:hover {
+    //             cursor: none !important;
+    //         }
+    //
+    //         #js-draggable:hover {
+    //             cursor: none !important;
+    //         }
+    //
+    //         #js-draggable.dragging {
+    //             //background: red;
+    //             cursor: none !important;
+    //         }
+    //     }
+    // }
+
+
+    .object-preview {
+
+        &.is-active {
+            background: darken($off-white, 10%);
+        }
+
+    }
+
+    // #object-list {
+    //     padding-bottom: 40px;
+    // }
+
+    // .kiosk-spacer {
+    //     display: block;
+    //     min-height: 40px;
+    //     height: 40px;
+    // }
+}
+
+
+// ----------------------------------------
+//
+// ----------------------------------------

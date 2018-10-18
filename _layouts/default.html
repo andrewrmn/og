@@ -43,7 +43,7 @@
 
 
 
-    <body class="template-{{ page.id }}">
+    <body class="template-{{ page.id }}  {% if page.id == 'octocat-generator' %}kiosk{% endif %}">
         <div id="password-modal">
 
             <div class="modal modal__content-sm">
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="page">
 
             <a href="#content" class="sr-only">Skip to content</a>

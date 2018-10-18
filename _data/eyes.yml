@@ -50,15 +50,21 @@
   rules:
     - rule:
 
+- name: Angry
+  image: 10_EyeExpress_Angry.svg
+  icon: 10-eyeexpress-angry.svg
+  rules:
+    - rule:
+
 - name: Chillin
   image: 09_EyeExpress_Chillin.svg
   icon: 09-eyeexpress-chillin.svg
   rules:
     - rule:
 
-- name: Angry
-  image: 10_EyeExpress_Angry.svg
-  icon: 10-eyeexpress-angry.svg
+- name: Winking
+  image: 15_EyeExpress_Winking.svg
+  icon: 15-eyeexpress-winking.svg
   rules:
     - rule:
 
@@ -77,11 +83,5 @@
 - name: Zany
   image: 13_EyeExpress_Zany.svg
   icon: 13-eyeexpress-zany.svg
-  rules:
-    - rule:
-
-- name: Winking
-  image: 15_EyeExpress_Winking.svg
-  icon: 15-eyeexpress-winking.svg
   rules:
     - rule:
